@@ -1,3 +1,6 @@
+#ifndef Component_H
+#define Component_H
+
 #include <memory>
 
 class Component
@@ -14,3 +17,4 @@ private:
 	void OnDisplay();
 };
 
+#endif // Component_H

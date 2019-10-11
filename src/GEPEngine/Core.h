@@ -1,17 +1,16 @@
-#include "World.h"
-#include "Keyboard.h"
-#include "Object.h"
-
 #include <list>
 #include <memory>
+
+class Object;
+class World;
+class Keyboard;
 
 class Core
 {
 public:
-	Core();
+	static std::shared_ptr<Core> Initialize();
 	~Core();
-	std::shared_ptr<Core> Initalise();
-	std::shared_ptr<Object> addObject();
+	std::shared_ptr<Object> AddObject();
 	void Start();
 	void Pause();
 	void End();
@@ -21,5 +20,6 @@ private:
 	std::shared_ptr<Keyboard> keyboard;
 	std::list<std::shared_ptr<Object>> objects;
 	bool playing;
+	Core();
 
 };

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 project(GEPENGINE)
 
+include_directories(
+  src
+)
+
 add_library(GEPEngine
  	src/GEPEngine/Core.cpp
 	src/GEPEngine/Keyboard.cpp
@@ -11,6 +15,7 @@ add_library(GEPEngine
 
 add_executable(sandbox
 	src/Sandbox/main.cpp
+	src/sandbox/TestScene.cpp
 )
 
 target_link_libraries(sandbox GEPEngine)

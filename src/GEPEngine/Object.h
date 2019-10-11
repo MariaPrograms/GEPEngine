@@ -1,14 +1,22 @@
 #include <list>
 #include <memory>
-#include "Components.h" 
+
+class Component;
 
 class Object
 {
 public:
 	Object();
 	~Object();
-	std::shared_ptr<class T> AddComponent();
-	std::shared_ptr<class T> GetComponent();
+
+	template<typename T>
+	std::shared_ptr<T> AddComponent()
+	{
+		std::shared_ptr<T> comp = std::make_shared<T>;
+		components.push_back(comp);
+		return comp;
+	}
+	//std::shared_ptr<class T> GetComponent();
 
 private:
 	std::list<std::shared_ptr<Component>> components;
