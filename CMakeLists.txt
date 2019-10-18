@@ -11,6 +11,7 @@ add_library(GEPEngine
 	src/GEPEngine/Object.cpp
 	src/GEPEngine/World.cpp
 	src/GEPEngine/Components.cpp
+	src/GEPEngine/Screen.cpp
 )
 
 add_executable(sandbox

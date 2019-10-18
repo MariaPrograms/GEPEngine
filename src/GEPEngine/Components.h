@@ -5,6 +5,7 @@
 
 class Object;
 class Keyboard;
+class World;
 
 class Component
 {
@@ -13,7 +14,8 @@ public:
 	~Component();
 	friend class Object;
 	std::shared_ptr<Keyboard>  GetKeyboard();
-
+	std::shared_ptr<Object>  GetObject();
+	std::shared_ptr<World>  GetWorld();
 protected:
 	virtual void OnInit() {};
 	virtual void OnStart() {};
