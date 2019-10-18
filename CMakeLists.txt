@@ -12,6 +12,9 @@ add_library(GEPEngine
 	src/GEPEngine/World.cpp
 	src/GEPEngine/Components.cpp
 	src/GEPEngine/Screen.cpp
+	src/GEPEngine/MashRenderer.cpp
+	src/GEPEngine/Materials.cpp
+	src/GEPEngine/MaterialAttribute.cpp
 )
 
 add_executable(sandbox
