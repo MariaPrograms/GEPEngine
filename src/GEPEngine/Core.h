@@ -8,12 +8,14 @@ class Keyboard;
 class Core
 {
 public:
-	static std::shared_ptr<Core> Initialize();
 	~Core();
+	static std::shared_ptr<Core> Initialize();
 	std::shared_ptr<Object> AddObject();
+	std::shared_ptr<Keyboard> GetKeyboard();
+	std::shared_ptr<World> GetWorld();
 	void Start();
 	void Pause();
-	void End();
+	void Finish();
 
 private:
 	std::shared_ptr<World> world;
