@@ -1,5 +1,7 @@
 #include "Components.h"
 #include "Object.h"
+#include "Core.h"
+#include "Keyboard.h"
 
 Component::Component()
 {
@@ -32,9 +34,7 @@ void Component::OnDisplay()
 
 }*/
 
-std::shared_ptr<KeyBoard> Component::GetKeyboard()
+std::shared_ptr<Keyboard> Component::GetKeyboard()
 {
-	std::shared_ptr<KeyBoard> board;
-	return board;
-
+	return object.lock()->GetCore()->GetKeyboard();
 }

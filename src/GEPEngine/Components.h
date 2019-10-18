@@ -4,7 +4,7 @@
 #include <memory>
 
 class Object;
-class KeyBoard;
+class Keyboard;
 
 class Component
 {
@@ -12,7 +12,7 @@ public:
 	Component();
 	~Component();
 	friend class Object;
-	std::shared_ptr<KeyBoard>  GetKeyboard();
+	std::shared_ptr<Keyboard>  GetKeyboard();
 
 protected:
 	virtual void OnInit() {};

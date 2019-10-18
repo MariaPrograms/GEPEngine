@@ -28,5 +28,20 @@ void Object::Desplay()
 
 std::shared_ptr<Core> Object::GetCore()
 {
-	return core;
+	return core.lock();
+}
+
+void Object::SetPoition(glm::vec3 _change)
+{
+	position = _change;
+
+}
+void Object::SetRotation(glm::vec3 _change)
+{
+	rotation = _change;
+}
+
+void Object::SetScale(glm::vec3 _change)
+{
+	scale = _change;
 }

@@ -18,8 +18,8 @@ public:
 	void Finish();
 
 private:
-	std::shared_ptr<World> world;
-	std::shared_ptr<Keyboard> keyboard;
+	std::weak_ptr<World> world;
+	std::weak_ptr<Keyboard> keyboard;
 	std::list<std::shared_ptr<Object>> objects;
 	bool playing;
 	Core();

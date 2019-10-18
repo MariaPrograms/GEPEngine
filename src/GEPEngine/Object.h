@@ -42,13 +42,15 @@ public:
 		components.push_back(comp);
 		return comp;
 	}
-
+	void SetPoition(glm::vec3 _change);
+	void SetRotation(glm::vec3 _change);
+	void SetScale(glm::vec3 _change);
 	void Update();
 	void Desplay();
 	std::shared_ptr<Core> GetCore();
 
 private:
-	std::shared_ptr<Core> core;
+	std::weak_ptr<Core> core;
 	std::list<std::shared_ptr<Component>> components;
 	glm::vec3 position;
 	glm::vec3 rotation;
