@@ -12,14 +12,16 @@ add_library(GEPEngine
 	src/GEPEngine/World.cpp
 	src/GEPEngine/Components.cpp
 	src/GEPEngine/Screen.cpp
-	src/GEPEngine/MashRenderer.cpp
+	src/GEPEngine/MeshRenderer.cpp
 	src/GEPEngine/Materials.cpp
-	src/GEPEngine/MaterialAttribute.cpp
+	src/GEPEngine/MaterialAttribute.cpp	
+	src/GEPEngine/NonCopyable.cpp
 )
 
 add_executable(sandbox
 	src/Sandbox/main.cpp
 	src/sandbox/TestScene.cpp
+	src/sandbox/TriangleRenderer.cpp
 )
 
 target_link_libraries(sandbox GEPEngine)

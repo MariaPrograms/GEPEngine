@@ -45,6 +45,9 @@ public:
 	void SetPoition(glm::vec3 _change);
 	void SetRotation(glm::vec3 _change);
 	void SetScale(glm::vec3 _change);
+	void Poition(glm::vec3 _change);
+	void Rotate(glm::vec3 _change);
+	void Scale(glm::vec3 _change);
 	void Update();
 	void Desplay();
 	std::shared_ptr<Core> GetCore();
