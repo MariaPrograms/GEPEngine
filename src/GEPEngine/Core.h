@@ -1,11 +1,12 @@
 #include <list>
 #include <memory>
+#include "NonCopyable.h"
 
 class Object;
 class World;
 class Keyboard;
 
-class Core
+class Core : private NonCopyable
 {
 public:
 	~Core();

@@ -2,6 +2,9 @@
 #define Component_H
 
 #include <memory>
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <exception>
 
 class Object;
 class Keyboard;
