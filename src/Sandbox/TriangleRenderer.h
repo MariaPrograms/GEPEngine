@@ -5,11 +5,10 @@ class TriangleRenderer : public Component
 public:
 	TriangleRenderer();
 	~TriangleRenderer();
-
 	void OnDisplay();
+	void Initialize();
 
 private:
-	SDL_Window* window;
 	GLuint programId;
 	GLuint vaoId;
 

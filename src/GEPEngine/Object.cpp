@@ -1,6 +1,8 @@
 #include "Object.h"
 #include "Components.h"
 #include "Core.h"
+#include "Exception.h"
+#include <iostream>
 
 Object::Object()
 {
@@ -12,9 +14,20 @@ Object::~Object()
 
 void Object::Update()
 {
+	
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		(*it)->OnUpdate();
+		try
+		{
+			(*it)->OnUpdate();
+		}
+		catch (Exception& e)
+		{
+			std::cout << "Exception: " << e.what() << std::endl;
+			//(*it)->Kill(); // Eject component
+			//this?kill(); // Perhaps eject the entire object
+		}
+		
 	}
 }
 
@@ -22,7 +35,16 @@ void Object::Desplay()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		(*it)->OnDisplay();
+		try
+		{
+			(*it)->OnDisplay();
+		}
+		catch (Exception& e)
+		{
+			std::cout << "Exception: " << e.what() << std::endl;
+			//(*it)->Kill(); // Eject component
+			//this?kill(); // Perhaps eject the entire object
+		}
 	}
 }
 

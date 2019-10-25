@@ -5,16 +5,20 @@
 class Component;
 class Core;
 
-class Object
+class Object : std::enable_shared_from_this<Object>
 {
 public:
 	Object();
 	~Object();
+	
 
 	template<typename T>
 	std::shared_ptr<T> AddComponent()
 	{
 		std::shared_ptr<T> comp = std::make_shared<T>();
+		//comp->object = std::shared_ptr<Object>(this);
+
+		//comp->Initialize();
 		components.push_back(comp);
 		return comp;
 	}

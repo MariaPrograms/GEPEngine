@@ -16,6 +16,7 @@ add_library(GEPEngine
 	src/GEPEngine/Materials.cpp
 	src/GEPEngine/MaterialAttribute.cpp	
 	src/GEPEngine/NonCopyable.cpp
+	src/GEPEngine/Exception.cpp
 )
 
 add_executable(sandbox
@@ -24,4 +25,4 @@ add_executable(sandbox
 	src/sandbox/TriangleRenderer.cpp
 )
 
-target_link_libraries(sandbox GEPEngine)
+target_link_libraries(sandbox GEPEngine SDL2 glew32 opengl32)

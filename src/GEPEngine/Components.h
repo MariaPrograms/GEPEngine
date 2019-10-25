@@ -1,3 +1,4 @@
+#pragma once
 #ifndef Component_H
 #define Component_H
 
@@ -20,6 +21,7 @@ public:
 	std::shared_ptr<Object>  GetObject();
 	std::shared_ptr<World>  GetWorld();
 protected:
+	virtual void Initialize() {};
 	virtual void OnInit() {};
 	virtual void OnStart() {};
 	virtual void OnUpdate() {};

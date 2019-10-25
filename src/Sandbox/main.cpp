@@ -1,7 +1,7 @@
 #include <GEPengine/GEPengine.h>
 #include <iostream>
 
-#include "TestScene.h"
+#include "TriangleRenderer.h"
 
 #define shared std::shared_ptr
 #define weak std::weak_ptr
@@ -12,7 +12,7 @@ void main ()
 	
 	shared<Object> entity = core->AddObject();
 
-	shared<TestScene> testScreen = entity->AddComponent<TestScene>();
+	shared<TriangleRenderer> testScreen = entity->AddComponent<TriangleRenderer>();
 	core->Start();
 	return;
 }

@@ -1,12 +1,8 @@
-#include "Core.h"
-#include "Object.h"
-#include "Keyboard.h"
-#include "World.h"
-#include <iostream>
+#include <GEPEngine/GEPengine.h>
 
 Core::Core()
 {
-
+	screen = std::make_shared<Screen>(glm::vec2(800, 600));
 }
 
 Core::~Core()
@@ -30,8 +26,19 @@ std::shared_ptr<Object> Core::AddObject()
 void Core::Start()
 {
 	playing = true;
-	for (int i = 0; i < 10; i++)
+
+	while (playing)
 	{
+		SDL_Event event = { 0 };
+
+		while (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT)
+			{
+				playing = false;
+			}
+		}
+	
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
 			(*it)->Update();
@@ -40,6 +47,8 @@ void Core::Start()
 		{
 			(*it)->Desplay();
 		}
+
+		screen->Display();
 	}
 
 }
@@ -56,10 +65,15 @@ void Core::Finish()
 
 std::shared_ptr<Keyboard> Core::GetKeyboard()
 {
-	return keyboard.lock();
+	return keyboard;
 }
 
 std::shared_ptr<World> Core::GetWorld()
 {
-	return world.lock();
+	return world;
+}
+
+std::shared_ptr<Screen> Core::GetScreen()
+{
+	return screen;
 }

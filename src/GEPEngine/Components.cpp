@@ -12,27 +12,6 @@ Component::~Component()
 {
 }
 
-/*
-void Component::OnInit()
-{
-
-}
-
-void Component::OnStart()
-{
-
-}
-
-void Component::OnUpdate()
-{
-
-}
-
-void Component::OnDisplay()
-{
-
-}*/
-
 std::shared_ptr<Keyboard> Component::GetKeyboard()
 {
 	return object.lock()->GetCore()->GetKeyboard();
