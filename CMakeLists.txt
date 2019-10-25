@@ -17,6 +17,8 @@ add_library(GEPEngine
 	src/GEPEngine/MaterialAttribute.cpp	
 	src/GEPEngine/NonCopyable.cpp
 	src/GEPEngine/Exception.cpp
+	src/GEPEngine/VertexBufferObject.cpp
+	src/GEPEngine/VertexArrayObject.cpp
 )
 
 add_executable(sandbox

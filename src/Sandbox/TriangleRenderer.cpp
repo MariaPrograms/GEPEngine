@@ -66,8 +66,6 @@ TriangleRenderer::TriangleRenderer()
 	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, colorsVboId);
-
-	
 	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW); // Upload a copy of the data from memory into the new VBO
 	glBindBuffer(GL_ARRAY_BUFFER, 0); // Reset the state
 
@@ -95,7 +93,8 @@ TriangleRenderer::TriangleRenderer()
 	// Reset the state
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-
+	
+	//Shader 
 	GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShaderId, 1, &vertexShaderSrc, NULL);
 	glCompileShader(vertexShaderId);

@@ -17,5 +17,7 @@
 #include "NonCopyable.h"
 #include "Screen.h"
 #include "Exception.h"
+#include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
 
 #endif
