@@ -55,25 +55,29 @@ GLuint VAO::GetVAO()
 	if (dirty)
 	{
 		glBindVertexArray(id);
-
+		int i = 0;
 		for (std::list<std::shared_ptr<VBO>>::iterator it = buffers.begin(); it != buffers.end(); it++)
 		{
 			if ((*it))
 			{
 				glBindBuffer(GL_ARRAY_BUFFER, (*it)->getVBO());
 
-				glVertexAttribPointer((*it)., (*it)->GetComponents(), GL_FLOAT, GL_FALSE,
+				glVertexAttribPointer(i, (*it)->GetComponents(), GL_FLOAT, GL_FALSE,
 					(*it)->GetComponents() * sizeof(GLfloat), (void *)0);
 
-				glEnableVertexAttribArray((*it));
+				glEnableVertexAttribArray(i);
 			}
 			else
 			{
-				glDisableVertexAttribArray((*it));
+				glDisableVertexAttribArray(i);
 			}
+			i++;
 		}
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 		dirty = false;
+	}
+
+	return id;
 }

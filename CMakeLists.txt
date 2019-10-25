@@ -19,6 +19,7 @@ add_library(GEPEngine
 	src/GEPEngine/Exception.cpp
 	src/GEPEngine/VertexBufferObject.cpp
 	src/GEPEngine/VertexArrayObject.cpp
+	src/GEPEngine/Shader.cpp
 )
 
 add_executable(sandbox
