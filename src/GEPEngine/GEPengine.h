@@ -2,10 +2,6 @@
 #ifndef GEP_Engine_H // include guard
 #define GEP_Engine_H
 
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <GL/glew.h>
-
 #include "Core.h"
 #include "Components.h"
 #include "Object.h"

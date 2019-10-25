@@ -5,7 +5,7 @@
 class Component;
 class Core;
 
-class Object : std::enable_shared_from_this<Object>
+class Object //: std::enable_shared_from_this<Object>
 {
 public:
 	Object();
