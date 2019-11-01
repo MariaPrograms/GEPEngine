@@ -1,8 +1,9 @@
+#include <iostream>
+
 #include "Object.h"
 #include "Components.h"
 #include "Core.h"
 #include "Exception.h"
-#include <iostream>
 
 Object::Object()
 {
@@ -53,17 +54,17 @@ std::shared_ptr<Core> Object::GetCore()
 	return core.lock();
 }
 
-void Object::SetPoition(glm::vec3 _change)
+void Object::SetPoition(glm::vec3 _pos)
 {
-	position = _change;
+	position = _pos;
 
 }
-void Object::SetRotation(glm::vec3 _change)
+void Object::SetRotation(glm::vec3 _rot)
 {
-	rotation = _change;
+	rotation = _rot;
 }
 
-void Object::SetScale(glm::vec3 _change)
+void Object::SetScale(glm::vec3 _scale)
 {
-	scale = _change;
+	scale = _scale;
 }

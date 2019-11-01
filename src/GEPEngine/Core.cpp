@@ -13,12 +13,14 @@ Core::~Core()
 std::shared_ptr<Core> Core::Initialize()
 {
 	std::shared_ptr<Core> rtn(new Core());
+	rtn->self = rtn;
 	return rtn;
 }
 
 std::shared_ptr<Object> Core::AddObject()
 {
 	std::shared_ptr<Object> obj = std::make_shared<Object>();
+	obj->SetSelf(obj);
 	objects.push_front(obj);
 	return obj;
 }
@@ -29,6 +31,8 @@ void Core::Start()
 
 	while (playing)
 	{
+		screen->Clear();
+
 		SDL_Event event = { 0 };
 
 		while (SDL_PollEvent(&event))

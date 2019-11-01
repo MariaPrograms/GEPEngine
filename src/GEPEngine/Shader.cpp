@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include "VertexArrayObject.h"
+#include "Exception.h"
 
 Shader::Shader(std::string vert, std::string frag)
 {
@@ -8,7 +9,7 @@ Shader::Shader(std::string vert, std::string frag)
 
 	if (!file.is_open())
 	{
-		throw std::exception();
+		throw Exception("Cannot Open File");
 	}
 
 	while (!file.eof())
@@ -24,7 +25,7 @@ Shader::Shader(std::string vert, std::string frag)
 
 	if (!file.is_open())
 	{
-		throw std::exception();
+		throw Exception("Cannot Open File");
 	}
 
 	while (!file.eof())
@@ -48,8 +49,8 @@ Shader::Shader(std::string vert, std::string frag)
 		std::vector<GLchar> errorLog(maxLength);
 		glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
 
-		std::cout << &errorLog.at(0) << std::endl;
-		throw std::exception();
+		//std::cout << &errorLog.at(0) << std::endl;
+		throw Exception(&errorLog.at(0));
 	}
 
 	const GLchar *fs = fragSrc.c_str();
@@ -79,7 +80,7 @@ Shader::Shader(std::string vert, std::string frag)
 
 	if (glGetError() != GL_NO_ERROR)
 	{
-		throw std::exception();
+		throw Exception("Error");
 	}
 
 	glLinkProgram(id);
@@ -87,7 +88,7 @@ Shader::Shader(std::string vert, std::string frag)
 
 	if (!success)
 	{
-		throw std::exception();
+		throw Exception("Error");
 	}
 
 	glDetachShader(id, vertexShaderId);

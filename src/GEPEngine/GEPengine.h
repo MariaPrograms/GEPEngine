@@ -15,5 +15,7 @@
 #include "Exception.h"
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"
+#include "Shader.h"
+#include "Camera.h"
 
 #endif

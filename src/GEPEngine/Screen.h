@@ -11,6 +11,7 @@ public:
 	glm::uvec2 GetSize() { return size; }
 	SDL_Window* GetWindow() { return window; }
 	void Display();
+	void Clear();
 
 private:
 	glm::uvec2 size;

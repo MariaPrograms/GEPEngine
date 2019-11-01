@@ -8,6 +8,7 @@
 #include <vector>
 
 class VAO;
+
 class Shader
 {
 public:

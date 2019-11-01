@@ -19,11 +19,13 @@ public:
 	void Start();
 	void Pause();
 	void Finish();
+	
 
 private:
 	std::shared_ptr<World> world;
 	std::shared_ptr<Keyboard> keyboard;
 	std::shared_ptr<Screen> screen;
+	std::shared_ptr<Core> self;
 	std::list<std::shared_ptr<Object>> objects;
 	bool playing;
 	Core();

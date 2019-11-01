@@ -6,11 +6,11 @@ public:
 	TriangleRenderer();
 	~TriangleRenderer();
 	void OnDisplay();
-	void Initialize();
 
 private:
-	GLuint programId;
-	GLuint vaoId;
-
+	std::shared_ptr<VBO> vertexPos;
+	std::shared_ptr<VBO> vertexCol;
+	VAO buffer;
+	std::shared_ptr <Shader> shader;
 };
 

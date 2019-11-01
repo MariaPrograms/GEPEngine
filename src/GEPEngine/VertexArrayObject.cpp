@@ -17,6 +17,8 @@ VAO::VAO()
 
 VAO::~VAO()
 {
+
+
 }
 
 void VAO::setBuffer(std::string attribute, std::weak_ptr<VBO> buffer)

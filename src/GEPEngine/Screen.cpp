@@ -29,14 +29,13 @@ Screen::~Screen()
 	SDL_Quit();
 }
 
-void Screen::Display()
+void Screen::Clear()
 {
 	glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
+}
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	glBindVertexArray(0);
-	glUseProgram(0);
+void Screen::Display()
+{
 	SDL_GL_SwapWindow(window);
 }

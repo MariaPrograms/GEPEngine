@@ -20,6 +20,7 @@ public:
 	std::shared_ptr<Keyboard>  GetKeyboard();
 	std::shared_ptr<Object>  GetObject();
 	std::shared_ptr<World>  GetWorld();
+
 protected:
 	virtual void Initialize() {};
 	virtual void OnInit() {};

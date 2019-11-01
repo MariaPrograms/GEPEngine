@@ -20,6 +20,7 @@ add_library(GEPEngine
 	src/GEPEngine/VertexBufferObject.cpp
 	src/GEPEngine/VertexArrayObject.cpp
 	src/GEPEngine/Shader.cpp
+	src/GEPEngine/Camera.cpp
 )
 
 add_executable(sandbox
