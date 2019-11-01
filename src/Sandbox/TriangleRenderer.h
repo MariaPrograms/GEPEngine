@@ -8,9 +8,10 @@ public:
 	void OnDisplay();
 
 private:
+	GLuint programId;
 	std::shared_ptr<VBO> vertexPos;
 	std::shared_ptr<VBO> vertexCol;
-	VAO buffer;
+	std::shared_ptr <VAO> buffer;
 	std::shared_ptr <Shader> shader;
 };
 

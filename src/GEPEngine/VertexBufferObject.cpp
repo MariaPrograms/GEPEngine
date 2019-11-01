@@ -75,7 +75,7 @@ int VBO::GetComponents()
 {
 	if (!components)
 	{
-		throw std::exception();
+		throw Exception("No Components");
 	}
 
 	return components;
@@ -92,7 +92,6 @@ int VBO::getDataSize()
 	}
 
 	return id;
-
 }
 
 GLuint VBO::getVBO()

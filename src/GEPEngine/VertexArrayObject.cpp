@@ -1,6 +1,9 @@
+#include <iostream>
+
 #include "VertexArrayObject.h"
 #include "Exception.h"
 #include "VertexBufferObject.h"
+
 
 VAO::VAO()
 {
@@ -31,7 +34,7 @@ void VAO::setBuffer(std::string attribute, std::weak_ptr<VBO> buffer)
 	}
 	else if (attribute == "in_Color")
 	{
-		std::advance(it, 1);
+		it++;
 		(*it) = buffer.lock();
 	}
 	else
@@ -44,12 +47,13 @@ void VAO::setBuffer(std::string attribute, std::weak_ptr<VBO> buffer)
 
 int VAO::GetVertexCount()
 {
-	if (!(*buffers.begin()))
+	std::list<std::shared_ptr<VBO>>::iterator it = buffers.begin();
+	if (!(*it))
 	{
-		throw std::exception();
+		throw Exception("bufers info empty");
 	}
 
-	return (*buffers.begin())->getDataSize() / (*buffers.begin())->GetComponents();
+	return (*it)->GetComponents() / (*it)->getDataSize();
 }
 
 GLuint VAO::GetVAO()

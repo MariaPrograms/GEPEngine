@@ -2,76 +2,13 @@
 #include "VertexArrayObject.h"
 #include "Exception.h"
 
-Shader::Shader(std::string vert, std::string frag)
+Shader::Shader(std::string path)
 {
-	std::ifstream file(vert.c_str());
-	std::string vertSrc;
-
-	if (!file.is_open())
-	{
-		throw Exception("Cannot Open File");
-	}
-
-	while (!file.eof())
-	{
-		std::string line;
-		std::getline(file, line);
-		vertSrc += line + "\n";
-	}
-
-	file.close();
-	file.open(frag.c_str());
-	std::string fragSrc;
-
-	if (!file.is_open())
-	{
-		throw Exception("Cannot Open File");
-	}
-
-	while (!file.eof())
-	{
-		std::string line;
-		std::getline(file, line);
-		fragSrc += line + "\n";
-	}
-
-	const GLchar *vs = vertSrc.c_str();
-	GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderId, 1, &vs, NULL);
-	glCompileShader(vertexShaderId);
-	GLint success = 0;
-	glGetShaderiv(vertexShaderId, GL_COMPILE_STATUS, &success);
-
-	if (!success)
-	{
-		GLint maxLength = 0;
-		glGetShaderiv(vertexShaderId, GL_INFO_LOG_LENGTH, &maxLength);
-		std::vector<GLchar> errorLog(maxLength);
-		glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
-
-		//std::cout << &errorLog.at(0) << std::endl;
-		throw Exception(&errorLog.at(0));
-	}
-
-	const GLchar *fs = fragSrc.c_str();
-	GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderId, 1, &fs, NULL);
-	glCompileShader(fragmentShaderId);
-	glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &success);
-
-	if (!success)
-	{
-		GLint maxLength = 0;
-		glGetShaderiv(vertexShaderId, GL_INFO_LOG_LENGTH, &maxLength);
-		std::vector<GLchar> errorLog(maxLength);
-		glGetShaderInfoLog(vertexShaderId, maxLength, &maxLength, &errorLog[0]);
-
-		std::cout << &errorLog.at(0) << std::endl;
-
-		throw std::exception();
-	}
-
 	id = glCreateProgram();
+
+	GLuint vertexShaderId = CreateShader(LoadShader(path + "Vertex.txt"), GL_VERTEX_SHADER);
+	GLuint fragmentShaderId = CreateShader(LoadShader(path + "Fragment.txt"), GL_FRAGMENT_SHADER);
+	
 	glAttachShader(id, vertexShaderId);
 	glAttachShader(id, fragmentShaderId);
 	glBindAttribLocation(id, 0, "in_Position");
@@ -84,6 +21,7 @@ Shader::Shader(std::string vert, std::string frag)
 	}
 
 	glLinkProgram(id);
+	GLint success = 0;
 	glGetProgramiv(id, GL_LINK_STATUS, &success);
 
 	if (!success)
@@ -99,9 +37,59 @@ Shader::Shader(std::string vert, std::string frag)
 
 Shader::~Shader()
 {
+	glDeleteProgram(id);
 }
 
-void Shader::draw(VAO *vertexArray)
+GLuint Shader::CreateShader(std::string _shaderCode, GLenum _type)
+{
+	const GLchar *s = _shaderCode.c_str();
+	GLuint shaderId = glCreateShader(_type);
+	glShaderSource(shaderId, 1, &s, NULL);
+	glCompileShader(shaderId);
+	GLint success = 0;
+	glGetShaderiv(shaderId, GL_COMPILE_STATUS, &success);
+
+	if (!success)
+	{
+		GLint maxLength = 0;
+		glGetShaderiv(shaderId, GL_INFO_LOG_LENGTH, &maxLength);
+		std::vector<GLchar> errorLog(maxLength);
+		glGetShaderInfoLog(shaderId, maxLength, &maxLength, &errorLog[0]);
+
+		std::cout << &errorLog.at(0) << std::endl;
+		throw Exception("");
+	}
+
+	return shaderId;
+}
+
+std::string Shader::LoadShader(std::string _path)
+{
+	std::ifstream file(_path.c_str());
+	std::string shaderSrc;
+
+	if (!file.is_open())
+	{
+		throw Exception("Cannot Open File");
+	}
+	else
+	{
+		std::cout << "Opened shader file at " << _path << std::endl;
+	}
+
+	while (!file.eof())
+	{
+		std::string line;
+		std::getline(file, line);
+		shaderSrc += line + "\n";
+	}
+
+	file.close();
+	std::cout << shaderSrc << std::endl;
+	return shaderSrc;
+}
+
+void Shader::draw(std::shared_ptr<VAO> vertexArray)
 {
 	glUseProgram(id);
 	glBindVertexArray(vertexArray->GetVAO());
