@@ -7,7 +7,7 @@
 #include "Object.h"
 #include "Keyboard.h"
 #include "World.h"
-#include "MeshRenderer.h"
+#include "Mesh.h"
 #include "Materials.h"
 #include "MaterialAttribute.h"
 #include "NonCopyable.h"
