@@ -3,6 +3,7 @@ project(GEPENGINE)
 
 include_directories(
   src
+  stb_image.h
 )
 
 add_library(GEPEngine
@@ -19,22 +20,22 @@ add_library(GEPEngine
 	src/GEPEngine/NonCopyable.cpp
 	src/GEPEngine/Exception.cpp
 
-	src/GEPEngine/VertexBufferObject.cpp
-	src/GEPEngine/VertexArrayObject.cpp
-	src/GEPEngine/Shader.cpp
-	src/GEPEngine/Texture.cpp
-	src/GEPEngine/RenderTexture.cpp
+	src/GEPEngine/Resources.cpp
+	src/GEPEngine/Resource.cpp
 	src/GEPEngine/Mesh.cpp
-	src/GEPEngine/Materials.cpp
-	src/GEPEngine/MaterialAttribute.cpp	
-	
-	
+		src/GEPEngine/MeshRenderer.cpp
+		src/GEPEngine/Materials.cpp
+		src/GEPEngine/MaterialAttribute.cpp	
+	src/GEPEngine/Shader.cpp
+		src/GEPEngine/VertexBufferObject.cpp
+		src/GEPEngine/VertexArrayObject.cpp
+	src/GEPEngine/Texture.cpp
+		src/GEPEngine/RenderTexture.cpp
 )
 
 add_executable(sandbox
 	src/Sandbox/main.cpp
 	src/sandbox/TestScene.cpp
-	src/sandbox/TriangleRenderer.cpp
 )
 
 target_link_libraries(sandbox GEPEngine SDL2 glew32 opengl32)

@@ -2,13 +2,28 @@
 #include "VertexArrayObject.h"
 #include "Exception.h"
 
-Shader::Shader(std::string path)
+
+std::shared_ptr<Shader> Shader::Create()
 {
+	GLuint id = 0;
 	id = glCreateProgram();
 
-	GLuint vertexShaderId = CreateShader(LoadShader(path + "Vertex.txt"), GL_VERTEX_SHADER);
-	GLuint fragmentShaderId = CreateShader(LoadShader(path + "Fragment.txt"), GL_FRAGMENT_SHADER);
-	
+	if (id == 0)
+	{
+		throw Exception("Failed to create shader program");
+	}
+
+	std::shared_ptr<Shader> rtn = std::make_shared<Shader>();
+	rtn->id = id;
+
+	return rtn;
+}
+
+std::shared_ptr<Shader> Shader::Load(std::string _path)
+{
+	GLuint vertexShaderId = CompileShaderFile(LoadShaderFile(_path + ".vert"), GL_VERTEX_SHADER);
+	GLuint fragmentShaderId = CompileShaderFile(LoadShaderFile(_path + ".frag"), GL_FRAGMENT_SHADER);
+
 	glAttachShader(id, vertexShaderId);
 	glAttachShader(id, fragmentShaderId);
 	glBindAttribLocation(id, 0, "in_Position");
@@ -40,7 +55,7 @@ Shader::~Shader()
 	glDeleteProgram(id);
 }
 
-GLuint Shader::CreateShader(std::string _shaderCode, GLenum _type)
+GLuint Shader::CompileShaderFile(std::string _shaderCode, GLenum _type)
 {
 	const GLchar *s = _shaderCode.c_str();
 	GLuint shaderId = glCreateShader(_type);
@@ -63,7 +78,7 @@ GLuint Shader::CreateShader(std::string _shaderCode, GLenum _type)
 	return shaderId;
 }
 
-std::string Shader::LoadShader(std::string _path)
+std::string Shader::LoadShaderFile(std::string _path)
 {
 	std::ifstream file(_path.c_str());
 	std::string shaderSrc;
@@ -89,20 +104,20 @@ std::string Shader::LoadShader(std::string _path)
 	return shaderSrc;
 }
 
-void Shader::draw(std::shared_ptr<VAO> vertexArray)
+void Shader::Draw(std::shared_ptr<VAO> _vertexArray)
 {
 	glUseProgram(id);
-	glBindVertexArray(vertexArray->GetVAO());
+	glBindVertexArray(_vertexArray->GetVAO());
 
-	glDrawArrays(GL_TRIANGLES, 0, vertexArray->GetVertexCount());
+	glDrawArrays(GL_TRIANGLES, 0, _vertexArray->GetVertexCount());
 
 	glBindVertexArray(0);
 	glUseProgram(0);
 }
 
-void Shader::setUniform(std::string uniform, glm::mat4 value)
+void Shader::SetUniform(std::string _uniform, glm::mat4 _value)
 {
-	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+	GLint uniformId = glGetUniformLocation(id, _uniform.c_str());
 
 	if (uniformId == -1)
 	{
@@ -110,13 +125,13 @@ void Shader::setUniform(std::string uniform, glm::mat4 value)
 	}
 
 	glUseProgram(id);
-	glUniformMatrix4fv(uniformId, 1, GL_FALSE, glm::value_ptr(value));
+	glUniformMatrix4fv(uniformId, 1, GL_FALSE, glm::value_ptr(_value));
 	glUseProgram(0);
 }
 
-void Shader::setUniform(std::string uniform, glm::vec4 value)
+void Shader::SetUniform(std::string _uniform, glm::vec4 _value)
 {
-	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+	GLint uniformId = glGetUniformLocation(id, _uniform.c_str());
 
 	if (uniformId == -1)
 	{
@@ -124,13 +139,13 @@ void Shader::setUniform(std::string uniform, glm::vec4 value)
 	}
 
 	glUseProgram(id);
-	glUniform4f(uniformId, value.x, value.y, value.z, value.w);
+	glUniform4f(uniformId, _value.x, _value.y, _value.z, _value.w);
 	glUseProgram(0);
 }
 
-void Shader::setUniform(std::string uniform, int value)
+void Shader::SetUniform(std::string _uniform, int _value)
 {
-	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+	GLint uniformId = glGetUniformLocation(id, _uniform.c_str());
 
 	if (uniformId == -1)
 	{
@@ -138,13 +153,13 @@ void Shader::setUniform(std::string uniform, int value)
 	}
 
 	glUseProgram(id);
-	glUniform1i(uniformId, value);
+	glUniform1i(uniformId, _value);
 	glUseProgram(0);
 }
 
-void Shader::setUniform(std::string uniform, float value)
+void Shader::SetUniform(std::string _uniform, float _value)
 {
-	GLint uniformId = glGetUniformLocation(id, uniform.c_str());
+	GLint uniformId = glGetUniformLocation(id, _uniform.c_str());
 
 	if (uniformId == -1)
 	{
@@ -152,6 +167,6 @@ void Shader::setUniform(std::string uniform, float value)
 	}
 
 	glUseProgram(id);
-	glUniform1f(uniformId, value);
+	glUniform1f(uniformId, _value);
 	glUseProgram(0);
 }

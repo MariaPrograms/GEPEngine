@@ -24,7 +24,7 @@ VAO::~VAO()
 
 }
 
-void VAO::setBuffer(std::string attribute, std::weak_ptr<VBO> buffer)
+void VAO::SetBuffer(std::string attribute, std::weak_ptr<VBO> buffer)
 {
 	std::list<std::shared_ptr<VBO>>::iterator it = buffers.begin();
 

@@ -8,6 +8,7 @@
 #include "Keyboard.h"
 #include "World.h"
 #include "Mesh.h"
+#include "MeshRenderer.h"
 #include "Materials.h"
 #include "MaterialAttribute.h"
 #include "NonCopyable.h"

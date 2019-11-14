@@ -12,7 +12,7 @@ class VAO
 public:
 	VAO();
 	~VAO();
-	void setBuffer(std::string attribute, std::weak_ptr<VBO> buffer);
+	void SetBuffer(std::string attribute, std::weak_ptr<VBO> buffer);
 	int GetVertexCount();
 	GLuint GetVAO();
 

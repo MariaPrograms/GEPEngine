@@ -1,12 +1,9 @@
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-#include <vector>
+#include "Resource.h"
 
 
-class Texture
+class Texture : public Resource
 {
 public:
-	Texture();
 	~Texture();
 
 	void SetSize(glm::uvec2 _size);
@@ -18,10 +15,14 @@ public:
 	const int GetWidth();
 	const int GetHeight();
 
-	GLuint getId();
+	GLuint GetTexture();
 
 private:
+	std::shared_ptr<Texture> Create(glm::uvec2 _size);
+	void Load(std::string _path);
+
 	GLuint id;
+	std::shared_ptr<Texture> self;
 	std::vector<glm::vec4> pixelData;
 	glm::vec2 textureSize;
 	bool dirty;
