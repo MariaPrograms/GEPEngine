@@ -4,17 +4,16 @@
 
 #include <vector>
 #include <string>
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
+
+class Core;
 
 class Resource
 {
 public:
+	friend class Resources;
 
 private:
-	std::string path;
-
+	std::shared_ptr<Core> core;
 };
 
 #endif

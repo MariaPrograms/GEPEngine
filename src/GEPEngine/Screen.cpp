@@ -1,4 +1,5 @@
 #include "Screen.h"
+#include "Exception.h"
 
 Screen::Screen(glm::vec2 _size)
 {
@@ -14,12 +15,19 @@ Screen::Screen(glm::vec2 _size)
 
 	if (!SDL_GL_CreateContext(window))
 	{
-		throw std::exception();
+		throw Exception("Failed to Create Window");
 	}
 
 	if (glewInit() != GLEW_OK)
 	{
-		throw std::exception();
+		throw Exception("Failed to Init Glew");
+	}
+
+	SDL_GLContext glContext = SDL_GL_CreateContext(window);
+
+	if (!glContext)
+	{
+		throw Exception("Failed to create OpenGL context");
 	}
 }
 
@@ -31,8 +39,8 @@ Screen::~Screen()
 
 void Screen::Clear()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Screen::Display()

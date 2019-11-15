@@ -15,11 +15,3 @@ public:
 private:
 
 };
-
-MaterialAttribute::MaterialAttribute()
-{
-}
-
-MaterialAttribute::~MaterialAttribute()
-{
-}

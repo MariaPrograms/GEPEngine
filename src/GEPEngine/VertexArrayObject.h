@@ -13,6 +13,7 @@ public:
 	VAO();
 	~VAO();
 	void SetBuffer(std::string attribute, std::weak_ptr<VBO> buffer);
+	std::list<std::shared_ptr<VBO>> GetBuffers() { return buffers; }
 	int GetVertexCount();
 	GLuint GetVAO();
 

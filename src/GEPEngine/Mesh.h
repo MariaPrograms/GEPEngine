@@ -1,7 +1,6 @@
 #include "Resource.h"
-
 #include <memory>
-
+#include <glm/glm.hpp>
 class VAO;
 
 struct Face
@@ -27,17 +26,9 @@ class Mesh : public Resource
 {
 public:
 	void AddFace(Face _face);
-	//GLuint GetMesh();
 	~Mesh();
 
 private:
-	std::shared_ptr<Mesh> Create();
 	std::shared_ptr<Mesh> Load(std::string _path);
-	void Parse(const std::string& data, std::string& currentLine);
-
-	std::shared_ptr<VAO> buffer;
-
-	void splitStringWhitespace(const std::string& input, std::vector<std::string>& output);
-	void splitStringLineEnding(const std::string& input, std::vector<std::string>& output);
-	void splitString(const std::string& input, char splitter, std::vector<std::string>& output);
+	std::shared_ptr<Mesh> self;
 };

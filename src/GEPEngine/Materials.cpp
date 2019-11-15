@@ -6,16 +6,17 @@ Material::Material()
 
 Material::~Material()
 {
-}
-
-void Material::SetShader(std::weak_ptr<Shader> _shader)
-{
 
 }
 
-std::shared_ptr<Shader> Material::GetShader()
+void Material::SetShader(std::shared_ptr<rend::Shader> _shader)
 {
-	return shader.lock();
+	shader = _shader;
+}
+
+std::shared_ptr<rend::Shader> Material::GetShader()
+{
+	return shader;
 }
 
 void Material::SetValue(std::string _name, std::weak_ptr<Texture> _value)

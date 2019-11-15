@@ -1,37 +1,32 @@
 #include <list>
 #include <memory>
+#include <vector>
+#include <rend/rend.h>
 
 class Resource;
+#include "Core.h"
+
 
 class Resources
 {
 public:
 	template<typename T>
-	std::shared_ptr<T> Create()
-	{
-		std::shared_ptr<T> comp = std::make_shared<T>();
-		resources.push_back(comp);
-		return comp;
-	}
-
-	template<typename T>
 	std::shared_ptr<T> Load(std::string _path)
 	{
-		for (std::list<std::shared_ptr<Resource>>::iterator it = components.begin(); it != components.end(); it++)
-		{
-			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>();
+		std::shared_ptr<T> resorce = std::make_shared<T>();
+		resorce->core = core;
+		resorce->Load(_path);
+		resorce->self = self;
 
-			if (rtn)
-			{
-				rtn->Load(_path);
-			}
-		}
-
-		throw Exception("Comonent not found");
+		resources.push_back(resorce);
+		return resources;
 	}
+
+	std::string LoadFile(std::string _path);
+	void LoadTexture(std::string _path, rend::Texture& _text);
 
 
 private:
-	std::list<std::shared_ptr<Resource>> resources;
-
+	std::vector<std::shared_ptr<Resource>> resources;
+	std::shared_ptr<Core> core;
 };

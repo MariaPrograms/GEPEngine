@@ -1,8 +1,18 @@
-#include <GEPEngine/GEPengine.h>
+#include "Core.h"
+#include "Keyboard.h"
+#include "World.h"
+#include "Object.h"
+#include "Screen.h"
+#include "Resources.h"
+
+#include <glm/glm.hpp>
 
 Core::Core()
 {
 	screen = std::make_shared<Screen>(glm::vec2(800, 600));
+
+	context = rend::Context::initialize();
+	resources = std::make_shared<Resources>();
 }
 
 Core::~Core()
@@ -80,4 +90,14 @@ std::shared_ptr<World> Core::GetWorld()
 std::shared_ptr<Screen> Core::GetScreen()
 {
 	return screen;
+}
+
+std::shared_ptr<Resources> Core::GetResources()
+{
+	return resources;
+}
+
+std::shared_ptr<rend::Context> Core::GetContext()
+{
+	return context;
 }
