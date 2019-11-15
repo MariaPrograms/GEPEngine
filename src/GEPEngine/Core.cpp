@@ -10,7 +10,6 @@
 Core::Core()
 {
 	screen = std::make_shared<Screen>(glm::vec2(800, 600));
-
 	context = rend::Context::initialize();
 	resources = std::make_shared<Resources>();
 }
@@ -24,6 +23,7 @@ std::shared_ptr<Core> Core::Initialize()
 {
 	std::shared_ptr<Core> rtn(new Core());
 	rtn->self = rtn;
+	rtn->resources->SetCore(rtn);
 	return rtn;
 }
 

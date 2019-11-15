@@ -1,7 +1,10 @@
 #include "Materials.h"
+#include "Shader.h"
+#include "Texture.h"
 
 Material::Material()
 {
+
 }
 
 Material::~Material()
@@ -9,12 +12,12 @@ Material::~Material()
 
 }
 
-void Material::SetShader(std::shared_ptr<rend::Shader> _shader)
+void Material::SetShader(std::shared_ptr<Shader> _shader)
 {
 	shader = _shader;
 }
 
-std::shared_ptr<rend::Shader> Material::GetShader()
+std::shared_ptr<Shader> Material::GetShader()
 {
 	return shader;
 }

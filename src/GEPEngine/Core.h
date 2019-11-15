@@ -4,7 +4,6 @@
 
 #include "NonCopyable.h"
 
-
 class Object;
 class World;
 class Keyboard;

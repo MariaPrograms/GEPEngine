@@ -1,17 +1,11 @@
 #include "Mesh.h"///////////
 #include "Exception.h"
+#include "Core.h"
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
 
-void Mesh::AddFace(Face _face)
+void Mesh::Load(std::string _path)
 {
-
-}
-
-std::shared_ptr<Mesh> Mesh::Load(std::string _path)
-{
+	std::shared_ptr<rend::Mesh> rendMesh = core->GetContext()->createMesh();
 	std::ifstream f(_path.c_str());
 	std::string obj;
 	std::string line;
@@ -27,17 +21,5 @@ std::shared_ptr<Mesh> Mesh::Load(std::string _path)
 		obj += line + "\n";
 	}
 
-	
-	std::string currentLine;
-
-	try
-	{
-		Parse(obj, currentLine);
-	}
-	catch (std::exception& e)
-	{
-		throw Exception("Failed to parse model data [" + currentLine + "]");
-	}
-
-	return self;
+	rendMesh->parse(obj);
 }

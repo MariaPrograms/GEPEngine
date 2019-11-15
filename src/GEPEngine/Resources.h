@@ -4,7 +4,7 @@
 #include <rend/rend.h>
 
 class Resource;
-#include "Core.h"
+class Core;
 
 
 class Resources
@@ -15,16 +15,16 @@ public:
 	{
 		std::shared_ptr<T> resorce = std::make_shared<T>();
 		resorce->core = core;
-		resorce->Load(_path);
-		resorce->self = self;
+		resorce->self = resorce;
+		
+		resorce->Load("D:\\Programming Projects\\GEPEngine\\Resources\\" + _path);
 
 		resources.push_back(resorce);
-		return resources;
+		return resorce;
 	}
 
-	std::string LoadFile(std::string _path);
-	void LoadTexture(std::string _path, rend::Texture& _text);
-
+	Resources();
+	void SetCore(std::shared_ptr<Core> _core) { core = _core; }
 
 private:
 	std::vector<std::shared_ptr<Resource>> resources;

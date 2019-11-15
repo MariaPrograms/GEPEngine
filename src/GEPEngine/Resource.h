@@ -4,15 +4,18 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <rend/rend.h>
 
 class Core;
 
 class Resource
 {
 public:
-	friend class Resources;
 
-private:
+protected:
 	std::shared_ptr<Core> core;
 };
 

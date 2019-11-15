@@ -2,7 +2,7 @@
 #ifndef GEP_Engine_H // include guard
 #define GEP_Engine_H
 
-//#include <rend/rend.h>
+#include <rend/rend.h>
 
 #include "Core.h"
 #include "Components.h"
@@ -16,5 +16,9 @@
 #include "Screen.h"
 #include "Exception.h"
 #include "Camera.h"
+#include "Resources.h"
+#include "Shader.h"
+#include "Mesh.h"
+#include "Texture.h"
 
 #endif

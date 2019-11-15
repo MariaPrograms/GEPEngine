@@ -52,18 +52,13 @@ void main ()
 	shared<Core> core = Core::Initialize();
 	
 	shared<Object> entity = core->AddObject();
+	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
 
-	std::shared_ptr<rend::Shader> shader = core->GetContext()->createShader();
-	shader->parse(src);
-
-	std::sr1::shared_ptr<rend::Mesh> shape = core->GetContext()->createMesh();
-	shape->parse(obj);
-
-
-	std::shared_ptr<Material> mat = std::make_shared<Material>();
+	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders\\ObjShader.txt");
+	shared<Material> mat = std::make_shared<Material>();
 	mat->SetShader(shader);
 
-	std::shared_ptr<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
+	shared<Mesh> shape = core->GetResources()->Load<Mesh>("curuthers\\curuthers.obj");
 	           
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);

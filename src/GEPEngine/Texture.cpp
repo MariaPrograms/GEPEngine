@@ -1,9 +1,12 @@
 #include "Texture.h"
+#include "Core.h"
 #include "Exception.h"
 #include "stb_image.h"
 
 void Texture::Load(std::string _path)
 {
+	rendText = core->GetContext()->createTexture();
+
 	int w = 0;
 	int h = 0;
 	int bpp = 0;
@@ -16,7 +19,7 @@ void Texture::Load(std::string _path)
 		throw Exception("Failed to open image");
 	}
 
-	SetSize(glm::vec2(w, h));
+	rendText->setSize(w, h);
 
 	for (int y = 0; y < h; y++)
 	{
@@ -24,7 +27,7 @@ void Texture::Load(std::string _path)
 		{
 			int r = y * w * 3 + x * 3;
 
-			SetPixel(glm::vec2(x, y), glm::vec3(data[r] / 255.0f, data[r + 1] / 255.0f, data[r + 2] / 255.0f));
+			rendText->setPixel(x, y, glm::vec3(data[r] / 255.0f, data[r + 1] / 255.0f, data[r + 2] / 255.0f));
 		}
 	}
 
@@ -33,9 +36,5 @@ void Texture::Load(std::string _path)
 
 Texture::~Texture()
 {
+	rendText->~Texture();
 }
-
-GLuint Texture::GetTexture()
-{
-		
-}	
