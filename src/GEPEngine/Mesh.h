@@ -1,6 +1,5 @@
 #include "Resource.h"
-#include <memory>
-#include <glm/glm.hpp>
+#include <rend/rend.h>
 
 class Mesh : public Resource
 {

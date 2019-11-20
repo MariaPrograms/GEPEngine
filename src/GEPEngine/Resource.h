@@ -1,13 +1,7 @@
 #pragma once
 #ifndef Resource_H
 #define Resource_H
-
-#include <vector>
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <rend/rend.h>
+#include <memory>
 
 class Core;
 
@@ -20,3 +14,12 @@ protected:
 };
 
 #endif
+
+
+
+//#include <vector>
+//#include <string>
+//
+//
+//#include <glm/glm.hpp>
+//#include <rend/rend.h>

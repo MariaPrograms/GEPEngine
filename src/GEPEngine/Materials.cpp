@@ -17,9 +17,9 @@ void Material::SetShader(std::shared_ptr<Shader> _shader)
 	shader = _shader;
 }
 
-std::shared_ptr<Shader> Material::GetShader()
+std::shared_ptr<rend::Shader> Material::GetShader()
 {
-	return shader;
+	return shader->GetRender();
 }
 
 void Material::SetValue(std::string _name, std::weak_ptr<Texture> _value)

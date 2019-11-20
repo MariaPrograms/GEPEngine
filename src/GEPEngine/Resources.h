@@ -17,7 +17,7 @@ public:
 		resorce->core = core;
 		resorce->self = resorce;
 		
-		resorce->Load("D:\\Programming Projects\\GEPEngine\\Resources\\" + _path);
+		resorce->Load("../Resources/" + _path);
 
 		resources.push_back(resorce);
 		return resorce;

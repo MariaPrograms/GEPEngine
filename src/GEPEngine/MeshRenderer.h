@@ -14,7 +14,7 @@ public:
 	~MeshRenderer();
 
 	void OnInit();
-	void SetMesh(std::weak_ptr<Mesh> _mesh);
+	void SetMesh(std::shared_ptr<Mesh> _mesh);
 	void SetMaterial(std::shared_ptr<Material> _material);
 
 	std::shared_ptr<Mesh> GetMesh();
@@ -22,7 +22,7 @@ public:
 
 private:
 	void OnDisplay();
-	std::weak_ptr<Mesh> mesh;
+	std::shared_ptr<Mesh> mesh;
 	std::shared_ptr<Material> material;
 };
 

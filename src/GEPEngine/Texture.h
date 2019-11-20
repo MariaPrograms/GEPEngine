@@ -1,4 +1,5 @@
 #include "Resource.h"
+#include <rend/rend.h>
 
 class Texture : public Resource
 {

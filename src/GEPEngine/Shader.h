@@ -1,4 +1,5 @@
 #include "Resource.h"
+#include "rend/rend.h"
 
 class Shader : public Resource
 {
@@ -8,7 +9,8 @@ public:
 	std::shared_ptr<rend::Shader> GetRender() { return rendShader; }
 
 private:
-	std::shared_ptr<Shader> Load(std::string _path);
+	void Load(std::string _path);
 	std::shared_ptr<Shader> self;
 	std::shared_ptr<rend::Shader> rendShader;
 };
+

@@ -2,6 +2,9 @@
 #include "Exception.h"
 #include "Core.h"
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
 void Mesh::Load(std::string _path)
 {

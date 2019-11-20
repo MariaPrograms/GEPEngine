@@ -2,7 +2,11 @@
 #include "Exception.h"
 #include "Core.h"
 
-std::shared_ptr<Shader> Shader::Load(std::string _path)
+#include <fstream>
+#include <iostream>
+#include <sstream>
+
+void Shader::Load(std::string _path)
 {
 	rendShader = core->GetContext()->createShader();
 
