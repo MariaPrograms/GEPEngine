@@ -8,7 +8,7 @@
 
 void Mesh::Load(std::string _path)
 {
-	std::shared_ptr<rend::Mesh> rendMesh = core->GetContext()->createMesh();
+	rendMesh = core->GetContext()->createMesh();
 	std::ifstream f(_path.c_str());
 	std::string obj;
 	std::string line;
