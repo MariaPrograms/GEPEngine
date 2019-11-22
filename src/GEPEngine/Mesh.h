@@ -1,12 +1,15 @@
 #include "Resource.h"
 #include <rend/rend.h>
 
+class Texture;
+
 class Mesh : public Resource
 {
 public:
-	//void AddFace(Face _face);
 	friend class Resources;
+	//void AddFace(Face _face);
 	std::shared_ptr<rend::Mesh> GetRender() { return rendMesh; }
+	void SetTexture(std::shared_ptr<Texture> _texture);
 
 private:
 	void Load(std::string _path);

@@ -11,6 +11,8 @@ class Screen;
 class Resources;
 class Context;
 
+struct AudioCore;
+
 class Core : private NonCopyable
 {
 public:
@@ -32,6 +34,7 @@ public:
 private:
 	Core();
 
+	std::shared_ptr<AudioCore> audioCore;
 	std::shared_ptr<Core> self;
 	std::shared_ptr<World> world;
 	std::shared_ptr<Keyboard> keyboard;

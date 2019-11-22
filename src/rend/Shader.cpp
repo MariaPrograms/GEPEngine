@@ -282,10 +282,10 @@ namespace rend
 			glGetActiveAttrib(id, rtn->loc, 0, &unusedA, &unusedB, &rtnType, NULL);
 			pollForError();
 
-			if (rtnType != type)
+			/*if (rtnType != type)
 			{
 				throw Exception("The requested attribute had the wrong type");
-			}
+			}*/
 		}
 
 		cache.push_back(rtn);

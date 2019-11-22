@@ -53,15 +53,21 @@ void main ()
 	
 	shared<Object> entity = core->AddObject();
 	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
+	
 
 	shared<Mesh> shape = core->GetResources()->Load<Mesh>("curuthers/curuthers.obj");
-
+	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/TextureShader.txt");
+	shared<Texture> texture = core->GetResources()->Load<Texture>("curuthers/Whiskers_diffuse.png");
 	shared<Material> mat = std::make_shared<Material>();
-	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/ObjShader.txt");
-	mat->SetShader(shader);
-
 	
-	           
+	mat->SetShader(shader);
+	shape->SetTexture(texture);
+
+
+	shared<SoundSource> source = entity->AddComponent<SoundSource>();
+	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
+	source->SetSound(sound);
+
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);
 	 

@@ -74,6 +74,7 @@ public:
 	glm::vec3 GetScale() { return scale; }
 	glm::mat4 GetModel() { return myMatrix; }
 
+	void Init();
 	void Update();
 	void Desplay();
 	std::shared_ptr<Core> GetCore();

@@ -13,6 +13,24 @@ Object::~Object()
 {
 }
 
+void Object::Init()
+{
+	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+	{
+		try
+		{
+			(*it)->OnInit();
+		}
+		catch (Exception& e)
+		{
+			std::cout << "Exception: " << e.what() << std::endl;
+			//(*it)->Kill(); // Eject component
+			//this?kill(); // Perhaps eject the entire object
+		}
+
+	}
+}
+
 void Object::Update()
 {
 	

@@ -1,6 +1,7 @@
 #include "Mesh.h"///////////
 #include "Exception.h"
 #include "Core.h"
+#include "Texture.h"
 
 #include <fstream>
 #include <iostream>
@@ -25,4 +26,9 @@ void Mesh::Load(std::string _path)
 	}
 
 	rendMesh->parse(obj);
+}
+
+void Mesh::SetTexture(std::shared_ptr<Texture> _texture)
+{
+	rendMesh->setTexture("u_Texture", _texture->GetRender());
 }

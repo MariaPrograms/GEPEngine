@@ -6,17 +6,60 @@
 #include "Resources.h"
 
 #include <glm/glm.hpp>
+#include <AL/al.h>
+#include <AL/alc.h>
+
+
+struct AudioCore
+{
+	AudioCore()
+	{
+		device = alcOpenDevice(NULL); // Open up the OpenAL device
+
+		if (device == NULL)
+		{
+			throw std::exception();
+		}
+
+		context = alcCreateContext(device, NULL); // Create audio context
+
+		if (context == NULL)
+		{
+			alcCloseDevice(device);
+			throw std::exception();
+		}
+
+		// Set as current context
+		if (!alcMakeContextCurrent(context))
+		{
+			alcDestroyContext(context);
+			alcCloseDevice(device);
+			throw std::exception();
+		}
+	}
+
+	~AudioCore()
+	{
+		alcMakeContextCurrent(NULL);
+		alcDestroyContext(context);
+		alcCloseDevice(device);
+	}
+
+private:
+	ALCdevice* device;
+	ALCcontext* context;
+};
 
 Core::Core()
 {
 	screen = std::make_shared<Screen>(glm::vec2(800, 600));
 	context = rend::Context::initialize();
 	resources = std::make_shared<Resources>();
+	audioCore = std::make_shared<AudioCore>();
 }
 
 Core::~Core()
 {
-
 }
 
 std::shared_ptr<Core> Core::Initialize()
@@ -38,6 +81,11 @@ std::shared_ptr<Object> Core::AddObject()
 void Core::Start()
 {
 	playing = true;
+
+	for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
+	{
+		(*it)->Init();
+	}
 
 	while (playing)
 	{

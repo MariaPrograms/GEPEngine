@@ -40,8 +40,8 @@ MeshRenderer::~MeshRenderer()
 
 void MeshRenderer::OnDisplay()
 {
-	//material->GetShader()->setUniform("in_Model", glm::mat4(1.0f));
-	//material->GetShader()->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f));
+	material->GetShader()->setUniform("u_Model", glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, -10)));
+	material->GetShader()->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f));
 	material->GetShader()->setMesh(mesh->GetRender());
 	material->GetShader()->render();
 }

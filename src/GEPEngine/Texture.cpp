@@ -1,6 +1,7 @@
 #include "Texture.h"
 #include "Core.h"
 #include "Exception.h"
+
 #include "stb_image.h"
 
 void Texture::Load(std::string _path)
@@ -11,8 +12,8 @@ void Texture::Load(std::string _path)
 	int h = 0;
 	int bpp = 0;
 
-	const char* path = _path.c_str();
-	unsigned char *data = stbi_load(path ,&w, &h, &bpp, 3);
+
+	unsigned char *data = stbi_load(_path.c_str(),&w, &h, &bpp, 3);
 
 	if (!data)
 	{

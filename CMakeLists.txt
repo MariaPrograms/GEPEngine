@@ -3,8 +3,8 @@ project(GEPENGINE)
 
 include_directories(
   src
-  stb_image.h
 )
+
 
 add_library(rend
   src/rend/Exception.cpp
@@ -44,8 +44,13 @@ add_library(GEPEngine
 	src/GEPEngine/Materials.cpp
 	src/GEPEngine/MaterialAttribute.cpp	
 	src/GEPEngine/Shader.cpp
+
+	src/GEPEngine/stb_image.h
 	src/GEPEngine/Texture.cpp
 	src/GEPEngine/RenderTexture.cpp
+
+	src/GEPEngine/Sound.cpp
+	src/GEPEngine/SoundSource.cpp
 )
 
 add_executable(sandbox
@@ -53,4 +58,4 @@ add_executable(sandbox
 	src/sandbox/TestScene.cpp
 )
 
-target_link_libraries(sandbox GEPEngine SDL2 rend)
+target_link_libraries(sandbox GEPEngine SDL2 rend OpenAL32)

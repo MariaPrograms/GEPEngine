@@ -20,5 +20,7 @@
 #include "Shader.h"
 #include "Mesh.h"
 #include "Texture.h"
+#include "Sound.h"
+#include "SoundSource.h"
 
 #endif
