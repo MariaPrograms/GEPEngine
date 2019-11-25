@@ -56,6 +56,7 @@ Core::Core()
 	context = rend::Context::initialize();
 	resources = std::make_shared<Resources>();
 	audioCore = std::make_shared<AudioCore>();
+	keyboard = std::make_shared<Keyboard>();
 }
 
 Core::~Core()
@@ -74,6 +75,7 @@ std::shared_ptr<Object> Core::AddObject()
 {
 	std::shared_ptr<Object> obj = std::make_shared<Object>();
 	obj->SetSelf(obj);
+	obj->SetCore(self);
 	objects.push_front(obj);
 	return obj;
 }

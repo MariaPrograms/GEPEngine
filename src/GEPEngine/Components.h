@@ -27,10 +27,7 @@ protected:
 	virtual void OnStart() {};
 	virtual void OnUpdate() {};
 	virtual void OnDisplay() {};
-
-private:
 	std::weak_ptr<Object> object;
-
 };
 
 #endif // Component_H

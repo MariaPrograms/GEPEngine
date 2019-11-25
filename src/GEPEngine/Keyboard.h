@@ -1,14 +1,17 @@
 #include <vector>
+#include <string> 
+
+#include <SDL2/SDL.h>
 
 class Keyboard
 {
 public:
 	Keyboard();
 	~Keyboard();
-	bool GetKeyDown(int _keyCode);
-	bool GetKeyUp(int _keyCode);
+	bool IsKeyDown(int _keyCode);
+	bool IsKeyUp(int _keyCode);
 
 private:
-	std::vector<int> keyCodes;
+	const Uint8 *keyState;
 };
 

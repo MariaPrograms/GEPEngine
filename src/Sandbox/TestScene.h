@@ -10,6 +10,5 @@ public:
 private:
 	void OnDisplay();
 	void OnUpdate();
-
 };
 

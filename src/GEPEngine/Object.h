@@ -79,6 +79,7 @@ public:
 	void Desplay();
 	std::shared_ptr<Core> GetCore();
 	void SetSelf(std::shared_ptr<Object> _self) { self = _self; }
+	void SetCore(std::shared_ptr<Core> _core) { core = _core; }
 
 
 private:

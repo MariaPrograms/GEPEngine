@@ -1,4 +1,5 @@
 #include "TestScene.h"
+#include <SDL2/SDL.h>
 
 TestScene::TestScene()
 {
@@ -14,10 +15,39 @@ TestScene::~TestScene()
 
 void TestScene::OnDisplay()
 {
-	std::cout << "Displaying Test" << std::endl;
 }
 
 void TestScene::OnUpdate()
 {
-	std::cout << "Updating Test" << std::endl;
+	glm::vec3 pos;
+
+	if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_RIGHT))
+	{
+		pos = object.lock()->GetPoition() + glm::vec3(1, 0, 0);
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_LEFT))
+	{
+		pos = object.lock()->GetPoition() + glm::vec3(-1, 0, 0);
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_UP))
+	{
+		pos = object.lock()->GetPoition() + glm::vec3(0, 1, 0);
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_DOWN))
+	{
+		pos = object.lock()->GetPoition() + glm::vec3(0, -1, 0);
+		object.lock()->SetPoition(pos);
+	}
+			
+
+		
+			
+
+			
+
+			
+
 }
