@@ -7,7 +7,7 @@
 
 Object::Object()
 {
-	position = glm::vec3(0, 0, -10);
+	position = glm::vec3(0, 0, 0);
 	myMatrix = glm::translate(glm::mat4(1.0f), position);
 }
 

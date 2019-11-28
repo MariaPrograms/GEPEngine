@@ -10,6 +10,7 @@ class Keyboard;
 class Screen;
 class Resources;
 class Context;
+class Camera;
 
 struct AudioCore;
 
@@ -24,12 +25,14 @@ public:
 	std::shared_ptr<World> GetWorld();
 	std::shared_ptr<Screen> GetScreen();
 	std::shared_ptr<Resources> GetResources();
+	std::shared_ptr<Camera> GetCamera();
 	std::shared_ptr<rend::Context> GetContext();
+
+	void SetMainCamera(std::weak_ptr<Camera> _cam) { mainCamera = _cam; }
 
 	void Start();
 	void Pause();
 	void Finish();
-	
 
 private:
 	Core();
@@ -41,10 +44,8 @@ private:
 	std::shared_ptr<Screen> screen;
 	std::shared_ptr<Resources> resources;
 	std::shared_ptr<rend::Context> context;
-	
+	std::weak_ptr<Camera> mainCamera;
 	std::list<std::shared_ptr<Object>> objects;
 
 	bool playing;
-	
-
 };

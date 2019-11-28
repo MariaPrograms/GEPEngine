@@ -10,12 +10,17 @@ void main ()
 {
 	shared<Core> core = Core::Initialize();
 	
+	shared<Object> CamObj = core->AddObject();
+	shared<Camera> cam = CamObj->AddComponent<Camera>();
+	core->SetMainCamera(cam);
+
+
 	shared<Object> entity = core->AddObject();
 	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
 	shared<TestScene> test = entity->AddComponent<TestScene>();
 
 	shared<Mesh> shape = core->GetResources()->Load<Mesh>("curuthers/curuthers.obj");
-	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/TextureShader.txt");
+	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/Texture.txt");
 	shared<Texture> texture = core->GetResources()->Load<Texture>("curuthers/Whiskers_diffuse.png");
 	shared<Material> mat = std::make_shared<Material>();
 	
@@ -23,9 +28,9 @@ void main ()
 	shape->SetTexture(texture);
 
 
-	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
+	shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
-	source->SetSound(sound);*/
+	source->SetSound(sound);
 
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);

@@ -1,18 +1,19 @@
 #ifdef VERTEX
-
+                                              
 attribute vec3 a_Position;
 attribute vec2 a_TexCoord;
-attribute vec3 a_Normal;
+attribute vec3 a_Normal; 
 
 uniform mat4 u_Projection;
 uniform mat4 u_Model;
+uniform mat4 u_View;
 
 varying vec3 v_Normal;
 varying vec2 v_TexCoord;
 
-void main()
+void main() 
 {
-  gl_Position = u_Projection * u_Model * vec4(a_Position, 1);
+  gl_Position = u_Projection * u_Model * u_View * vec4(a_Position, 1);
 
   v_Normal = a_Normal;
   v_TexCoord = a_TexCoord;

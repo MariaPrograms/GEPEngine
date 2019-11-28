@@ -33,21 +33,13 @@ void TestScene::OnUpdate()
 	}
 	else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_UP))
 	{
-		pos = object.lock()->GetPoition() + glm::vec3(0, 1, 0);
+		pos = object.lock()->GetPoition() + glm::vec3(0, 0, 1);
 		object.lock()->SetPoition(pos);
 	}
 	else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_DOWN))
 	{
-		pos = object.lock()->GetPoition() + glm::vec3(0, -1, 0);
+		pos = object.lock()->GetPoition() + glm::vec3(0, 0, -1);
 		object.lock()->SetPoition(pos);
 	}
-			
-
-		
-			
-
-			
-
-			
 
 }

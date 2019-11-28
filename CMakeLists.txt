@@ -51,6 +51,8 @@ add_library(GEPEngine
 
 	src/GEPEngine/Sound.cpp
 	src/GEPEngine/SoundSource.cpp
+
+	src/GEPEngine/Light.cpp
 )
 
 add_executable(sandbox

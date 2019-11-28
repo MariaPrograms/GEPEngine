@@ -1,8 +1,11 @@
-#include "MeshRenderer.h"
+
 #include "Materials.h"
 #include "Shader.h"
 #include "Mesh.h"
+#include "Core.h"
 #include "Object.h"
+#include "Camera.h"
+#include "MeshRenderer.h"
 
 MeshRenderer::MeshRenderer()
 {
@@ -42,7 +45,8 @@ MeshRenderer::~MeshRenderer()
 void MeshRenderer::OnDisplay()
 {
 	material->GetShader()->setUniform("u_Model", object.lock()->GetModel());
-	material->GetShader()->setUniform("u_Projection", glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f));
+	material->GetShader()->setUniform("u_Projection", object.lock()->GetCore()->GetCamera()->GetProjection());
+	material->GetShader()->setUniform("u_View", object.lock()->GetCore()->GetCamera()->GetView());
 	material->GetShader()->setMesh(mesh->GetRender());
 	material->GetShader()->render();
 }

@@ -4,6 +4,7 @@
 #include "Object.h"
 #include "Screen.h"
 #include "Resources.h"
+#include "Camera.h"
 
 #include <glm/glm.hpp>
 #include <AL/al.h>
@@ -150,4 +151,9 @@ std::shared_ptr<Resources> Core::GetResources()
 std::shared_ptr<rend::Context> Core::GetContext()
 {
 	return context;
+}
+
+std::shared_ptr<Camera> Core::GetCamera()
+{
+	return mainCamera.lock();
 }
