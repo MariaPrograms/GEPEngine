@@ -11,7 +11,6 @@
 #include "World.h"
 #include "MeshRenderer.h"
 #include "Materials.h"
-#include "MaterialAttribute.h"
 #include "NonCopyable.h"
 #include "Screen.h"
 #include "Exception.h"
@@ -22,5 +21,6 @@
 #include "Texture.h"
 #include "Sound.h"
 #include "SoundSource.h"
+#include "Light.h"
 
 #endif

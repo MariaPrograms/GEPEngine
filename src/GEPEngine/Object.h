@@ -18,6 +18,7 @@ public:
 	{
 		std::shared_ptr<T> comp = std::make_shared<T>();
 		comp->object = self;
+		comp->OnInit();
 		components.push_back(comp);
 		return comp;
 	}
@@ -25,8 +26,9 @@ public:
 	template<typename T, typename A>
 	std::shared_ptr<T> AddComponent(A _a)
 	{
-		std::shared_ptr<T> comp = std::make_shared<T>(_a);
+		std::shared_ptr<T> comp = std::make_shared<T>();
 		comp->object = self;
+		comp->OnInit(_a);
 		components.push_back(comp);
 		return comp;
 	}
@@ -36,6 +38,7 @@ public:
 	{
 		std::shared_ptr<T> comp = std::make_shared<T>(_a, _b);
 		comp->object = self;
+		comp->OnInit(_a, _b);
 		components.push_back(comp);
 		return comp;
 	}
@@ -45,6 +48,7 @@ public:
 	{
 		std::shared_ptr<T> comp = std::make_shared<T>(_a, _b, _c);
 		comp->object = self;
+		comp->OnInit(_a, _b, _c);
 		components.push_back(comp);
 		return comp;
 	}
@@ -74,7 +78,7 @@ public:
 	glm::vec3 GetScale() { return scale; }
 	glm::mat4 GetModel() { return myMatrix; }
 
-	void Init();
+	void Start();
 	void Update();
 	void Desplay();
 	std::shared_ptr<Core> GetCore();

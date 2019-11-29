@@ -87,7 +87,7 @@ void Core::Start()
 
 	for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 	{
-		(*it)->Init();
+		(*it)->Start();
 	}
 
 	while (playing)
@@ -156,4 +156,9 @@ std::shared_ptr<rend::Context> Core::GetContext()
 std::shared_ptr<Camera> Core::GetCamera()
 {
 	return mainCamera.lock();
+}
+
+std::shared_ptr<Light> Core::GetLights()
+{
+	return *lights.begin();
 }

@@ -1,20 +1,16 @@
-
-#include "Materials.h"
-#include "Shader.h"
-#include "Mesh.h"
 #include "Core.h"
 #include "Object.h"
 #include "Camera.h"
+#include "Light.h"
+#include "Materials.h"
+#include "Shader.h"
+#include "Mesh.h"
+#include "Texture.h"
 #include "MeshRenderer.h"
 
 MeshRenderer::MeshRenderer()
 {
 	
-}
-
-void MeshRenderer::OnInit()
-{
-
 }
 
 void MeshRenderer::SetMaterial(std::shared_ptr<Material> _material)
@@ -42,11 +38,22 @@ MeshRenderer::~MeshRenderer()
 
 }
 
+void MeshRenderer::OnStart()
+{
+	if (material->GetTexture())
+	{
+		mesh->GetRender()->setTexture("u_Texture", material->GetTexture()->GetRender());
+	}
+}
+
 void MeshRenderer::OnDisplay()
 {
-	material->GetShader()->setUniform("u_Model", object.lock()->GetModel());
-	material->GetShader()->setUniform("u_Projection", object.lock()->GetCore()->GetCamera()->GetProjection());
-	material->GetShader()->setUniform("u_View", object.lock()->GetCore()->GetCamera()->GetView());
+	material->setUniform("u_Model", object.lock()->GetModel());
+	material->setUniform("u_Projection", object.lock()->GetCore()->GetCamera()->GetProjection());
+	material->setUniform("u_View", object.lock()->GetCore()->GetCamera()->GetView());
+
+	GetObject()->GetCore()->GetLights()->SetLights(material);
+
 	material->GetShader()->setMesh(mesh->GetRender());
 	material->GetShader()->render();
 }

@@ -9,5 +9,6 @@ public:
 
 private:
 	float deltaTime;
+	float lastTime;
 };
 

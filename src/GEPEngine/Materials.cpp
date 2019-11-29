@@ -22,12 +22,37 @@ std::shared_ptr<rend::Shader> Material::GetShader()
 	return shader->GetRender();
 }
 
-void Material::SetValue(std::string _name, std::weak_ptr<Texture> _value)
+void Material::SetTexture(std::shared_ptr<Texture> _texture)
 {
-
+	texture = _texture;
 }
 
-void Material::SetValue(std::string _name, float _value)
+std::shared_ptr<Texture> Material::GetTexture()
 {
+	return texture;
+}
 
+void Material::setUniform(const std::string& _variable, float _value)
+{
+	shader->GetRender()->setUniform(_variable, _value);
+}
+
+void Material::setUniform(const std::string& _variable, glm::mat4 _value)
+{
+	shader->GetRender()->setUniform(_variable, _value);
+}
+
+void Material::setUniform(const std::string& _variable, glm::vec2 _value)
+{
+	shader->GetRender()->setUniform(_variable, _value);
+}
+
+void Material::setUniform(const std::string& _variable, glm::vec3 _value)
+{
+	shader->GetRender()->setUniform(_variable, _value);
+}
+
+void Material::setUniform(const std::string& _variable, glm::vec4 _value)
+{
+	shader->GetRender()->setUniform(_variable, _value);
 }

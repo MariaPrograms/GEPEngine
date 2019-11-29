@@ -11,6 +11,7 @@ class Screen;
 class Resources;
 class Context;
 class Camera;
+class Light;
 
 struct AudioCore;
 
@@ -27,7 +28,9 @@ public:
 	std::shared_ptr<Resources> GetResources();
 	std::shared_ptr<Camera> GetCamera();
 	std::shared_ptr<rend::Context> GetContext();
+	std::shared_ptr<Light> GetLights();
 
+	void AddLight(std::shared_ptr<Light> _light) { lights.push_back(_light); }
 	void SetMainCamera(std::weak_ptr<Camera> _cam) { mainCamera = _cam; }
 
 	void Start();
@@ -46,6 +49,7 @@ private:
 	std::shared_ptr<rend::Context> context;
 	std::weak_ptr<Camera> mainCamera;
 	std::list<std::shared_ptr<Object>> objects;
+	std::list<std::shared_ptr<Light>> lights;
 
 	bool playing;
 };

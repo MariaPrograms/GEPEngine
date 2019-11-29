@@ -16,13 +16,13 @@ Object::~Object()
 
 }
 
-void Object::Init()
+void Object::Start()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
 		try
 		{
-			(*it)->OnInit();
+			(*it)->OnStart();
 		}
 		catch (Exception& e)
 		{

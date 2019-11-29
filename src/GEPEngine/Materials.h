@@ -13,13 +13,20 @@ public:
 	~Material();
 
 	void SetShader(std::shared_ptr<Shader> _shader);
-	std::shared_ptr<rend::Shader> GetShader();
+	void SetTexture(std::shared_ptr<Texture>);
 
-	void SetValue(std::string _name, std::weak_ptr<Texture> _value);
-	void SetValue(std::string _name, float _value);
+	std::shared_ptr<rend::Shader> GetShader();
+	std::shared_ptr<Texture> GetTexture();
+
+	void setUniform(const std::string& variable, float value);
+	void setUniform(const std::string& variable, glm::mat4 value);
+	void setUniform(const std::string& variable, glm::vec2 value);
+	void setUniform(const std::string& variable, glm::vec3 value);
+	void setUniform(const std::string& variable, glm::vec4 value);
 
 private:
 	std::shared_ptr<Shader> shader;
+	std::shared_ptr<Texture> texture;
 	std::vector<std::shared_ptr<MaterialAttribute>> attributes;
 };
 

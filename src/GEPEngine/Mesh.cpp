@@ -27,8 +27,3 @@ void Mesh::Load(std::string _path)
 
 	rendMesh->parse(obj);
 }
-
-void Mesh::SetTexture(std::shared_ptr<Texture> _texture)
-{
-	rendMesh->setTexture("u_Texture", _texture->GetRender());
-}

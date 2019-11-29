@@ -14,7 +14,6 @@ bool Keyboard::IsKeyDown(int _keyCode)
 {
 	if (keyState[_keyCode]) 
 	{
-		printf("Boo");
 		return true;
 	}
 	return false;
@@ -24,7 +23,6 @@ bool Keyboard::IsKeyUp(int _keyCode)
 {
 	if (!keyState[_keyCode])
 	{
-		printf("Boo");
 		return true;
 	}
 	return false;

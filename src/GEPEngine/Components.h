@@ -22,7 +22,6 @@ public:
 	std::shared_ptr<World>  GetWorld();
 
 protected:
-	virtual void Initialize() {};
 	virtual void OnInit() {};
 	virtual void OnStart() {};
 	virtual void OnUpdate() {};
