@@ -69,6 +69,24 @@ public:
 		throw Exception("Comonent not found");
 	}
 
+	template<typename T>
+	std::shared_ptr<T> CheckForComponent(bool& found)
+	{
+		found = false;
+
+		for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+		{
+			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>();
+
+			if (rtn)
+			{
+				found = true;
+				break;
+			}
+		}
+	}
+
+
 	//Transform
 	void SetPoition(glm::vec3 _pos);
 	void SetRotation(glm::vec3 _rot);

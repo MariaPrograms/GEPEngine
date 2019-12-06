@@ -5,7 +5,6 @@ include_directories(
   src
 )
 
-
 add_library(rend
   src/rend/Exception.cpp
   src/rend/Context.cpp
@@ -53,6 +52,10 @@ add_library(GEPEngine
 	src/GEPEngine/SoundSource.cpp
 
 	src/GEPEngine/Light.cpp
+
+	src/GEPEngine/BoxCollider.cpp
+	src/GEPEngine/StaticModelCollider.cpp
+	src/GEPEngine/TriBox.cpp
 )
 
 add_executable(sandbox

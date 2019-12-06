@@ -1,6 +1,7 @@
 #include <list>
 #include <memory>
 #include <rend/rend.h>
+#include <vector>
 
 #include "NonCopyable.h"
 
@@ -29,6 +30,22 @@ public:
 	std::shared_ptr<Camera> GetCamera();
 	std::shared_ptr<rend::Context> GetContext();
 	std::shared_ptr<Light> GetLights();
+
+	template<typename T>
+	std::shared_ptr<T> GetEntities(std::vector<std::shared_ptr<Object>>& _list)
+	{
+		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
+		{
+			bool found;
+			(*it)->CheckForComponent<T>(found);
+
+			if (found)
+			{
+				_list.push_back((*it));
+			}
+		}
+	}
+
 
 	void AddLight(std::shared_ptr<Light> _light) { lights.push_back(_light); }
 	void SetMainCamera(std::weak_ptr<Camera> _cam) { mainCamera = _cam; }
