@@ -26,4 +26,5 @@ void Mesh::Load(std::string _path)
 	}
 
 	rendMesh->parse(obj);
+
 }

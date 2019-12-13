@@ -32,12 +32,11 @@ public:
 	std::shared_ptr<Light> GetLights();
 
 	template<typename T>
-	std::shared_ptr<T> GetEntities(std::vector<std::shared_ptr<Object>>& _list)
+	void GetEntities(std::vector<std::shared_ptr<Object>>& _list)
 	{
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
-			bool found;
-			(*it)->CheckForComponent<T>(found);
+			bool found = (*it)->CheckForComponent<T>();
 
 			if (found)
 			{
@@ -45,7 +44,6 @@ public:
 			}
 		}
 	}
-
 
 	void AddLight(std::shared_ptr<Light> _light) { lights.push_back(_light); }
 	void SetMainCamera(std::weak_ptr<Camera> _cam) { mainCamera = _cam; }

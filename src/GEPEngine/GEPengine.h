@@ -15,12 +15,18 @@
 #include "Screen.h"
 #include "Exception.h"
 #include "Camera.h"
+
 #include "Resources.h"
 #include "Shader.h"
 #include "Mesh.h"
 #include "Texture.h"
+
 #include "Sound.h"
 #include "SoundSource.h"
+
 #include "Light.h"
+
+#include "BoxCollider.h"
+#include "StaticModelCollider.h"
 
 #endif

@@ -58,7 +58,7 @@ public:
 	{
 		for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 		{
-			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>();
+			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
 
 			if (rtn)
 			{
@@ -70,20 +70,19 @@ public:
 	}
 
 	template<typename T>
-	std::shared_ptr<T> CheckForComponent(bool& found)
+	bool CheckForComponent()
 	{
-		found = false;
-
 		for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 		{
-			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>();
+			std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
 
 			if (rtn)
 			{
-				found = true;
-				break;
+				return true;
 			}
 		}
+
+		return false;
 	}
 
 
@@ -94,7 +93,8 @@ public:
 	glm::vec3 GetPoition() { return position; }
 	glm::vec3 GetRotate() { return rotation; }
 	glm::vec3 GetScale() { return scale; }
-	glm::mat4 GetModel() { return myMatrix; }
+	glm::mat4 GetModel();
+	void Move(glm::vec3 _direction);
 
 	void Start();
 	void Update();
@@ -111,7 +111,6 @@ private:
 	glm::vec3 position;
 	glm::vec3 rotation;
 	glm::vec3 scale;
-	glm::mat4 myMatrix;
 };
 
 

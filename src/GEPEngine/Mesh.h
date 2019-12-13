@@ -7,8 +7,9 @@ class Mesh : public Resource
 {
 public:
 	friend class Resources;
-	//void AddFace(Face _face);
 	std::shared_ptr<rend::Mesh> GetRender() { return rendMesh; }
+	std::vector<rend::CollitionFace> &GetFaces() { return rendMesh->getTriangles(); }
+	rend::Extent &GetExtent() { return rendMesh->getExtent(); }
 
 private:
 	void Load(std::string _path);

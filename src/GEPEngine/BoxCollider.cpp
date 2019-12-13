@@ -2,13 +2,16 @@
 #include "StaticModelCollider.h"
 #include "Core.h"
 #include "Object.h"
+#include "Mesh.h"
+#include "MeshRenderer.h"
 
 #include <vector>
 
 void BoxCollider::OnInit()
 {
-	size = glm::vec3(1, 1, 1);
-	lastPosition = object.lock()->GetPoition();
+	std::sr1::shared_ptr<Mesh> model = GetObject()->GetComponent<MeshRenderer>()->GetMesh();
+	size = model->GetExtent().max - model->GetExtent().min;
+	lastPosition = GetObject()->GetPoition();
 }
 
 void BoxCollider::SetOffset(const glm::vec3& _offset)

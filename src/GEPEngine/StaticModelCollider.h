@@ -1,59 +1,45 @@
 #include "Components.h"
 #include "glm/glm.hpp"
 
-struct Extent
-{
-	qsoft::Vector3 max;
-	qsoft::Vector3 min;
-};
+#include <rend/rend.h>
+#include <vector>
+
+struct Triangle;
 
 struct ColliderColumn
 {
-	qsoft::Vector3 position;
-	qsoft::Vector3 size;
-	std::vector<qsoft::Face> faces;
+	glm::vec3 position;
+	glm::vec3 size;
+	std::vector<rend::CollitionFace> faces;
 
-	bool isColliding(qsoft::Vector3 position, qsoft::Vector3 size);
+	bool IsColliding(glm::vec3 _position, glm::vec3 _size);
 
-	void getColliding(qsoft::Vector3 position, qsoft::Vector3 size,
-		std::vector<qsoft::Face>& collisions);
+	void GetColliding(glm::vec3 _position, glm::vec3 _size, std::vector<rend::CollitionFace>& _collisions);
 };
 
-class StaticModelCollider
+class StaticModelCollider : public Component
 {
 public:
-	void onInit();
-	Extent getExtent();
+	void OnInit();
 
+	bool IsColliding(rend::CollitionFace& face, glm::vec3 position, glm::vec3 size);
+	bool IsColliding(glm::vec3 position, glm::vec3 size);
 
-	bool isColliding(qsoft::Face& face, qsoft::Vector3 position,
-		qsoft::Vector3 size);
+	void GetColliding(glm::vec3 position, glm::vec3 size);
 
-	bool isColliding(qsoft::Vector3 position, qsoft::Vector3 size);
-	void getColliding(qsoft::Vector3 position, qsoft::Vector3 size);
-
-	qsoft::Vector3 getCollisionResponse(qsoft::Vector3 position,
-		qsoft::Vector3 size, bool& solved);
+	glm::vec3 GetCollisionResponse(glm::vec3 position, glm::vec3 size, bool& solved);
 
 private:
-	std::vector<std::sr1::shared_ptr<ColliderColumn> > cols;
-	Extent extent;
-	std::sr1::zero_initialized<float> resolution;
-	std::sr1::zero_initialized<float> tryStep;
-	std::sr1::zero_initialized<float> maxStep;
-	std::sr1::zero_initialized<float> tryInc;
-	std::sr1::zero_initialized<float> maxInc;
-	std::vector<qsoft::Face> collisions;
+	std::vector<std::shared_ptr<ColliderColumn>> columns;
+	glm::vec3 extentMin;
+	glm::vec3 extentMax;
+	float resolution;
+	float tryStep;
+	float maxStep;
+	float tryInc;
+	float maxInc;
+	std::vector<rend::CollitionFace> collisions;
 
-	void generateExtent();
-	void addFace(qsoft::Face face);
-	qsoft::Vector3 faceNormal(qsoft::Face& face);
+	void AddFace(rend::CollitionFace face);
+	glm::vec3 FaceNormal(rend::CollitionFace& face);
 };
-
-StaticModelCollider::StaticModelCollider()
-{
-}
-
-StaticModelCollider::~StaticModelCollider()
-{
-}
