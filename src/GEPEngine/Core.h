@@ -7,12 +7,13 @@
 
 class Object;
 class World;
-class Keyboard;
+class Input;
 class Screen;
 class Resources;
 class Context;
 class Camera;
 class Light;
+class GUI;
 
 struct AudioCore;
 
@@ -23,13 +24,14 @@ public:
 	static std::shared_ptr<Core> Initialize();
 
 	std::shared_ptr<Object> AddObject();
-	std::shared_ptr<Keyboard> GetKeyboard();
+	std::shared_ptr<Input> GetKeyboard();
 	std::shared_ptr<World> GetWorld();
 	std::shared_ptr<Screen> GetScreen();
 	std::shared_ptr<Resources> GetResources();
 	std::shared_ptr<Camera> GetCamera();
 	std::shared_ptr<rend::Context> GetContext();
 	std::shared_ptr<Light> GetLights();
+	std::shared_ptr<GUI> GetGUI();
 
 	template<typename T>
 	void GetEntities(std::vector<std::shared_ptr<Object>>& _list)
@@ -58,10 +60,11 @@ private:
 	std::shared_ptr<AudioCore> audioCore;
 	std::shared_ptr<Core> self;
 	std::shared_ptr<World> world;
-	std::shared_ptr<Keyboard> keyboard;
+	std::shared_ptr<Input> keyboard;
 	std::shared_ptr<Screen> screen;
 	std::shared_ptr<Resources> resources;
 	std::shared_ptr<rend::Context> context;
+	std::shared_ptr<GUI> gui;
 	std::weak_ptr<Camera> mainCamera;
 	std::list<std::shared_ptr<Object>> objects;
 	std::list<std::shared_ptr<Light>> lights;

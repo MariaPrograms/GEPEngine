@@ -29,4 +29,6 @@
 #include "BoxCollider.h"
 #include "StaticModelCollider.h"
 
+#include "GUI.h"
+
 #endif

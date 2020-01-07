@@ -36,8 +36,7 @@ public:
 	//	}
 	//}
 
-	Resources();
-	void SetCore(std::shared_ptr<Core> _core) { core = _core; }
+	Resources(std::shared_ptr<Core> _core);
 
 private:
 	std::vector<std::shared_ptr<Resource>> resources;

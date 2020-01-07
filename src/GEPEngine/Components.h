@@ -8,7 +8,7 @@
 #include <exception>
 
 class Object;
-class Keyboard;
+class Input;
 class World;
 class Core;
 
@@ -18,7 +18,7 @@ public:
 	Component();
 	~Component();
 	friend class Object;
-	std::shared_ptr<Keyboard>  GetKeyboard();
+	std::shared_ptr<Input>  GetKeyboard();
 	std::shared_ptr<Object>  GetObject();
 	std::shared_ptr<World>  GetWorld();
 	std::shared_ptr<Core>  GetCore();
@@ -28,6 +28,7 @@ protected:
 	virtual void OnStart() {};
 	virtual void OnUpdate() {};
 	virtual void OnDisplay() {};
+	virtual void OnGUI() {};
 	std::weak_ptr<Object> object;
 };
 

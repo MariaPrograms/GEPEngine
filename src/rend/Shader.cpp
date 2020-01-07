@@ -416,4 +416,16 @@ namespace rend
 		pollForError();
 	}
 
+	void Shader::setDepthTesting(bool value)
+	{
+		if (value)
+		{
+			glEnable(GL_DEPTH_TEST);
+		}
+		else
+		{
+			glDisable(GL_DEPTH_TEST);
+		}
+	}
+
 }

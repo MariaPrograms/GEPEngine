@@ -7,7 +7,9 @@
 
 Object::Object()
 {
-	position = glm::vec3(0, 0, 0);
+	position = glm::vec3(0);
+	rotation = glm::vec3(1);
+	scale = glm::vec3(1);
 }
 
 Object::~Object()
@@ -52,7 +54,7 @@ void Object::Update()
 	}
 }
 
-void Object::Desplay()
+void Object::Display()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
@@ -68,6 +70,25 @@ void Object::Desplay()
 		}
 	}
 }
+
+void Object::GUI()
+{
+	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
+	{
+		try
+		{
+			(*it)->OnGUI();
+		}
+		catch (Exception& e)
+		{
+			std::cout << "Exception: " << e.what() << std::endl;
+			//(*it)->Kill(); // Eject component
+			//this?kill(); // Perhaps eject the entire object
+		}
+	}
+}
+
+
 
 std::shared_ptr<Core> Object::GetCore()
 {

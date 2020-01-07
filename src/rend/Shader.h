@@ -38,7 +38,7 @@ namespace rend
 		void setAttribute(const std::string& variable, const std::sr1::shared_ptr<Buffer>& value);
 		void setSampler(const std::string& variable, const std::sr1::shared_ptr<TextureAdapter>& value);
 		void setMesh(const std::sr1::shared_ptr<Mesh>& value);
-
+		void setDepthTesting(bool value);
 	private:
 		friend struct Context;
 

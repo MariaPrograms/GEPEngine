@@ -8,8 +8,10 @@
 #endif
 
 
-Resources::Resources()
+Resources::Resources(std::shared_ptr<Core> _core)
 {
+	core = _core;
+
 #if _WIN32
 
 #ifdef NDEBUG

@@ -3,13 +3,16 @@
 
 #include <SDL2/SDL.h>
 
-class Keyboard
+class Input
 {
 public:
-	Keyboard();
-	~Keyboard();
+	Input();
+	~Input();
 	bool IsKeyDown(int _keyCode);
 	bool IsKeyUp(int _keyCode);
+	void MousePosition(int* x, int* y);
+	bool LeftMouseDown();
+	bool RightMouseDown();
 
 private:
 	const Uint8 *keyState;

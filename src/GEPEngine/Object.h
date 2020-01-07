@@ -98,7 +98,8 @@ public:
 
 	void Start();
 	void Update();
-	void Desplay();
+	void Display();
+	void GUI();
 	std::shared_ptr<Core> GetCore();
 	void SetSelf(std::shared_ptr<Object> _self) { self = _self; }
 	void SetCore(std::shared_ptr<Core> _core) { core = _core; }

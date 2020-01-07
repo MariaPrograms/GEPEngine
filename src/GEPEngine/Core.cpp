@@ -1,10 +1,11 @@
 #include "Core.h"
-#include "Keyboard.h"
+#include "Input.h"
 #include "World.h"
 #include "Object.h"
 #include "Screen.h"
 #include "Resources.h"
 #include "Camera.h"
+#include "GUI.h"
 
 #include <glm/glm.hpp>
 #include <AL/al.h>
@@ -55,9 +56,8 @@ Core::Core()
 {
 	screen = std::make_shared<Screen>(glm::vec2(800, 600));
 	context = rend::Context::initialize();
-	resources = std::make_shared<Resources>();
 	audioCore = std::make_shared<AudioCore>();
-	keyboard = std::make_shared<Keyboard>();
+	keyboard = std::make_shared<Input>();
 }
 
 Core::~Core()
@@ -68,7 +68,8 @@ std::shared_ptr<Core> Core::Initialize()
 {
 	std::shared_ptr<Core> rtn(new Core());
 	rtn->self = rtn;
-	rtn->resources->SetCore(rtn);
+	rtn->resources = std::make_shared<Resources>(rtn);
+	rtn->gui = std::make_shared<GUI>(rtn);
 	return rtn;
 }
 
@@ -107,10 +108,12 @@ void Core::Start()
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
 			(*it)->Update();
+			(*it)->Display();
 		}
+
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
-			(*it)->Desplay();
+			(*it)->GUI();
 		}
 
 		screen->Display();
@@ -128,7 +131,7 @@ void Core::Finish()
 	playing = false;
 }
 
-std::shared_ptr<Keyboard> Core::GetKeyboard()
+std::shared_ptr<Input> Core::GetKeyboard()
 {
 	return keyboard;
 }
@@ -161,4 +164,9 @@ std::shared_ptr<Camera> Core::GetCamera()
 std::shared_ptr<Light> Core::GetLights()
 {
 	return *lights.begin();
+}
+
+std::shared_ptr<GUI> Core::GetGUI()
+{
+	return gui;
 }

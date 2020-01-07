@@ -22,7 +22,7 @@ std::shared_ptr<Core> Component::GetCore()
 	return object.lock()->GetCore();
 }
 
-std::shared_ptr<Keyboard> Component::GetKeyboard()
+std::shared_ptr<Input> Component::GetKeyboard()
 {
 	return object.lock()->GetCore()->GetKeyboard();
 }

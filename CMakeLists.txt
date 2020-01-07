@@ -24,7 +24,7 @@ endif()
 
 add_library(GEPEngine
  	src/GEPEngine/Core.cpp
-	src/GEPEngine/Keyboard.cpp
+	src/GEPEngine/Input.cpp
 	src/GEPEngine/Object.cpp
 	src/GEPEngine/World.cpp
 
@@ -56,6 +56,8 @@ add_library(GEPEngine
 	src/GEPEngine/BoxCollider.cpp
 	src/GEPEngine/StaticModelCollider.cpp
 	src/GEPEngine/TriBox.cpp
+
+	src/GEPEngine/GUI.cpp
 )
 
 add_executable(sandbox

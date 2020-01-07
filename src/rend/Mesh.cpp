@@ -5,6 +5,8 @@
 #include "Buffer.h"
 #include "Exception.h"
 
+#include <iostream>
+
 namespace rend
 {
 
@@ -52,10 +54,10 @@ namespace rend
 			if (positions.at(i).z < extent.min.z) extent.min.z = positions.at(i).z;
 		}
 
-		extent.min = extent.min - 1.0f;
-		extent.max = extent.max + 1.0f;
+		extent.min = extent.min + 1.0f;
+		extent.max = extent.max - .5f;
 
-		/*std::cout << "Size: " << extent.max.x - extent.min.x;
+		std::cout << "Size: " << extent.max.x - extent.min.x;
 		std::cout << ", " << extent.max.y - extent.min.y;
 		std::cout << ", " << extent.max.z - extent.min.z << std::endl;
 
@@ -65,7 +67,7 @@ namespace rend
 
 		std::cout << "Max: " << extent.max.x;
 		std::cout << ", " << extent.max.y;
-		std::cout << ", " << extent.max.z << std::endl;*/
+		std::cout << ", " << extent.max.z << std::endl;
 
 	}
 
