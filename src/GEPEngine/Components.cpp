@@ -1,6 +1,7 @@
 #include "Components.h"
 #include "Object.h"
 #include "Core.h"
+#include "Screen.h"
 
 Component::Component()
 {
@@ -22,9 +23,15 @@ std::shared_ptr<Core> Component::GetCore()
 	return object.lock()->GetCore();
 }
 
-std::shared_ptr<Input> Component::GetKeyboard()
+std::shared_ptr<Input> Component::GetInput()
 {
-	return object.lock()->GetCore()->GetKeyboard();
+	return object.lock()->GetCore()->GetInput();
+}
+
+
+std::shared_ptr<Screen> Component::GetScreen()
+{
+	return object.lock()->GetCore()->GetScreen();
 }
 
 std::shared_ptr<World> Component::GetWorld()

@@ -24,7 +24,7 @@ public:
 	static std::shared_ptr<Core> Initialize();
 
 	std::shared_ptr<Object> AddObject();
-	std::shared_ptr<Input> GetKeyboard();
+	std::shared_ptr<Input> GetInput();
 	std::shared_ptr<World> GetWorld();
 	std::shared_ptr<Screen> GetScreen();
 	std::shared_ptr<Resources> GetResources();
@@ -60,7 +60,7 @@ private:
 	std::shared_ptr<AudioCore> audioCore;
 	std::shared_ptr<Core> self;
 	std::shared_ptr<World> world;
-	std::shared_ptr<Input> keyboard;
+	std::shared_ptr<Input> input;
 	std::shared_ptr<Screen> screen;
 	std::shared_ptr<Resources> resources;
 	std::shared_ptr<rend::Context> context;

@@ -345,11 +345,11 @@ void StaticModelCollider::AddFace(rend::CollitionFace _face)
 
 	if (!found)
 	{
-		/*std::cout << "Assertion failed: Face not in spacial partition" << std::endl;
+		std::cout << "Assertion failed: Face not in spacial partition" << std::endl;
 		std::cout << f[0][0] << ", " << f[0][1] << ", " << f[0][2] << std::endl;
 		std::cout << f[1][0] << ", " << f[1][1] << ", " << f[1][2] << std::endl;
 		std::cout << f[2][0] << ", " << f[2][1] << ", " << f[2][2] << std::endl;
-		std::cout << "Expect collision errors" << std::endl;*/
+		std::cout << "Expect collision errors" << std::endl;
 		throw Exception("Face not assigned spatial partition");
 	}
 
