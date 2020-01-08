@@ -11,6 +11,7 @@ class Object;
 class Input;
 class World;
 class Core;
+class Screen;
 
 class Component
 {
@@ -18,9 +19,10 @@ public:
 	Component();
 	~Component();
 	friend class Object;
-	std::shared_ptr<Input>  GetKeyboard();
+	std::shared_ptr<Input>  GetInput();
 	std::shared_ptr<Object>  GetObject();
 	std::shared_ptr<World>  GetWorld();
+	std::shared_ptr<Screen>  GetScreen();
 	std::shared_ptr<Core>  GetCore();
 
 protected:

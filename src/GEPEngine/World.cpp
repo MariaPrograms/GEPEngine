@@ -6,7 +6,8 @@ float World::GetDeltaTime()
 	float time = SDL_GetTicks();
 	float diff = time - lastTime;
 	deltaTime = diff / 1000.0f;
-	lastTime = time;
+	lastTime = time;
+
 	return deltaTime;
 }
 

@@ -57,7 +57,7 @@ Core::Core()
 	screen = std::make_shared<Screen>(glm::vec2(800, 600));
 	context = rend::Context::initialize();
 	audioCore = std::make_shared<AudioCore>();
-	keyboard = std::make_shared<Input>();
+	world = std::make_shared<World>();
 }
 
 Core::~Core()
@@ -68,6 +68,7 @@ std::shared_ptr<Core> Core::Initialize()
 {
 	std::shared_ptr<Core> rtn(new Core());
 	rtn->self = rtn;
+	rtn->input = std::make_shared<Input>(rtn);
 	rtn->resources = std::make_shared<Resources>(rtn);
 	rtn->gui = std::make_shared<GUI>(rtn);
 	return rtn;
@@ -131,9 +132,9 @@ void Core::Finish()
 	playing = false;
 }
 
-std::shared_ptr<Input> Core::GetKeyboard()
+std::shared_ptr<Input> Core::GetInput()
 {
-	return keyboard;
+	return input;
 }
 
 std::shared_ptr<World> Core::GetWorld()

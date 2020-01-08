@@ -1,9 +1,10 @@
 #include "TestScene.h"
-
 #include <SDL2/SDL.h>
 
 TestScene::TestScene()
 {
+	yaw = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+	pitch = 0.0f;
 }
 
 TestScene::~TestScene()
@@ -12,48 +13,75 @@ TestScene::~TestScene()
 
 }
 
-void TestScene::OnDisplay()
+
+void TestScene::OnInit()
 {
+	mousePos = GetInput()->MousePosition();
+	lastPos = mousePos;
+	cam = GetObject()->GetComponent<Camera>();
+	cameraSpeed = 1;
 }
 
 void TestScene::OnUpdate()
 {
-	//glm::vec3 pos;
+	glm::vec3 pos;
 
-	//if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_RIGHT))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(.1, 0, 0);
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_LEFT))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(-.1, 0, 0);
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_UP))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(0, 0, -.1);
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_DOWN))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(0, 0, .1);
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_W))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(0, .1, 0);
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetKeyboard()->IsKeyDown(SDL_SCANCODE_S))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::vec3(0, -.1, 0);
-	//	object.lock()->SetPoition(pos);
-	//}
+	if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
+	{
+		pos = object.lock()->GetPoition() + glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
+	{
+		pos = object.lock()->GetPoition() - glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
+	{
+		pos.x = object.lock()->GetPoition().x - cameraSpeed * cam->GetCameraFront().x;
+		pos.z = object.lock()->GetPoition().z - cameraSpeed * cam->GetCameraFront().z;
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
+	{
+		pos.x = object.lock()->GetPoition().x + cameraSpeed * cam->GetCameraFront().x;
+		pos.z = object.lock()->GetPoition().z + cameraSpeed * cam->GetCameraFront().z;
+		object.lock()->SetPoition(pos);
+	}
 
+	float xoffset = mousePos.x - lastPos.x;
+	float yoffset = lastPos.y - mousePos.y; // reversed since y-coordinates go from bottom to top
+	lastPos = mousePos;
+
+	float sensitivity = 0.1f; // change this value to your liking
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+	// make sure that when pitch is out of bounds, screen doesn't get flipped
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
+
+	glm::vec3 direction;
+	direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	direction.y = sin(glm::radians(pitch));
+	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cam->SetCameraFront(glm::normalize(direction));
+	mousePos = GetInput()->MousePosition();
+
+	if (GetInput()->RightMouseDown())
+	{
+		GetInput()->ResetMousePosition();
+	}
 }
 
 void TestScene::OnGUI()
 {
-	GetCore()->GetGUI()->DrawGUI(glm::vec4(50, 50, 150, 150), bun);
+	/*float x = GetCore()->GetScreen()->GetSize().x / 2;
+	float y = GetCore()->GetScreen()->GetSize().y / 2;
+	GetCore()->GetGUI()->DrawGUI(glm::vec4(x, y, 100, 100), bun);*/
 }

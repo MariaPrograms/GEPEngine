@@ -8,10 +8,18 @@ public:
 	~TestScene();
 	std::shared_ptr<Texture> bun;
 
+	void OnInit();
+
 private:
-	void OnDisplay();
+	
 	void OnUpdate();
 	void OnGUI();
-	
+
+	std::shared_ptr<Camera> cam;
+	glm::vec2 mousePos;
+	glm::vec2 lastPos;
+	float cameraSpeed;
+	float yaw;
+	float pitch;
 };
 

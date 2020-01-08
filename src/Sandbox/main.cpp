@@ -10,27 +10,26 @@ void main ()
 {
 	shared<Core> core = Core::Initialize();
 	
-	shared<Object> CamObj = core->AddObject();
-	shared<Camera> cam = CamObj->AddComponent<Camera>();
+	
 
 	shared<Object> LightObj = core->AddObject();
 	shared<Light> light = LightObj->AddComponent<Light>(glm::vec3(1.0f));
 	LightObj->SetPoition(glm::vec3(0, 10, -10));
 
-	//shared<Object> entity = core->AddObject();
-	//shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
-	//shared<Mesh> shape = core->GetResources()->Load<Mesh>("Objects/ChickenSmall.obj");
-	//shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/Light.txt");
-	//shared<Texture> texture = core->GetResources()->Load<Texture>("Textures/Whiskers_diffuse.png");
-	//shared<Material> mat = std::make_shared<Material>();
+	shared<Object> entity = core->AddObject();
+	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
+	shared<Mesh> shape = core->GetResources()->Load<Mesh>("Objects/ChickenSmall.obj");
+	shared<Shader> shader = core->GetResources()->Load<Shader>("Shaders/Light.txt");
+	shared<Texture> texture = core->GetResources()->Load<Texture>("Textures/Whiskers_diffuse.png");
+	shared<Material> mat = std::make_shared<Material>();
 
-	//mat->SetShader(shader);
-	//mat->SetTexture(texture);
-	//entity->SetPoition(glm::vec3(0, 0, -30));
-	//entity->SetRotation(glm::vec3(0, 90, 0));
-	//rend->SetMesh(shape);
-	//rend->SetMaterial(mat);
-	//entity->AddComponent<BoxCollider>();
+	mat->SetShader(shader);
+	mat->SetTexture(texture);
+	entity->SetPoition(glm::vec3(0, 0, -30));
+	entity->SetRotation(glm::vec3(0, 90, 0));
+	rend->SetMesh(shape);
+	rend->SetMaterial(mat);
+	entity->AddComponent<BoxCollider>();
 
 	shared<Object> entity2 = core->AddObject();
 	shared<MeshRenderer> rend2 = entity2->AddComponent<MeshRenderer>();
@@ -46,10 +45,10 @@ void main ()
 	rend2->SetMesh(shape2);
 	rend2->SetMaterial(mat2);
 
-	shared<BoxCollider> coll2 = entity2->AddComponent<BoxCollider>();
+	//shared<StaticModelCollider> coll2 = entity2->AddComponent<StaticModelCollider>();
 
-	shared<Object> GUI = core->AddObject();
-	shared<TestScene> test = GUI->AddComponent<TestScene>();
+	shared<Camera> cam = entity->AddComponent<Camera>();
+	shared<TestScene> test = entity->AddComponent<TestScene>();
 	test->bun = core->GetResources()->Load<Texture>("Textures/bunnyTest.png");
 	
 	
