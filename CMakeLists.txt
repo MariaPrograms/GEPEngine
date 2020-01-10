@@ -13,7 +13,9 @@ add_library(rend
   src/rend/Shader.cpp
   src/rend/Buffer.cpp
   src/rend/Mesh.cpp
+  src/rend/Font.cpp
   src/rend/Util.cpp
+  src/rend/stb_truetype.h
 )
 if(MSVC)
   target_link_libraries(rend glew32 opengl32)
@@ -56,12 +58,12 @@ add_library(GEPEngine
 
 	src/GEPEngine/GUI.cpp
 	src/GEPEngine/Font.cpp
-	src/GEPEngine/stb_truetype.h
 )
 
 add_executable(sandbox
 	src/Sandbox/main.cpp
 	src/sandbox/TestScene.cpp
+	src/sandbox/Movement.cpp
 )
 
 target_link_libraries(sandbox GEPEngine SDL2 rend OpenAL32)

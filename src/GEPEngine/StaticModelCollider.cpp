@@ -338,7 +338,7 @@ void StaticModelCollider::AddFace(rend::CollitionFace _face)
 		if (triBoxOverlap(bc, bhs, f))
 		{
 			columns.at(i)->faces.push_back(_face);
-			//std::cout << "Pushing face into " << i << std::endl;
+			std::cout << "Pushing face into " << i << std::endl;
 			found = true;
 		}
 	}
@@ -350,7 +350,7 @@ void StaticModelCollider::AddFace(rend::CollitionFace _face)
 		std::cout << f[1][0] << ", " << f[1][1] << ", " << f[1][2] << std::endl;
 		std::cout << f[2][0] << ", " << f[2][1] << ", " << f[2][2] << std::endl;
 		std::cout << "Expect collision errors" << std::endl;
-		throw Exception("Face not assigned spatial partition");
+		//throw Exception("Face not assigned spatial partition");
 	}
 
 	

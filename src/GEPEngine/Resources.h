@@ -10,6 +10,8 @@ class Core;
 class Resources
 {
 public:
+	Resources(std::shared_ptr<Core> _core);
+
 	template<typename T>
 	std::shared_ptr<T> Load(std::string _path)
 	{
@@ -17,7 +19,7 @@ public:
 		std::shared_ptr<T> resorce = std::make_shared<T>();
 		resorce->core = core;
 		resorce->self = resorce;
-		//resorce->path = resourcePath;
+		resorce->path = _path;
 		resorce->Load(basePath + resourcePath);
 		resources.push_back(resorce);
 		return resorce;
@@ -35,8 +37,6 @@ public:
 	//		
 	//	}
 	//}
-
-	Resources(std::shared_ptr<Core> _core);
 
 private:
 	std::vector<std::shared_ptr<Resource>> resources;

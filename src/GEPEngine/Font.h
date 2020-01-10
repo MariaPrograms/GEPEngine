@@ -1,23 +1,20 @@
-#define STB_TRUETYPE_IMPLEMENTATION
-#include "stb_truetype.h"
 #include "Resource.h"
 
-class Texture;
+#include <rend/rend.h>
+#include <vector>
+#include <glm/glm.hpp>
+
 
 class Font : public Resource
 {
 public:
 	void Load(std::string _path);
-	stbtt_fontinfo GetFontInfo();
+	std::shared_ptr<Font> self;
+
+	void DrawFont(std::string _text, glm::vec2 position);
 
 private:
-	stbtt_fontinfo fontInfo;
-	int i;
-	int j;
-	int ascent;
-	int baseline;
-	int ch = 0;
-	float scale;
-	float xpos = 2; 
+	std::shared_ptr<rend::Font> renderFont;
+	
 };
 

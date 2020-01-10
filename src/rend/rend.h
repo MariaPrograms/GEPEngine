@@ -10,5 +10,6 @@
 #include "Mesh.h"
 #include "Util.h"
 #include "mathutil.h"
+#include "Font.h"
 
 #endif

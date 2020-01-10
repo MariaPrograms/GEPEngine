@@ -1,5 +1,4 @@
 #include "TestScene.h"
-#include <SDL2/SDL.h>
 
 TestScene::TestScene()
 {
@@ -24,30 +23,30 @@ void TestScene::OnInit()
 
 void TestScene::OnUpdate()
 {
-	glm::vec3 pos;
+	//glm::vec3 pos;
 
-	if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
-	{
-		pos = object.lock()->GetPoition() + glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
-	{
-		pos = object.lock()->GetPoition() - glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
-	{
-		pos.x = object.lock()->GetPoition().x - cameraSpeed * cam->GetCameraFront().x;
-		pos.z = object.lock()->GetPoition().z - cameraSpeed * cam->GetCameraFront().z;
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
-	{
-		pos.x = object.lock()->GetPoition().x + cameraSpeed * cam->GetCameraFront().x;
-		pos.z = object.lock()->GetPoition().z + cameraSpeed * cam->GetCameraFront().z;
-		object.lock()->SetPoition(pos);
-	}
+	//if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
+	//{
+	//	pos = object.lock()->GetPoition() + glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
+	//	object.lock()->SetPoition(pos);
+	//}
+	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
+	//{
+	//	pos = object.lock()->GetPoition() - glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
+	//	object.lock()->SetPoition(pos);
+	//}
+	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
+	//{
+	//	pos.x = object.lock()->GetPoition().x - cameraSpeed * cam->GetCameraFront().x;
+	//	pos.z = object.lock()->GetPoition().z - cameraSpeed * cam->GetCameraFront().z;
+	//	object.lock()->SetPoition(pos);
+	//}
+	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
+	//{
+	//	pos.x = object.lock()->GetPoition().x + cameraSpeed * cam->GetCameraFront().x;
+	//	pos.z = object.lock()->GetPoition().z + cameraSpeed * cam->GetCameraFront().z;
+	//	object.lock()->SetPoition(pos);
+	//}
 
 	float xoffset = mousePos.x - lastPos.x;
 	float yoffset = lastPos.y - mousePos.y; // reversed since y-coordinates go from bottom to top
@@ -81,7 +80,7 @@ void TestScene::OnUpdate()
 
 void TestScene::OnGUI()
 {
-	/*float x = GetCore()->GetScreen()->GetSize().x / 2;
-	float y = GetCore()->GetScreen()->GetSize().y / 2;
-	GetCore()->GetGUI()->DrawGUI(glm::vec4(x, y, 100, 100), bun);*/
+	//float x = GetCore()->GetScreen()->GetSize().x / 2;
+	//float y = GetCore()->GetScreen()->GetSize().y / 2;
+	//GetCore()->GetGUI()->DrawGUI(glm::vec2(x, y), test);
 }

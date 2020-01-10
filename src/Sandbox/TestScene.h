@@ -6,7 +6,7 @@ class TestScene : public Component
 public:
 	TestScene();
 	~TestScene();
-	std::shared_ptr<Texture> bun;
+	std::shared_ptr<Texture> test;
 
 	void OnInit();
 

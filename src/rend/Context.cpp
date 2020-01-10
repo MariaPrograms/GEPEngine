@@ -1,5 +1,6 @@
 #include "Context.h"
 #include "Texture.h"
+#include "Font.h"
 #include "RenderTexture.h"
 #include "Exception.h"
 #include "Shader.h"
@@ -55,6 +56,21 @@ namespace rend
 		rtn->id = id;
 
 		rtn->setSize(256, 256);
+
+		return rtn;
+	}
+
+
+	//Maria
+	std::sr1::shared_ptr<Font> Context::createFont()
+	{
+		GLuint id = 0;
+		glGenTextures(1, &id);
+		pollForError();
+
+		std::sr1::shared_ptr<Font> rtn = std::sr1::make_shared<Font>();
+		rtn->context = self.lock();
+		rtn->id = id;
 
 		return rtn;
 	}

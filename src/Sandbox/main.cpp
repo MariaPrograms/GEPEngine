@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "TestScene.h"
+#include "Movement.h"
 
 #define shared std::shared_ptr
 #define weak std::weak_ptr
@@ -10,11 +11,13 @@ void main ()
 {
 	shared<Core> core = Core::Initialize();
 	
-	
 
-	shared<Object> LightObj = core->AddObject();
-	shared<Light> light = LightObj->AddComponent<Light>(glm::vec3(1.0f));
-	LightObj->SetPoition(glm::vec3(0, 10, -10));
+	shared<Object> CamObj = core->AddObject();
+	CamObj->AddComponent<Light>(glm::vec3(1.0f));
+	CamObj->SetPoition(glm::vec3(0, 0, 30));
+	CamObj->AddComponent<Camera>();
+	CamObj->AddComponent<TestScene>();
+
 
 	shared<Object> entity = core->AddObject();
 	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
@@ -25,12 +28,12 @@ void main ()
 
 	mat->SetShader(shader);
 	mat->SetTexture(texture);
-	entity->SetPoition(glm::vec3(0, 0, -30));
-	entity->SetRotation(glm::vec3(0, 90, 0));
+	entity->SetPoition(glm::vec3(0, 0, 0));
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);
 	entity->AddComponent<BoxCollider>();
-
+	
+	///////Second OBJ
 	shared<Object> entity2 = core->AddObject();
 	shared<MeshRenderer> rend2 = entity2->AddComponent<MeshRenderer>();
 	shared<Mesh> shape2 = core->GetResources()->Load<Mesh>("Objects/ChickenSmall.obj");
@@ -40,19 +43,14 @@ void main ()
 	
 	mat2->SetShader(shader2);
 	mat2->SetTexture(texture2);
-	entity2->SetPoition(glm::vec3(0, 0, -50));
+	entity2->SetPoition(glm::vec3(5, 0, 0));
 	entity2->SetScale(glm::vec3(.6));
 	rend2->SetMesh(shape2);
+
 	rend2->SetMaterial(mat2);
 
-	//shared<StaticModelCollider> coll2 = entity2->AddComponent<StaticModelCollider>();
-
-	shared<Camera> cam = entity->AddComponent<Camera>();
-	shared<TestScene> test = entity->AddComponent<TestScene>();
-	test->bun = core->GetResources()->Load<Texture>("Textures/bunnyTest.png");
-	
-	
-
+	entity2->AddComponent<StaticModelCollider>();
+	entity2->AddComponent<Movement>();
 
 	
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();

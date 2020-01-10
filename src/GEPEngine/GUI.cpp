@@ -6,11 +6,8 @@
 #include "Resources.h"
 #include "Screen.h"
 #include "Camera.h"
-#
+#include "Font.h"
 
-++++nt.h"
-+
-#include <glm/gtx/string_cast.hpp>
 #include <iostream>
 #include <rend/rend.h>
 
@@ -62,7 +59,6 @@ void GUI::DrawGUI(glm::vec4 _posNSize, std::shared_ptr<Texture> _image)
 
 void GUI::DrawGUI(std::shared_ptr<Texture> _image)
 {
-	
 	rend::mat4 model(1.0f);
 	model = glm::translate(model, glm::vec3(0, 0, 0));
 	model = glm::scale(model, glm::vec3(screenSize.x, screenSize.y, 1.0f));
@@ -76,8 +72,17 @@ void GUI::DrawGUI(std::shared_ptr<Texture> _image)
 	shader->GetRender()->render();
 }
 
-void GUI::DrawText(std::string _text, glm::vec2 _pos, Font _font, float _scale)
+void GUI::DrawText(std::string _text, glm::vec2 _pos, std::shared_ptr<Font> _font, float _scale)
 {
+	/*rend::mat4 model(1.0f);
+	model = glm::translate(model, glm::vec3(0, 0, 0));
+	model = glm::scale(model, glm::vec3(text->GetRender()->getWidth(), text->GetRender()->getHeight(), 1.0f));
 
+	shader->GetRender()->setUniform("u_Model", model);
+	shader->GetRender()->setUniform("u_Projection", projection);
+	mesh->GetRender()->setTexture("u_Texture", text->GetRender());
 
+	shader->GetRender()->setMesh(mesh->GetRender());
+	shader->GetRender()->setDepthTesting(false);
+	shader->GetRender()->render();*/
 }

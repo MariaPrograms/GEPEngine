@@ -30,5 +30,6 @@
 #include "StaticModelCollider.h"
 
 #include "GUI.h"
+#include "Font.h"
 
 #endif
