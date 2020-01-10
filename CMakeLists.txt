@@ -27,14 +27,13 @@ add_library(GEPEngine
 	src/GEPEngine/Input.cpp
 	src/GEPEngine/Object.cpp
 	src/GEPEngine/World.cpp
-
-	src/GEPEngine/Components.cpp
-
 	src/GEPEngine/Screen.cpp
-	src/GEPEngine/Camera.cpp
-	
 	src/GEPEngine/NonCopyable.cpp
 	src/GEPEngine/Exception.cpp
+
+	src/GEPEngine/Components.cpp
+	src/GEPEngine/Camera.cpp
+	src/GEPEngine/Light.cpp
 
 	src/GEPEngine/Resources.cpp
 	src/GEPEngine/Resource.cpp
@@ -43,21 +42,21 @@ add_library(GEPEngine
 	src/GEPEngine/Materials.cpp
 	src/GEPEngine/MaterialAttribute.cpp	
 	src/GEPEngine/Shader.cpp
-
-	src/GEPEngine/stb_image.h
+	
 	src/GEPEngine/Texture.cpp
+	src/GEPEngine/stb_image.h
 	src/GEPEngine/RenderTexture.cpp
 
 	src/GEPEngine/Sound.cpp
 	src/GEPEngine/SoundSource.cpp
-
-	src/GEPEngine/Light.cpp
-
+	
 	src/GEPEngine/BoxCollider.cpp
 	src/GEPEngine/StaticModelCollider.cpp
 	src/GEPEngine/TriBox.cpp
 
 	src/GEPEngine/GUI.cpp
+	src/GEPEngine/Font.cpp
+	src/GEPEngine/stb_truetype.h
 )
 
 add_executable(sandbox
