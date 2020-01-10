@@ -6,7 +6,10 @@
 #include "Resources.h"
 #include "Screen.h"
 #include "Camera.h"
+#
 
+++++nt.h"
++
 #include <glm/gtx/string_cast.hpp>
 #include <iostream>
 #include <rend/rend.h>
@@ -71,4 +74,10 @@ void GUI::DrawGUI(std::shared_ptr<Texture> _image)
 	shader->GetRender()->setMesh(mesh->GetRender());
 	shader->GetRender()->setDepthTesting(false);
 	shader->GetRender()->render();
+}
+
+void GUI::DrawText(std::string _text, glm::vec2 _pos, Font _font, float _scale)
+{
+
+
 }

@@ -5,6 +5,7 @@ class Core;
 class Mesh;
 class Shader;
 class Texture;
+class Font;
 
 class GUI
 {
@@ -16,6 +17,8 @@ public:
 	void DrawGUI(glm::vec4 _posNSize, std::shared_ptr<Texture> _image);
 	void DrawGUI(std::shared_ptr<Texture> _image);
 	
+	void DrawText(std::string _text, glm::vec2 _pos, Font _font, float _scale = 1);
+
 private:
 	glm::mat4 projection;
 	glm::ivec2 screenSize;
