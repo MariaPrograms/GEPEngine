@@ -39,6 +39,7 @@ private:
 	float tryInc;
 	float maxInc;
 	std::vector<rend::CollitionFace> collisions;
+	std::vector<rend::CollitionFace> all;
 
 	void AddFace(rend::CollitionFace face);
 	glm::vec3 FaceNormal(rend::CollitionFace& face);

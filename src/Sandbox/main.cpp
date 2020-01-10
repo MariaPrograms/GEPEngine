@@ -31,7 +31,7 @@ void main ()
 	entity->SetPoition(glm::vec3(0, 0, 0));
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);
-	entity->AddComponent<BoxCollider>();
+	
 	
 	///////Second OBJ
 	shared<Object> entity2 = core->AddObject();
@@ -49,7 +49,9 @@ void main ()
 
 	rend2->SetMaterial(mat2);
 
-	entity2->AddComponent<StaticModelCollider>();
+	entity2->AddComponent<BoxCollider>();
+	shared<BoxCollider> box = entity->AddComponent<BoxCollider>();
+	box->IsStationary(true);
 	entity2->AddComponent<Movement>();
 
 	

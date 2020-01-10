@@ -7,6 +7,7 @@ public:
 	void OnInit();
 	void SetOffset(const glm::vec3& offset);
 	void SetSize(const glm::vec3& size);
+	void IsStationary(bool _value) { stationary = _value; };
 
 private:
 	void OnUpdate();
@@ -17,4 +18,6 @@ private:
 
 	glm::vec3 size;
 	glm::vec3 offset;
-	glm::vec3 lastPosition;};
+	glm::vec3 lastPosition;
+	bool stationary;
+};

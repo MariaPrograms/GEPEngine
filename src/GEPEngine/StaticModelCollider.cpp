@@ -86,7 +86,7 @@ void StaticModelCollider::OnInit()
 	extentMax = model->GetExtent().max;
 
 	// Create collision columns
-	glm::vec3 size = extentMax - extentMin;
+	glm::vec3 size = (extentMax - extentMin) * 10.0f;
 	glm::vec3 colSize = size / resolution;
 	colSize.y = size.y;
 
@@ -116,6 +116,7 @@ void StaticModelCollider::OnInit()
 	{
 		rend::CollitionFace face = model->GetFaces().at(f);
 		AddFace(face);
+		//all.push_back(face);
 	}
 }
 
@@ -192,6 +193,8 @@ void StaticModelCollider::GetColliding(glm::vec3 _position, glm::vec3 _size)
 	if (idx >= columns.size()) return;
 
 	columns.at(idx)->GetColliding(_position, _size, collisions);
+
+	//collisions = all;
 }
 
 glm::vec3 StaticModelCollider::FaceNormal(rend::CollitionFace& face)

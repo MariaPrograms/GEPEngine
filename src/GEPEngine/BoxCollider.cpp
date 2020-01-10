@@ -46,11 +46,14 @@ void BoxCollider::CollideBox()
 
 		std::shared_ptr<BoxCollider> bc = (*it)->GetComponent<BoxCollider>();
 
-		glm::vec3 sp = bc->GetCollisionResponse(np, size);
-		np = sp;
-		np = np - offset;
-		object.lock()->SetPoition(np);
-		lastPosition = np;
+		if (!stationary)
+		{
+			glm::vec3 sp = bc->GetCollisionResponse(np, size);
+			np = sp;
+			np = np - offset;
+			object.lock()->SetPoition(np);
+			lastPosition = np;
+		}
 	}
 }
 
@@ -139,35 +142,36 @@ bool BoxCollider::IsColliding(glm::vec3 position, glm::vec3 size)
 	return true;
 }
 
-glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position,
-	glm::vec3 size)
+glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position,	glm::vec3 size)
 {
-	float amount = 0.1f;
-	float step = 0.1f;
 
-	while (true)
-	{
-		if (!IsColliding(position, size)) break;
-		position.x += amount;
-		if (!IsColliding(position, size)) break;
-		position.x -= amount;
-		position.x -= amount;
-		if (!IsColliding(position, size)) break;
-		position.x += amount;
-		position.z += amount;
-		if (!IsColliding(position, size)) break;
-		position.z -= amount;
-		position.z -= amount;
-		if (!IsColliding(position, size)) break;
-		position.z += amount;
-		position.y += amount;
-		if (!IsColliding(position, size)) break;
-		position.y -= amount;
-		position.y -= amount;
-		if (!IsColliding(position, size)) break;
-		position.y += amount;
-		amount += step;
-	}
+		float amount = 0.1f;
+		float step = 0.1f;
+
+		while (true)
+		{
+			if (!IsColliding(position, size)) break;
+			position.x += amount;
+			if (!IsColliding(position, size)) break;
+			position.x -= amount;
+			position.x -= amount;
+			if (!IsColliding(position, size)) break;
+			position.x += amount;
+			position.z += amount;
+			if (!IsColliding(position, size)) break;
+			position.z -= amount;
+			position.z -= amount;
+			if (!IsColliding(position, size)) break;
+			position.z += amount;
+			position.y += amount;
+			if (!IsColliding(position, size)) break;
+			position.y -= amount;
+			position.y -= amount;
+			if (!IsColliding(position, size)) break;
+			position.y += amount;
+			amount += step;
+		}
+
 
 	return position;
 }
