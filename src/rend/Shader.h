@@ -38,7 +38,10 @@ namespace rend
 		void setAttribute(const std::string& variable, const std::sr1::shared_ptr<Buffer>& value);
 		void setSampler(const std::string& variable, const std::sr1::shared_ptr<TextureAdapter>& value);
 		void setMesh(const std::sr1::shared_ptr<Mesh>& value);
-		void setDepthTesting(bool value);
+
+		void setDepthTesting(bool value);//Maria
+		void setCullFaces(bool value);//Maria
+
 	private:
 		friend struct Context;
 
@@ -48,6 +51,9 @@ namespace rend
 
 		std::sr1::shared_ptr<VariableInfo> getVariableInfo(const std::string& name, GLenum type, bool attrib);
 		std::string LoadFile(std::string _path);
+
+		bool cullFace;
+		bool depthTest;
 	};
 
 }

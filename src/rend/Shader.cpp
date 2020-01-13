@@ -81,8 +81,24 @@ namespace rend
 
 	void Shader::render()
 	{
-		glEnable(GL_DEPTH_TEST); pollForError();
-		glEnable(GL_CULL_FACE); pollForError();
+		if (depthTest)
+		{
+			glEnable(GL_DEPTH_TEST); pollForError();
+		}
+		else
+		{
+			glDisable(GL_DEPTH_TEST); pollForError();
+		}
+
+		if (cullFace)
+		{
+			glEnable(GL_CULL_FACE); pollForError();
+		}
+		else
+		{
+			glDisable(GL_CULL_FACE); pollForError();
+		}
+
 		glEnable(GL_BLEND); pollForError();
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); pollForError();
 
@@ -418,14 +434,12 @@ namespace rend
 
 	void Shader::setDepthTesting(bool value)
 	{
-		if (value)
-		{
-			glEnable(GL_DEPTH_TEST);
-		}
-		else
-		{
-			glDisable(GL_DEPTH_TEST);
-		}
+		depthTest = value;
+	}
+
+	void Shader::setCullFaces(bool value)
+	{
+		cullFace = value;
 	}
 
 }

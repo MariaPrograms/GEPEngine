@@ -63,7 +63,7 @@ void BoxCollider::CollideStaticMesh()
 
 	GetCore()->GetEntities<StaticModelCollider>(smces);
 
-	glm::vec3 np = object.lock()->GetPoition() + offset;
+	glm::vec3 np = GetObject()->GetPoition() + offset;
 
 	for (std::vector<std::shared_ptr<Object>>::iterator it = smces.begin(); it != smces.end(); it++)
 	{
@@ -145,8 +145,8 @@ bool BoxCollider::IsColliding(glm::vec3 position, glm::vec3 size)
 glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position,	glm::vec3 size)
 {
 
-		float amount = 0.1f;
-		float step = 0.1f;
+		float amount = 1.f;
+		float step = 0.6f;
 
 		while (true)
 		{

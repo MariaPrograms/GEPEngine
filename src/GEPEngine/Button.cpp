@@ -6,7 +6,7 @@
 #include "Texture.h"
 
 #include <iostream>
-
+#include <glm/gtx/string_cast.hpp>
 
 void Button::OnInit(std::shared_ptr<Texture> _image)
 {
@@ -23,24 +23,26 @@ void Button::SetSize(glm::vec2 _size)
 	size = _size;
 }
 
+void Button::SetPosition(glm::vec2 _position)
+{
+	position = _position;
+}
+
 void Button::OnUpdate()
 {
-	glm::vec3 position = GetObject()->GetPoition();
-	if (GetInput()->MousePosition().y >= position.y)
+	if (GetInput()->MousePosition().x >= position.x && GetInput()->MousePosition().x <= position.x + size.x &&
+		GetInput()->MousePosition().y >= position.y && GetInput()->MousePosition().y <= position.y + size.y)
 	{
-		// && GetInput()->MousePosition().y >= position.y + size.y
-		//GetInput()->MousePosition().x >= position.x && GetInput()->MousePosition().x <= position.x + size.x &&
-		std::cout << "In Y" << std::endl;
 		if (GetInput()->LeftMouseDown())
 		{
-			std::cout << "Click" << std::endl;
+			OnClick();
 		}
 	}
 }
 
 void Button::OnGUI()
 {
-	GetGUI()->DrawGUI(glm::vec4(GetObject()->GetPoition().x, GetObject()->GetPoition().y,  size), image);
+	GetGUI()->DrawGUI(glm::vec4(position.x, position.y, size.x, size.y), image);
 }
 
 void Button::RegisterCallback(const std::function<void()> &_callback)

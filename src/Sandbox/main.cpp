@@ -7,6 +7,17 @@
 #define shared std::shared_ptr
 #define weak std::weak_ptr
 
+class Client1 
+{
+public:
+	static void func()
+	{
+		printf("BITCH");
+	}
+};
+
+
+
 void main ()
 {
 	shared<Core> core = Core::Initialize();
@@ -16,7 +27,7 @@ void main ()
 	CamObj->AddComponent<Light>(glm::vec3(1.0f));
 	CamObj->SetPoition(glm::vec3(0, 0, 30));
 	CamObj->AddComponent<Camera>();
-	CamObj->AddComponent<TestScene>();
+	shared<TestScene> thing = CamObj->AddComponent<TestScene>();
 
 
 	shared<Object> entity = core->AddObject();
@@ -32,7 +43,9 @@ void main ()
 	rend->SetMesh(shape);
 	rend->SetMaterial(mat);
 	
-	
+	shared<BoxCollider> box = entity->AddComponent<BoxCollider>();
+	box->IsStationary(true);
+
 	///////Second OBJ
 	shared<Object> entity2 = core->AddObject();
 	shared<MeshRenderer> rend2 = entity2->AddComponent<MeshRenderer>();
@@ -49,18 +62,18 @@ void main ()
 
 	rend2->SetMaterial(mat2);
 
-	entity2->AddComponent<BoxCollider>();
-	shared<BoxCollider> box = entity->AddComponent<BoxCollider>();
-	box->IsStationary(true);
+	shared<BoxCollider> box2 = entity2->AddComponent<BoxCollider>();
 	entity2->AddComponent<Movement>();
 
 
 	shared<Object> button = core->AddObject();
-	shared<Texture> butIma = core->GetResources()->Load<Texture>("Textures/Chicken.png");
+	shared<Texture> butIma = core->GetResources()->Load<Texture>("Textures/bunnyTest.png");
 	shared<Button> but =  button->AddComponent<Button>(butIma);
-	button->SetPoition(glm::vec3(core->GetScreen()->GetSize().x / 4, 100, 0));
-	but->SetSize(glm::vec2(50, 50));
-	
+	but->SetPosition(glm::vec2(10, 10));
+	but->SetSize(glm::vec2(100, 100));
+
+
+
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
 	source->SetSound(sound);*/

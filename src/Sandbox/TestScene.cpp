@@ -1,5 +1,9 @@
 #include "TestScene.h"
 
+#include <iostream>
+#include <glm/gtx/string_cast.hpp>
+
+
 TestScene::TestScene()
 {
 	yaw = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
@@ -74,13 +78,13 @@ void TestScene::OnUpdate()
 
 	if (GetInput()->RightMouseDown())
 	{
-		GetInput()->ResetMousePosition();
+		std::cout << glm::to_string(GetInput()->MousePosition()) << std::endl;
 	}
 }
 
 void TestScene::OnGUI()
 {
-	//float x = GetCore()->GetScreen()->GetSize().x / 2;
-	//float y = GetCore()->GetScreen()->GetSize().y / 2;
-	//GetCore()->GetGUI()->DrawGUI(glm::vec2(x, y), test);
+	/*float x = GetCore()->GetScreen()->GetSize().x / 2;
+	float y = GetCore()->GetScreen()->GetSize().y / 2;
+	GetCore()->GetGUI()->DrawGUI(glm::vec4(x, y, 100, 150), test);*/
 }

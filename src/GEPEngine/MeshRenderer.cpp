@@ -55,5 +55,7 @@ void MeshRenderer::OnDisplay()
 	GetObject()->GetCore()->GetLights()->SetLights(material);
 
 	material->GetShader()->setMesh(mesh->GetRender());
+	material->GetShader()->setCullFaces(true);
+	material->GetShader()->setDepthTesting(true);
 	material->GetShader()->render();
 }

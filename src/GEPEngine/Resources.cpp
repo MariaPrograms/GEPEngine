@@ -2,6 +2,7 @@
 #include "Exception.h"
 #include "Core.h"
 #include <iostream>
+#include "Mesh.h"
 
 #if _WIN32
 #include <windows.h>
@@ -32,4 +33,13 @@ Resources::Resources(std::shared_ptr<Core> _core)
 #endif
 
 	
+}
+
+std::shared_ptr<Mesh> Resources::MakeMesh()
+{
+	std::shared_ptr<Mesh> resorce = std::make_shared<Mesh>();
+	resorce->core = core;
+	resorce->self = resorce;
+	resorce->MakeMesh();
+	return resorce;
 }

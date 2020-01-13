@@ -5,7 +5,7 @@
 
 class Resource;
 class Core;
-
+class Mesh;
 
 class Resources
 {
@@ -24,6 +24,8 @@ public:
 		resources.push_back(resorce);
 		return resorce;
 	}
+
+	std::shared_ptr<Mesh> MakeMesh();
 
 	//void GetResource(std::string _path)
 	//{
