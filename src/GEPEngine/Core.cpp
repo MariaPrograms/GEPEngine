@@ -94,6 +94,7 @@ void Core::Start()
 
 	while (playing)
 	{
+		world->SetTime();
 		screen->Clear();
 
 		SDL_Event event = { 0 };

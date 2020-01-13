@@ -6,6 +6,7 @@
 #include "MeshRenderer.h"
 
 #include <vector>
+#include <glm/gtx/string_cast.hpp>
 
 void BoxCollider::OnInit()
 {
@@ -22,6 +23,16 @@ void BoxCollider::SetOffset(const glm::vec3& _offset)
 void BoxCollider::SetSize(const glm::vec3& _size)
 {
 	size = _size;
+}
+
+void BoxCollider::RegisterTriggerCallback(const std::function<void()>& _callback)
+{
+	triggerCallbacks.push_back(_callback);
+}
+
+void BoxCollider::RegisterCollisionCallback(const std::function<void()>& _callback)
+{
+	collisionCallbacks.push_back(_callback);
 }
 
 void BoxCollider::OnUpdate()
@@ -46,14 +57,11 @@ void BoxCollider::CollideBox()
 
 		std::shared_ptr<BoxCollider> bc = (*it)->GetComponent<BoxCollider>();
 
-		if (!stationary)
-		{
-			glm::vec3 sp = bc->GetCollisionResponse(np, size);
-			np = sp;
-			np = np - offset;
-			object.lock()->SetPoition(np);
-			lastPosition = np;
-		}
+		glm::vec3 sp = bc->GetCollisionResponse(np, size);
+		np = sp;
+		np = np - offset;
+		object.lock()->SetPoition(np);
+		lastPosition = np;
 	}
 }
 
@@ -142,36 +150,49 @@ bool BoxCollider::IsColliding(glm::vec3 position, glm::vec3 size)
 	return true;
 }
 
-glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position,	glm::vec3 size)
+glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position, glm::vec3 size)
 {
+	if (!IsColliding(position, size)) return position;
+	float amount = 0.05f;
+	float step = 0.05f;
 
-		float amount = 1.f;
-		float step = 0.6f;
-
-		while (true)
+	if (trigger)
+	{
+		for (const auto &cb : triggerCallbacks)
 		{
-			if (!IsColliding(position, size)) break;
-			position.x += amount;
-			if (!IsColliding(position, size)) break;
-			position.x -= amount;
-			position.x -= amount;
-			if (!IsColliding(position, size)) break;
-			position.x += amount;
-			position.z += amount;
-			if (!IsColliding(position, size)) break;
-			position.z -= amount;
-			position.z -= amount;
-			if (!IsColliding(position, size)) break;
-			position.z += amount;
-			position.y += amount;
-			if (!IsColliding(position, size)) break;
-			position.y -= amount;
-			position.y -= amount;
-			if (!IsColliding(position, size)) break;
-			position.y += amount;
-			amount += step;
+			cb();
 		}
+	}
 
+	for (const auto &cb : collisionCallbacks)
+	{
+		cb();
+	}
+
+
+	while (true)
+	{
+		if (!IsColliding(position, size)) break;
+		position.x += amount;
+		if (!IsColliding(position, size)) break;
+		position.x -= amount;
+		position.x -= amount;
+		if (!IsColliding(position, size)) break;
+		position.x += amount;
+		position.z += amount;
+		if (!IsColliding(position, size)) break;
+		position.z -= amount;
+		position.z -= amount;
+		if (!IsColliding(position, size)) break;
+		position.z += amount;
+		position.y += amount;
+		if (!IsColliding(position, size)) break;
+		position.y -= amount;
+		position.y -= amount;
+		if (!IsColliding(position, size)) break;
+		position.y += amount;
+		amount += step;
+	}
 
 	return position;
 }

@@ -86,7 +86,7 @@ void StaticModelCollider::OnInit()
 	extentMax = model->GetExtent().max;
 
 	// Create collision columns
-	glm::vec3 size = (extentMax - extentMin) * 10.0f;
+	glm::vec3 size = (extentMax - extentMin) * 20.0f;
 	glm::vec3 colSize = size / resolution;
 	colSize.y = size.y;
 
@@ -117,6 +117,16 @@ void StaticModelCollider::OnInit()
 		rend::CollitionFace face = model->GetFaces().at(f);
 		AddFace(face);
 	}
+}
+
+void StaticModelCollider::RegisterTriggerCallback(const std::function<void()>& _callback)
+{
+	triggerCallbacks.push_back(_callback);
+}
+
+void StaticModelCollider::RegisterCollisionCallback(const std::function<void()>& _callback)
+{
+	collisionCallbacks.push_back(_callback);
 }
 
 bool StaticModelCollider::IsColliding(rend::CollitionFace& _face, glm::vec3 _position, glm::vec3 _size)
@@ -212,11 +222,26 @@ glm::vec3 StaticModelCollider::GetCollisionResponse(glm::vec3 _position, glm::ve
 
 	collisions.clear();
 	GetColliding(solve, _size);
-
+	
 	if (!IsColliding(solve, _size))
 	{
 		_solved = true;
 		return solve;
+	}
+	else
+	{
+		if (trigger)
+		{
+			for (const auto &cb : triggerCallbacks)
+			{
+				cb();
+			}
+		}
+
+		for (const auto &cb : collisionCallbacks)
+		{
+			cb();
+		}
 	}
 
 	// Favour Y faces first.

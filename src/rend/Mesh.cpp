@@ -54,8 +54,8 @@ namespace rend
 			if (positions.at(i).z < extent.min.z) extent.min.z = positions.at(i).z;
 		}
 
-		extent.min = extent.min + 1.0f;
-		extent.max = extent.max - .3f;
+		extent.min = extent.min + 1.2f;
+		extent.max = extent.max - 0.2f;
 
 		/*std::cout << "Size: " << extent.max.x - extent.min.x;
 		std::cout << ", " << extent.max.y - extent.min.y;

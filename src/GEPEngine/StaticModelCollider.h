@@ -3,6 +3,8 @@
 
 #include <rend/rend.h>
 #include <vector>
+#include <functional>
+#include <list>
 
 struct Triangle;
 
@@ -28,6 +30,10 @@ public:
 	void GetColliding(glm::vec3 position, glm::vec3 size);
 
 	glm::vec3 GetCollisionResponse(glm::vec3 position, glm::vec3 size, bool& solved);
+	
+	void IsTrigger(bool _value) { trigger = _value; };
+	void RegisterTriggerCallback(const std::function<void()> &_callback);
+	void RegisterCollisionCallback(const std::function<void()> &_callback);
 
 private:
 	std::vector<std::shared_ptr<ColliderColumn>> columns;
@@ -43,4 +49,8 @@ private:
 
 	void AddFace(rend::CollitionFace face);
 	glm::vec3 FaceNormal(rend::CollitionFace& face);
+
+	bool trigger;
+	std::list<std::function<void()>> collisionCallbacks;
+	std::list<std::function<void()>> triggerCallbacks;
 };

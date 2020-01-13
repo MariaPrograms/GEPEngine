@@ -1,19 +1,24 @@
 #include "World.h"
-#include <SDL2/SDL.h>
 
 float World::GetDeltaTime()
 {
-	float time = SDL_GetTicks();
-	float diff = time - lastTime;
-	deltaTime = diff / 1000.0f;
-	lastTime = time;
-
 	return deltaTime;
+}
+
+void World::SetTime()
+{
+	currentTime = SDL_GetTicks();
+
+	deltaTime = (double)(currentTime - oldTime) / 1000;
+
+	oldTime = currentTime;	
 }
 
 World::World()
 {
-	float lastTime = SDL_GetTicks();
+	currentTime = SDL_GetTicks();
+	oldTime = 0;
+	deltaTime = 0;
 }
 
 World::~World()

@@ -10,7 +10,7 @@ class Button : public Component
 {
 public:
 	void RegisterCallback(const std::function<void()> &_callback);
-	 void OnClick();
+	void OnClick();
 
 	void OnInit(std::shared_ptr<Texture> image);
 	void SetImage(std::shared_ptr<Texture> image);

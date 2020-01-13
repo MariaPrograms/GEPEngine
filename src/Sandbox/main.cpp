@@ -16,19 +16,15 @@ public:
 	}
 };
 
-
-
 void main ()
 {
 	shared<Core> core = Core::Initialize();
-	
 
 	shared<Object> CamObj = core->AddObject();
 	CamObj->AddComponent<Light>(glm::vec3(1.0f));
 	CamObj->SetPoition(glm::vec3(0, 0, 30));
 	CamObj->AddComponent<Camera>();
 	shared<TestScene> thing = CamObj->AddComponent<TestScene>();
-
 
 	shared<Object> entity = core->AddObject();
 	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
@@ -44,7 +40,8 @@ void main ()
 	rend->SetMaterial(mat);
 	
 	shared<BoxCollider> box = entity->AddComponent<BoxCollider>();
-	box->IsStationary(true);
+	box->IsTrigger(true);
+	box->RegisterTriggerCallback(Client1::func);
 
 	///////Second OBJ
 	shared<Object> entity2 = core->AddObject();
@@ -63,6 +60,7 @@ void main ()
 	rend2->SetMaterial(mat2);
 
 	shared<BoxCollider> box2 = entity2->AddComponent<BoxCollider>();
+	box2->RegisterCollisionCallback([] {std::cout << "Hit" << std::endl; });
 	entity2->AddComponent<Movement>();
 
 
@@ -72,12 +70,9 @@ void main ()
 	but->SetPosition(glm::vec2(10, 10));
 	but->SetSize(glm::vec2(100, 100));
 
-
-
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
 	source->SetSound(sound);*/
-	
 	 
 	core->Start();
 	return;
