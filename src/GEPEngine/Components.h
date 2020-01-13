@@ -12,7 +12,7 @@ class Input;
 class World;
 class Core;
 class Screen;
-
+class GUI;
 class Component
 {
 public:
@@ -20,6 +20,7 @@ public:
 	~Component();
 	friend class Object;
 	std::shared_ptr<Input>  GetInput();
+	std::shared_ptr<GUI>  GetGUI();
 	std::shared_ptr<Object>  GetObject();
 	std::shared_ptr<World>  GetWorld();
 	std::shared_ptr<Screen>  GetScreen();

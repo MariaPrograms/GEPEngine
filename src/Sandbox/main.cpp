@@ -54,6 +54,12 @@ void main ()
 	box->IsStationary(true);
 	entity2->AddComponent<Movement>();
 
+
+	shared<Object> button = core->AddObject();
+	shared<Texture> butIma = core->GetResources()->Load<Texture>("Textures/Chicken.png");
+	shared<Button> but =  button->AddComponent<Button>(butIma);
+	button->SetPoition(glm::vec3(core->GetScreen()->GetSize().x / 4, 100, 0));
+	but->SetSize(glm::vec2(50, 50));
 	
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");

@@ -57,6 +57,7 @@ add_library(GEPEngine
 	src/GEPEngine/TriBox.cpp
 
 	src/GEPEngine/GUI.cpp
+	src/GEPEngine/Button.cpp
 	src/GEPEngine/Font.cpp
 )
 

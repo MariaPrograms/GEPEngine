@@ -31,5 +31,6 @@
 
 #include "GUI.h"
 #include "Font.h"
+#include "Button.h"
 
 #endif
