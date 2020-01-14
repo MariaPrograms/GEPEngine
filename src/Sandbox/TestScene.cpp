@@ -84,7 +84,7 @@ void TestScene::OnUpdate()
 
 void TestScene::OnGUI()
 {
-	/*float x = GetCore()->GetScreen()->GetSize().x / 2;
-	float y = GetCore()->GetScreen()->GetSize().y / 2;
-	GetCore()->GetGUI()->DrawGUI(glm::vec4(x, y, 100, 150), test);*/
+	float x = GetCore()->GetScreen()->GetSize().x / 4;
+	float y = GetCore()->GetScreen()->GetSize().y / 4;
+	GetCore()->GetGUI()->DrawGUI(glm::vec4(x * 3, y * 3, 100, 150), test);
 }

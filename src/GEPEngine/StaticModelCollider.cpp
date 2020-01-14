@@ -76,7 +76,7 @@ void ColliderColumn::GetColliding(glm::vec3 _position, glm::vec3 _size, std::vec
 void StaticModelCollider::OnInit()
 {
 	resolution = 10;
-	tryStep = 0.001f;
+	tryStep = 0.01f;
 	maxStep = 1.0f;
 	tryInc = 0.01f;
 	maxInc = 0.5f;
@@ -215,34 +215,35 @@ glm::vec3 StaticModelCollider::FaceNormal(rend::CollitionFace& face)
 	return glm::normalize(N);
 }
 
+
+
+bool StaticModelCollider::CheckForCollision(glm::vec3 _position, glm::vec3 _size)
+{
+	glm::vec3 solve = _position;
+	collisions.clear();
+	GetColliding(solve, _size);
+
+	return IsColliding(solve, _size);
+}
+
 glm::vec3 StaticModelCollider::GetCollisionResponse(glm::vec3 _position, glm::vec3 _size, bool& _solved)
 {
 	glm::vec3 solve = _position;
 	_solved = false;
 
-	collisions.clear();
-	GetColliding(solve, _size);
-	
-	if (!IsColliding(solve, _size))
+	if (trigger)
 	{
-		_solved = true;
-		return solve;
-	}
-	else
-	{
-		if (trigger)
-		{
-			for (const auto &cb : triggerCallbacks)
-			{
-				cb();
-			}
-		}
-
-		for (const auto &cb : collisionCallbacks)
+		for (const auto &cb : triggerCallbacks)
 		{
 			cb();
 		}
 	}
+
+	for (const auto &cb : collisionCallbacks)
+	{
+		cb();
+	}
+
 
 	// Favour Y faces first.
 	for (std::vector<rend::CollitionFace>::iterator it = collisions.begin(); it != collisions.end(); it++)
@@ -370,11 +371,11 @@ void StaticModelCollider::AddFace(rend::CollitionFace _face)
 
 	if (!found)
 	{
-		std::cout << "Assertion failed: Face not in spacial partition" << std::endl;
+		/*std::cout << "Assertion failed: Face not in spacial partition" << std::endl;
 		std::cout << f[0][0] << ", " << f[0][1] << ", " << f[0][2] << std::endl;
 		std::cout << f[1][0] << ", " << f[1][1] << ", " << f[1][2] << std::endl;
 		std::cout << f[2][0] << ", " << f[2][1] << ", " << f[2][2] << std::endl;
-		std::cout << "Expect collision errors" << std::endl;
+		std::cout << "Expect collision errors" << std::endl;*/
 		//throw Exception("Face not assigned spatial partition");
 	}
 

@@ -29,6 +29,7 @@ public:
 
 	void GetColliding(glm::vec3 position, glm::vec3 size);
 
+	bool CheckForCollision(glm::vec3 position, glm::vec3 size);
 	glm::vec3 GetCollisionResponse(glm::vec3 position, glm::vec3 size, bool& solved);
 	
 	void IsTrigger(bool _value) { trigger = _value; };

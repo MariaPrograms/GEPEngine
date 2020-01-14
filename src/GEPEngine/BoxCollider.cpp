@@ -57,11 +57,29 @@ void BoxCollider::CollideBox()
 
 		std::shared_ptr<BoxCollider> bc = (*it)->GetComponent<BoxCollider>();
 
-		glm::vec3 sp = bc->GetCollisionResponse(np, size);
-		np = sp;
-		np = np - offset;
-		object.lock()->SetPoition(np);
-		lastPosition = np;
+		if (bc->IsColliding(np, size))
+		{
+			if (trigger)
+			{
+				for (const auto &cb : triggerCallbacks)
+				{
+					cb();
+				}
+			}
+
+			for (const auto &cb : collisionCallbacks)
+			{
+				cb();
+			}
+
+			glm::vec3 sp = bc->GetCollisionResponse(np, size);
+			np = sp;
+			np = np - offset;
+			object.lock()->SetPoition(np);
+			lastPosition = np;
+		}
+
+		
 	}
 }
 
@@ -77,21 +95,36 @@ void BoxCollider::CollideStaticMesh()
 	{
 		std::shared_ptr<StaticModelCollider> smc = (*it)->GetComponent<StaticModelCollider>();
 
-		bool solved = false;
-		glm::vec3 sp = smc->GetCollisionResponse(np, size, solved);
-
-		if (solved)
+		if (smc->CheckForCollision(np, size))
 		{
-			np = sp;
-		}
-		else
-		{
-			np = lastPosition + offset;
-		}
+			if (trigger)
+			{
+				for (const auto &cb : triggerCallbacks)
+				{
+					cb();
+				}
+			}
+			for (const auto &cb : collisionCallbacks)
+			{
+				cb();
+			}
 
-		np = np - offset;
-		object.lock()->SetPoition(np);
-		lastPosition = np;
+			bool solved = false;
+			glm::vec3 sp = smc->GetCollisionResponse(np, size, solved);
+
+			if (solved)
+			{
+				np = sp;
+			}
+			else
+			{
+				np = lastPosition + offset;
+			}
+
+			np = np - offset;
+			object.lock()->SetPoition(np);
+			lastPosition = np;
+		}
 	}
 }
 
@@ -152,7 +185,6 @@ bool BoxCollider::IsColliding(glm::vec3 position, glm::vec3 size)
 
 glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position, glm::vec3 size)
 {
-	if (!IsColliding(position, size)) return position;
 	float amount = 0.05f;
 	float step = 0.05f;
 
@@ -168,7 +200,6 @@ glm::vec3 BoxCollider::GetCollisionResponse(glm::vec3 position, glm::vec3 size)
 	{
 		cb();
 	}
-
 
 	while (true)
 	{

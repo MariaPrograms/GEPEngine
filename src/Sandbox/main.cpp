@@ -25,6 +25,9 @@ void main ()
 	CamObj->SetPoition(glm::vec3(0, 0, 30));
 	CamObj->AddComponent<Camera>();
 	shared<TestScene> thing = CamObj->AddComponent<TestScene>();
+	shared<Texture> thingIm = core->GetResources()->Load<Texture>("Textures/Button.jpg");
+	thing->test = thingIm;
+
 
 	shared<Object> entity = core->AddObject();
 	shared<MeshRenderer> rend = entity->AddComponent<MeshRenderer>();
@@ -70,6 +73,7 @@ void main ()
 	but->SetPosition(glm::vec2(10, 10));
 	but->SetSize(glm::vec2(100, 100));
 
+	
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
 	source->SetSound(sound);*/
