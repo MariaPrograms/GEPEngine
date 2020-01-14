@@ -8,7 +8,7 @@
 Object::Object()
 {
 	position = glm::vec3(0);
-	rotation = glm::vec3(1);
+	rotation = glm::vec3(0, 0, 0);
 	scale = glm::vec3(1);
 }
 
@@ -99,7 +99,11 @@ glm::mat4 Object::GetModel()
 { 
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, position);
-	model = glm::rotate(model, glm::radians(0.0f), rotation);
+
+	model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1, 0, 0));
+	model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0, 1, 0));
+	model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0, 0, 1));
+
 	model = glm::scale(model, scale);
 	return model;
 }

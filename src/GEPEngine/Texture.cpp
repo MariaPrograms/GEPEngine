@@ -12,7 +12,7 @@ void Texture::Load(std::string _path)
 	int h = 0;
 	int bpp = 0;
 
-	unsigned char *data = stbi_load(_path.c_str(),&w, &h, &bpp, 3);
+	unsigned char *data = stbi_load(_path.c_str(),&w, &h, &bpp, 4);
 
 	if (!data)
 	{
@@ -25,9 +25,9 @@ void Texture::Load(std::string _path)
 	{
 		for (int x = 0; x < w; x++)
 		{
-			int r = y * w * 3 + x * 3;
+			int r = y * w * 4 + x * 4;
 
-			rendText->setPixel(x, y, glm::vec3(data[r] / 255.0f, data[r + 1] / 255.0f, data[r + 2] / 255.0f));
+			rendText->setPixel(x, y, glm::vec4(data[r] / 255.0f, data[r + 1] / 255.0f, data[r + 2] / 255.0f, data[r + 3] / 255.0f));
 		}
 	}
 

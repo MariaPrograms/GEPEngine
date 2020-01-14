@@ -10,8 +10,6 @@ Camera::Camera()
 	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 }
 
-
-
 Camera::~Camera()
 {
 
@@ -26,6 +24,6 @@ void Camera::OnInit()
 
 glm::mat4 Camera::GetView()
 {
-	glm::vec3 pos = GetObject()->GetPoition();
+	glm::vec3 pos = GetObject()->GetPoition() + offset;
 	return glm::lookAt(pos, pos + cameraFront, cameraUp);
 }

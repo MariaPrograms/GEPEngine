@@ -22,35 +22,37 @@ void TestScene::OnInit()
 	mousePos = GetInput()->MousePosition();
 	lastPos = mousePos;
 	cam = GetObject()->GetComponent<Camera>();
-	cameraSpeed = 1;
+	cameraSpeed = 2;
+
+	GetObject()->SetRotation(glm::vec3(0, 180, 0));
 }
 
 void TestScene::OnUpdate()
 {
-	//glm::vec3 pos;
+	glm::vec3 pos;
 
-	//if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
-	//{
-	//	pos = object.lock()->GetPoition() + glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
-	//{
-	//	pos = object.lock()->GetPoition() - glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed;
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
-	//{
-	//	pos.x = object.lock()->GetPoition().x - cameraSpeed * cam->GetCameraFront().x;
-	//	pos.z = object.lock()->GetPoition().z - cameraSpeed * cam->GetCameraFront().z;
-	//	object.lock()->SetPoition(pos);
-	//}
-	//else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
-	//{
-	//	pos.x = object.lock()->GetPoition().x + cameraSpeed * cam->GetCameraFront().x;
-	//	pos.z = object.lock()->GetPoition().z + cameraSpeed * cam->GetCameraFront().z;
-	//	object.lock()->SetPoition(pos);
-	//}
+	if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
+	{
+		pos = object.lock()->GetPoition() + glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed * GetWorld()->GetDeltaTime();
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
+	{
+		pos = object.lock()->GetPoition() - glm::normalize(glm::cross(cam->GetCameraFront(), cam->GetCameraUp())) * cameraSpeed * GetWorld()->GetDeltaTime();
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
+	{
+		pos.x = object.lock()->GetPoition().x - cameraSpeed * cam->GetCameraFront().x * GetWorld()->GetDeltaTime();
+		pos.z = object.lock()->GetPoition().z - cameraSpeed * cam->GetCameraFront().z * GetWorld()->GetDeltaTime();
+		object.lock()->SetPoition(pos);
+	}
+	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
+	{
+		pos.x = object.lock()->GetPoition().x + cameraSpeed * cam->GetCameraFront().x * GetWorld()->GetDeltaTime();
+		pos.z = object.lock()->GetPoition().z + cameraSpeed * cam->GetCameraFront().z * GetWorld()->GetDeltaTime();
+		object.lock()->SetPoition(pos);
+	}
 
 	float xoffset = mousePos.x - lastPos.x;
 	float yoffset = lastPos.y - mousePos.y; // reversed since y-coordinates go from bottom to top
@@ -78,13 +80,15 @@ void TestScene::OnUpdate()
 
 	if (GetInput()->RightMouseDown())
 	{
-		std::cout << glm::to_string(GetInput()->MousePosition()) << std::endl;
+		yaw = -90.0f;
+		GetInput()->ResetMousePosition();
+		lastPos = GetInput()->MousePosition();
 	}
 }
 
 void TestScene::OnGUI()
 {
-	float x = GetCore()->GetScreen()->GetSize().x / 4;
+	/*float x = GetCore()->GetScreen()->GetSize().x / 4;
 	float y = GetCore()->GetScreen()->GetSize().y / 4;
-	GetCore()->GetGUI()->DrawGUI(glm::vec4(x * 3, y * 3, 100, 150), test);
+	GetCore()->GetGUI()->DrawGUI(glm::vec4(x * 3, y * 3, 100, 150), test);*/
 }

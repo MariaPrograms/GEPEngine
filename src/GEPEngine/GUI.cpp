@@ -36,8 +36,8 @@ void GUI::DrawGUI(glm::vec2 _pos, std::shared_ptr<Texture> _image)
 	shader->GetRender()->setUniform("u_Model", model);
 	shader->GetRender()->setMesh(mesh->GetRender());
 
-	//shader->GetRender()->setDepthTesting(false);
-	//shader->GetRender()->setCullFaces(false);
+	shader->GetRender()->setDepthTesting(false);
+	shader->GetRender()->setCullFaces(false);
 
 	shader->GetRender()->render();
 }
