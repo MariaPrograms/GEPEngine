@@ -95,7 +95,7 @@ public:
 
 	//! Use this function to check if an Object has a Component
 	/*!
-	This function reurns a bool if the Object has the specific Component.
+	This function returns a bool if the Object has the specific Component.
 	*/
 	template<typename T>
 	bool CheckForComponent()
@@ -115,53 +115,57 @@ public:
 
 
 	//Transform
-	//! Use this function to set the Objects position
+	//! This function is to set the Objects position
 	/*!
 	Use this to set the Object's current position.
 	*/
 	void SetPoition(glm::vec3 _pos);
 
-	//! Use this function to set the Objects rotation
+	//! This function is to set the Objects rotation
 	/*!
 	Use this to set the Objects current rotation.
 	*/
 	void SetRotation(glm::vec3 _rot);
 
-	//! Use this function to set the Objects scale
+	//! This function is to set the Objects scale
 	/*!
 	Use this to set the Objects current scale.
 	*/
 	void SetScale(glm::vec3 _scale);
 
-	//! Use this function to get the Objects position
+	//! This function is to get the Objects position
 	/*!
 	Use this to get the Objects current position.
 	*/
 	glm::vec3 GetPoition() { return position; }
 
-	//! Use this function to get the Objects rotation
+	//! This function is to get the Objects rotation
 	/*!
 	Use this to get the Objects current rotation.
 	*/
 	glm::vec3 GetRotate() { return rotation; }
 
-	//! Use this function to get the Objects scale
+	//! This function is to get the Objects scale
 	/*!
 	Use this to get the Objects current scale.
 	*/
 	glm::vec3 GetScale() { return scale; }
 
-	//! Use this function to get the Objects model matrix
+	//! This function is to get the Objects model matrix
 	/*!
 	Use this to get the Objects models matrix for rendering the mesh.
 	*/
 	glm::mat4 GetModel();
 
+	//! This function is to move the object by a certain amount
+	/*!
+	Use this to move the Objects in a certain direction for an amount.
+	*/
 	void Move(glm::vec3 _direction);
 	
-	//! Use this function to get access to Core
+	//! This function is to get access to Core 
 	/*!
-	Use this in Components to get access to the Core
+	Use this in Components to get access to the Core and it's functions
 	*/
 	std::shared_ptr<Core> GetCore();
 

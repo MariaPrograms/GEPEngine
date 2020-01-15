@@ -24,7 +24,6 @@ void main ()
 	shared<Object> entity = core->AddObject();
 
 	shared<Planets> planetController = std::make_shared<Planets>(core, 10);
-	//
 
 	///////Second OBJ
 	shared<Object> entity2 = core->AddObject();
@@ -32,7 +31,6 @@ void main ()
 
 	shared<Camera> cam = entity2->AddComponent<Camera>();
 	cam->SetCameraOffset(glm::vec3(0, 0, 4));
-	
 
 	shared<MeshRenderer> rend2 = entity2->AddComponent<MeshRenderer>();
 	shared<Mesh> shape2 = core->GetResources()->Load<Mesh>("Objects/Player Ship.obj");
@@ -44,7 +42,6 @@ void main ()
 	mat2->SetTexture(texture2);
 	
 	rend2->SetMesh(shape2);
-
 	rend2->SetMaterial(mat2);
 
 	shared<BoxCollider> box2 = entity2->AddComponent<BoxCollider>();
@@ -56,7 +53,7 @@ void main ()
 	//Light
 	shared<Object> lightObj = core->AddObject();
 	lightObj->SetPoition(glm::vec3(0, 50, -50));
-	lightObj->AddComponent<Light>(glm::vec3(1.0f));
+	lightObj->AddComponent<Light>(glm::vec3(.4f));
 	
 	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
 	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");

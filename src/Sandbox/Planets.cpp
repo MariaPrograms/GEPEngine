@@ -24,7 +24,6 @@ Planets::Planets(shared<Core> _core, int _amountOfPlanets)
 	mineButton = mineButtonObject->AddComponent<Button>(core->GetResources()->Load<Texture>("Textures/UI/MineButton.png"));
 	mineButton->SetPosition(glm::vec2(core->GetScreen()->GetSize().x / 2, 0));
 
-
 	for (int i = 0; i < _amountOfPlanets; i++)
 	{
 		shared<Object> tempObj = core->AddObject();

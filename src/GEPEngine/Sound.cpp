@@ -69,16 +69,6 @@ private:
 
 };
 
-Sound::Sound()
-{
-
-}
-
-Sound::~Sound()
-{
-
-}
-
 void Sound::Load(std::string _path)
 {
 	sound = std::make_shared<ALSound>();

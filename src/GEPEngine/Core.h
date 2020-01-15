@@ -19,10 +19,9 @@ struct AudioCore;
 
 //!  The Core class. The main controller of the engine.
 /*!
-  Here is where you will have controll over different aspects of the enginethat are not Componenets. 
+  Here is where you will have controll over different aspects of the engine that are not Componenets. 
   Here you can create Objects, access the GUI, audio, world systems ect... 
 */
-
 class Core : private NonCopyable
 {
 public:
