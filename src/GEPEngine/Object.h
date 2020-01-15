@@ -7,12 +7,20 @@
 class Component;
 class Core;
 
-class Object //: std::enable_shared_from_this<Object>
+//! The Object class that holds components.
+/*!
+Here is the class that holds components 
+*/
+class Object 
 {
 public:
 	Object();
 	~Object();
 
+	//! Use this function to add components to an Object
+	/*!
+	Here is where you add a Component with no paramaeters to the Object.
+	*/
 	template<typename T>
 	std::shared_ptr<T> AddComponent()
 	{
@@ -23,6 +31,10 @@ public:
 		return comp;
 	}
 
+	//! Use this function to add components to an Object
+	/*!
+	Here is where you add a Component with one peramator to the Object.
+	*/
 	template<typename T, typename A>
 	std::shared_ptr<T> AddComponent(A _a)
 	{
@@ -33,6 +45,10 @@ public:
 		return comp;
 	}
 	
+	//! Use this function to add components to an Object
+	/*!
+	Here is where you add a Component with two peramator to the Object.
+	*/
 	template<typename T, typename A, typename B>
 	std::shared_ptr<T> AddComponent(A _a, B _b)
 	{
@@ -43,6 +59,10 @@ public:
 		return comp;
 	}
 
+	//! Use this function to add components to an Object
+	/*!
+	Here is where you add a Component with three peramator to the Object.
+	*/
 	template<typename T, typename A, typename B, typename C>
 	std::shared_ptr<T> AddComponent(A _a, B _b, C _c)
 	{
@@ -53,6 +73,10 @@ public:
 		return comp;
 	}
 
+	//! Use this function to get a Component from the Object
+	/*!
+	Here is where you can return specific Component from the Object.
+	*/
 	template<typename T>
 	std::shared_ptr<T> GetComponent()
 	{
@@ -69,6 +93,10 @@ public:
 		throw Exception("Comonent not found");
 	}
 
+	//! Use this function to check if an Object has a Component
+	/*!
+	This function reurns a bool if the Object has the specific Component.
+	*/
 	template<typename T>
 	bool CheckForComponent()
 	{
@@ -87,25 +115,65 @@ public:
 
 
 	//Transform
+	//! Use this function to set the Objects position
+	/*!
+	Use this to set the Object's current position.
+	*/
 	void SetPoition(glm::vec3 _pos);
-	void SetRotation(glm::vec3 _rot);
-	void SetScale(glm::vec3 _scale);
-	glm::vec3 GetPoition() { return position; }
-	glm::vec3 GetRotate() { return rotation; }
-	glm::vec3 GetScale() { return scale; }
-	glm::mat4 GetModel();
-	void Move(glm::vec3 _direction);
 
+	//! Use this function to set the Objects rotation
+	/*!
+	Use this to set the Objects current rotation.
+	*/
+	void SetRotation(glm::vec3 _rot);
+
+	//! Use this function to set the Objects scale
+	/*!
+	Use this to set the Objects current scale.
+	*/
+	void SetScale(glm::vec3 _scale);
+
+	//! Use this function to get the Objects position
+	/*!
+	Use this to get the Objects current position.
+	*/
+	glm::vec3 GetPoition() { return position; }
+
+	//! Use this function to get the Objects rotation
+	/*!
+	Use this to get the Objects current rotation.
+	*/
+	glm::vec3 GetRotate() { return rotation; }
+
+	//! Use this function to get the Objects scale
+	/*!
+	Use this to get the Objects current scale.
+	*/
+	glm::vec3 GetScale() { return scale; }
+
+	//! Use this function to get the Objects model matrix
+	/*!
+	Use this to get the Objects models matrix for rendering the mesh.
+	*/
+	glm::mat4 GetModel();
+
+	void Move(glm::vec3 _direction);
+	
+	//! Use this function to get access to Core
+	/*!
+	Use this in Components to get access to the Core
+	*/
+	std::shared_ptr<Core> GetCore();
+
+private:
+	friend class Core;
 	void Start();
 	void Update();
 	void Display();
 	void GUI();
-	std::shared_ptr<Core> GetCore();
 	void SetSelf(std::shared_ptr<Object> _self) { self = _self; }
 	void SetCore(std::shared_ptr<Core> _core) { core = _core; }
 
-
-private:
 	std::weak_ptr<Core> core;
 	std::weak_ptr<Object> self;
 	std::list<std::shared_ptr<Component>> components;

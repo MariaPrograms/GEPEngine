@@ -35,31 +35,31 @@ public:
 	*/
 	static std::shared_ptr<Core> Initialize(); 
 
-	//! The function for creating an Object.
+	//! The function to access an Object.
 	/*!
 		This function is to create Objects. 
 	*/
 	std::shared_ptr<Object> AddObject();
 
-	//! The function for getting the Input class
+	//! The function to access the Input class
 	/*!
 		Use this function to access the Input class and it's functions 
 	*/
 	std::shared_ptr<Input> GetInput();
 
-	//! The function for getting the World class
+	//! The function to access the World class
 	/*!
 		Use this function to access the World class and it's functions
 	*/
 	std::shared_ptr<World> GetWorld();
 
-	//! The function for getting the Screen class
+	//! The function to access the Screen class
 	/*!
 		Use this function to access the Screen class and it's functions
 	*/
 	std::shared_ptr<Screen> GetScreen();
 
-	//! The function for getting the Resources class
+	//! The function to access the Resources class
 	/*!
 		Use this function to access the Resources class and it's functions
 	*/
@@ -70,10 +70,29 @@ public:
 		Use this function to access the current main camera in the scene 
 	*/
 	std::shared_ptr<Camera> GetCamera();
+
+	//! The function tp access the Context class
+	/*!
+	Use this function to access the Context to create meshes, texture
+	*/
 	std::shared_ptr<rend::Context> GetContext();
+
+	//! The function for getting the Lights in the scene
+	/*!
+	Use this function to access the current Lights in your scene
+	*/
 	std::shared_ptr<Light> GetLights();
+
+	//! The function to access the GUI class
+	/*!
+	Use this function to access the GUI class and create the GUI for your game
+	*/
 	std::shared_ptr<GUI> GetGUI();
 
+	//! The function to get objects in the scene
+	/*!
+	Use this function to get all the objects in the scene that have a specific Component
+	*/
 	template<typename T>
 	void GetEntities(std::vector<std::shared_ptr<Object>>& _list)
 	{
@@ -88,11 +107,27 @@ public:
 		}
 	}
 
+	//! This function is used 
+	/*!
+	Use this function to get all the objects in the scene that have a specific Component
+	*/
 	void AddLight(std::shared_ptr<Light> _light) { lights.push_back(_light); }
+	
 	void SetMainCamera(std::weak_ptr<Camera> _cam) { mainCamera = _cam; }
 
+	//! The function is used to Start the main game loop
+	/*!
+	Use this function to start your game.
+	*/
 	void Start(); 
+
+
 	void Pause();
+
+	//! The function is used to Finish the game loop
+	/*!
+	Use this function to finish and close your game.
+	*/
 	void Finish();
 
 private:

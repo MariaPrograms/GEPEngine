@@ -4,15 +4,6 @@
 #include "Screen.h"
 #include "GUI.h"
 
-Component::Component()
-{
-	
-
-}
-
-Component::~Component()
-{
-}
 
 std::shared_ptr<Object> Component::GetObject()
 {
