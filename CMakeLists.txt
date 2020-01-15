@@ -64,8 +64,10 @@ add_library(GEPEngine
 
 add_executable(sandbox
 	src/Sandbox/main.cpp
-	src/sandbox/TestScene.cpp
+	src/sandbox/Player.cpp
+	src/sandbox/Planets.cpp
 	src/sandbox/Movement.cpp
+	src/sandbox/Menu.cpp
 )
 
 target_link_libraries(sandbox GEPEngine SDL2 rend OpenAL32)

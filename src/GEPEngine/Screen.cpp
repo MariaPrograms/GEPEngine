@@ -39,7 +39,7 @@ Screen::~Screen()
 
 void Screen::Clear()
 {
-	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
+	glClearColor(0.f, 0.f, 0.f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

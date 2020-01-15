@@ -11,6 +11,8 @@
 void Button::OnInit(std::shared_ptr<Texture> _image)
 {
 	image = _image;
+	size = glm::vec2(0.f);
+	position = glm::vec2(0.f);
 }
 
 void Button::SetImage(std::shared_ptr<Texture> _image)
@@ -42,6 +44,11 @@ void Button::OnUpdate()
 
 void Button::OnGUI()
 {
+	if (size.x <= 0 && size.y <= 0)
+	{
+		size = glm::vec2(image->GetRender()->getWidth(), image->GetRender()->getHeight());
+	}
+
 	GetGUI()->DrawGUI(glm::vec4(position.x, position.y, size.x, size.y), image);
 }
 

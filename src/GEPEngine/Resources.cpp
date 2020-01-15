@@ -35,11 +35,16 @@ Resources::Resources(std::shared_ptr<Core> _core)
 	
 }
 
-std::shared_ptr<Mesh> Resources::MakeMesh()
+bool Resources::CheckResource(std::string _path, int & _position)
 {
-	std::shared_ptr<Mesh> resorce = std::make_shared<Mesh>();
-	resorce->core = core;
-	resorce->self = resorce;
-	resorce->MakeMesh();
-	return resorce;
+	for (int i = 0; i < resources.size(); i++)
+	{
+		if (resources.at(i)->path == _path)
+		{
+			_position = i;
+			return true;
+		}
+	}
+
+	return false;
 }

@@ -75,7 +75,7 @@ void ColliderColumn::GetColliding(glm::vec3 _position, glm::vec3 _size, std::vec
 
 void StaticModelCollider::OnInit()
 {
-	resolution = 10;
+	resolution = 5;
 	tryStep = 0.01f;
 	maxStep = 1.0f;
 	tryInc = 0.01f;
@@ -86,7 +86,7 @@ void StaticModelCollider::OnInit()
 	extentMax = model->GetExtent().max;
 
 	// Create collision columns
-	glm::vec3 size = (extentMax - extentMin) * 20.0f;
+	glm::vec3 size = (extentMax - extentMin);
 	glm::vec3 colSize = size / resolution;
 	colSize.y = size.y;
 
@@ -364,7 +364,7 @@ void StaticModelCollider::AddFace(rend::CollitionFace _face)
 		if (triBoxOverlap(bc, bhs, f))
 		{
 			columns.at(i)->faces.push_back(_face);
-			std::cout << "Pushing face into " << i << std::endl;
+			//std::cout << "Pushing face into " << i << std::endl;
 			found = true;
 		}
 	}

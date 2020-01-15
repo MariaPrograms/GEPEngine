@@ -10,7 +10,10 @@ public:
 	void OnInit();
 	void SetOffset(const glm::vec3& offset);
 	void SetSize(const glm::vec3& size);
+	void SetStatic(bool _value);
+
 	void IsTrigger(bool _value) { trigger = _value; };
+
 	void RegisterTriggerCallback(const std::function<void()> &_callback);
 	void RegisterCollisionCallback(const std::function<void()> &_callback);
 	
@@ -24,6 +27,8 @@ private:
 	glm::vec3 size;
 	glm::vec3 offset;
 	glm::vec3 lastPosition;
+
+	bool isStatic;
 
 	bool trigger;
 	std::list<std::function<void()>> collisionCallbacks;

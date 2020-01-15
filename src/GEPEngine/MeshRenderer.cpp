@@ -52,7 +52,10 @@ void MeshRenderer::OnDisplay()
 	material->setUniform("u_Projection", object.lock()->GetCore()->GetCamera()->GetProjection());
 	material->setUniform("u_View", object.lock()->GetCore()->GetCamera()->GetView());
 
-	GetObject()->GetCore()->GetLights()->SetLights(material);
+	if (material->UsesLights())
+	{
+		GetObject()->GetCore()->GetLights()->SetLights(material);
+	}
 
 	material->GetShader()->setMesh(mesh->GetRender());
 	material->GetShader()->setCullFaces(true);

@@ -1,6 +1,7 @@
 #include <memory>
 #include <vector>
 #include <rend/rend.h>
+#include <string>
 
 class Shader;
 class MaterialAttribute;
@@ -23,6 +24,8 @@ public:
 	void setUniform(const std::string& variable, glm::vec2 value);
 	void setUniform(const std::string& variable, glm::vec3 value);
 	void setUniform(const std::string& variable, glm::vec4 value);
+
+	bool UsesLights();
 
 private:
 	std::shared_ptr<Shader> shader;

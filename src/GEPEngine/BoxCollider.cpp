@@ -41,6 +41,11 @@ void BoxCollider::OnUpdate()
 	CollideBox();
 }
 
+void BoxCollider::SetStatic(bool _value)
+{
+	isStatic = _value;
+}
+
 void BoxCollider::CollideBox()
 {
 	std::vector<std::shared_ptr<Object>> bces;
@@ -72,11 +77,15 @@ void BoxCollider::CollideBox()
 				cb();
 			}
 
-			glm::vec3 sp = bc->GetCollisionResponse(np, size);
-			np = sp;
-			np = np - offset;
-			object.lock()->SetPoition(np);
-			lastPosition = np;
+
+			if (!isStatic)
+			{
+				glm::vec3 sp = bc->GetCollisionResponse(np, size);
+				np = sp;
+				np = np - offset;
+				object.lock()->SetPoition(np);
+				lastPosition = np;
+			}
 		}
 
 		

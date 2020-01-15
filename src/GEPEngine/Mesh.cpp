@@ -30,7 +30,7 @@ void Mesh::Load(std::string _path)
 
 	if (!f.is_open())
 	{
-		throw Exception("Failed to open model");
+		throw Exception("Failed to open model file");
 	}
 
 	while (!f.eof())

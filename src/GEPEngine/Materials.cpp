@@ -56,3 +56,9 @@ void Material::setUniform(const std::string& _variable, glm::vec4 _value)
 {
 	shader->GetRender()->setUniform(_variable, _value);
 }
+
+bool Material::UsesLights()
+{
+	int check = shader->path.find("Light");
+	return check > 0;
+}
