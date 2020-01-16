@@ -12,11 +12,6 @@ Object::Object()
 	scale = glm::vec3(1);
 }
 
-Object::~Object()
-{
-
-}
-
 void Object::Start()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)

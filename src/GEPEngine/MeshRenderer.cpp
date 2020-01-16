@@ -1,3 +1,4 @@
+#include "MeshRenderer.h"
 #include "Core.h"
 #include "Object.h"
 #include "Camera.h"
@@ -6,12 +7,6 @@
 #include "Shader.h"
 #include "Mesh.h"
 #include "Texture.h"
-#include "MeshRenderer.h"
-
-MeshRenderer::MeshRenderer()
-{
-	
-}
 
 void MeshRenderer::SetMaterial(std::shared_ptr<Material> _material)
 {
@@ -31,11 +26,6 @@ std::shared_ptr<Mesh> MeshRenderer::GetMesh()
 std::shared_ptr<Material> MeshRenderer::GetMaterial()
 {
 	return material;
-}
-
-MeshRenderer::~MeshRenderer()
-{
-
 }
 
 void MeshRenderer::OnStart()

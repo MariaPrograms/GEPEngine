@@ -2,6 +2,11 @@
 
 class Texture;
 
+//!  The MaterialAttribute class. The class is still in development.
+/*!
+please do not use this class as it is still in development and is 
+not in use.
+*/
 class MaterialAttribute
 {
 public:

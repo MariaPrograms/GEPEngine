@@ -34,9 +34,9 @@ public:
 	
 	//!This function set the window name
 	/*!
-	This sets the Window name. You pass in a string that will be the name.
+	This sets the Window name. You pass in a string that will be the title of the window.
 	*/
-	void ScreenName(std::string _name);
+	void SetScreenName(std::string _name);
 
 	//!This is called at the end of the Update loop.
 	/*!

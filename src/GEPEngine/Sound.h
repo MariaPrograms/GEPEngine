@@ -19,9 +19,12 @@ public:
 private:
 	friend class SoundSource;
 	friend class Resources;
+
 	void Load(std::string _path);
+	ALuint GetSoundID();
+
 	std::shared_ptr<Sound> self;
 	std::shared_ptr<ALSound> sound;
-	ALuint GetSoundID();
+	
 };
 

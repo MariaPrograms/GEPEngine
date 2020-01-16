@@ -93,7 +93,7 @@ public:
 	Use this function to get all the objects in the scene that have a specific Component
 	*/
 	template<typename T>
-	void GetEntities(std::vector<std::shared_ptr<Object>>& _list)
+	void GetObjects(std::vector<std::shared_ptr<Object>>& _list)
 	{
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{

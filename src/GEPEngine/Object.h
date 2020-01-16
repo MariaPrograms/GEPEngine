@@ -15,7 +15,6 @@ class Object
 {
 public:
 	Object();
-	~Object();
 
 	//! Use this function to add components to an Object
 	/*!
@@ -184,6 +183,9 @@ private:
 	glm::vec3 position;
 	glm::vec3 rotation;
 	glm::vec3 scale;
+
+	bool isActive;
+
 };
 
 

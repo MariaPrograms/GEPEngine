@@ -4,7 +4,11 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-
+//!  The Font class. The class is still in development.
+/*!
+please do not use this class as it is still in development and will
+not work.
+*/
 class Font : public Resource
 {
 public:

@@ -20,7 +20,9 @@ public:
 
 private:
 	friend class Resources;
+
 	void Load(std::string _path);
+
 	std::shared_ptr<Shader> self;
 	std::shared_ptr<rend::Shader> rendShader;
 };

@@ -50,7 +50,7 @@ void BoxCollider::CollideBox()
 {
 	std::vector<std::shared_ptr<Object>> bces;
 
-	GetCore()->GetEntities<BoxCollider>(bces);
+	GetCore()->GetObjects<BoxCollider>(bces);
 	glm::vec3 np = object.lock()->GetPoition() + offset;
 
 	for (std::vector<std::shared_ptr<Object>>::iterator it = bces.begin(); it != bces.end(); it++)
@@ -96,7 +96,7 @@ void BoxCollider::CollideStaticMesh()
 {
 	std::vector<std::shared_ptr<Object>> smces;
 
-	GetCore()->GetEntities<StaticModelCollider>(smces);
+	GetCore()->GetObjects<StaticModelCollider>(smces);
 
 	glm::vec3 np = GetObject()->GetPoition() + offset;
 

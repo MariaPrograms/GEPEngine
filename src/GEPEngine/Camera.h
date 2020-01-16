@@ -2,10 +2,16 @@
 #include <memory>
 #include "Components.h"
 
-//!  The Camera class. this is for the veiw port of the game.
+//! The Camera class. this is for the veiw port of the game.
 /*!
-Here is where you will have controll over the camera component. 
-You need a camera in your scene to render anything. 
+Here is where you will have controll over the camera component.
+You need a camera in your scene to render anything.
+Camera is a child of Component so please use the Object class to add one
+to an Object.
+
+Example..
+
+shared<Camera> example = exampleObject->AddComponent<Camera>();
 */
 class Camera : public Component, public std::enable_shared_from_this<Camera>
 {

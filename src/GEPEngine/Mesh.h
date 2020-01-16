@@ -35,9 +35,10 @@ public:
 	std::shared_ptr<rend::Mesh> GetRender() { return rendMesh; }
 
 private:
-	void MakeMesh();
 	friend class Resources;
+
 	void Load(std::string _path);
+
 	std::shared_ptr<Mesh> self;
 	std::shared_ptr<rend::Mesh> rendMesh;
 };

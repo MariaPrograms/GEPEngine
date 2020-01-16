@@ -55,7 +55,6 @@ add_library(GEPEngine
 	src/GEPEngine/BoxCollider.cpp
 	src/GEPEngine/StaticModelCollider.cpp
 	src/GEPEngine/TriBox.cpp
-	src/GEPEngine/Trigger.cpp
 
 	src/GEPEngine/GUI.cpp
 	src/GEPEngine/Button.cpp

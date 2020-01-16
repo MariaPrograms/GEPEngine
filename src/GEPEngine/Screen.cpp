@@ -43,6 +43,11 @@ void Screen::Clear()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+void Screen::SetScreenName(std::string _name)
+{
+	SDL_SetWindowTitle(window, _name.c_str());
+}
+
 void Screen::Display()
 {
 	SDL_GL_SwapWindow(window);

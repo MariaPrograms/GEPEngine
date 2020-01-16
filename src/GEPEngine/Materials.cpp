@@ -2,16 +2,6 @@
 #include "Shader.h"
 #include "Texture.h"
 
-Material::Material()
-{
-
-}
-
-Material::~Material()
-{
-
-}
-
 void Material::SetShader(std::shared_ptr<Shader> _shader)
 {
 	shader = _shader;

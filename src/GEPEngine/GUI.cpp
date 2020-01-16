@@ -73,9 +73,9 @@ void GUI::DrawGUI(std::shared_ptr<Texture> _image)
 	shader->GetRender()->render();
 }
 
-void GUI::DrawText(std::string _text, glm::vec2 _pos, std::shared_ptr<Font> _font, float _scale)
+/*void GUI::DrawText(std::string _text, glm::vec2 _pos, std::shared_ptr<Font> _font, float _scale)
 {
-	/*rend::mat4 model(1.0f);
+	rend::mat4 model(1.0f);
 	model = glm::translate(model, glm::vec3(0, 0, 0));
 	model = glm::scale(model, glm::vec3(text->GetRender()->getWidth(), text->GetRender()->getHeight(), 1.0f));
 
@@ -85,5 +85,5 @@ void GUI::DrawText(std::string _text, glm::vec2 _pos, std::shared_ptr<Font> _fon
 
 	shader->GetRender()->setMesh(mesh->GetRender());
 	shader->GetRender()->setDepthTesting(false);
-	shader->GetRender()->render();*/
-}
+	shader->GetRender()->render();
+}*/
