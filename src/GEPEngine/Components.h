@@ -107,7 +107,7 @@ protected:
 	
 	std::weak_ptr<Object> object;//! This is referience to the Object that holds this Component
 
-	bool isActive;//! This is for the comenent to run in that frame
+	bool isActive = true;//! This is for the comenent to run in that frame
 };
 
 #endif // Component_H

@@ -61,8 +61,8 @@ void GUI::DrawGUI(std::shared_ptr<Texture> _image)
 	rend::mat4 model(1.0f);
 	model = glm::translate(model, glm::vec3(0, 0, 0));
 	model = glm::scale(model, glm::vec3(screenSize.x, screenSize.y, 1.0f));
+	shader->GetRender()->setUniform("u_Model", model);
 
-	//shader->GetRender()->setUniform("u_Model", model);
 	shader->GetRender()->setUniform("u_Projection", projection);
 	mesh->GetRender()->setTexture("u_Texture", _image->GetRender());
 	shader->GetRender()->setMesh(mesh->GetRender());

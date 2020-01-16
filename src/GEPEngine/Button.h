@@ -62,10 +62,14 @@ public:
 	*/
 	void SetPosition(glm::vec2 _position);
 
+	void SetClickedImage(std::shared_ptr<Texture> _image);
+
 private:
 	void OnUpdate();
 	void OnGUI();
-	std::shared_ptr<Texture> image;
+	std::shared_ptr<Texture> normalImage;
+	std::shared_ptr<Texture> clickedImage;
+	std::shared_ptr<Texture> currentImage;
 	glm::vec2 size;
 	glm::vec2 position;
 	std::list<std::function<void()>> callbacks;

@@ -62,8 +62,11 @@ void BoxCollider::CollideBox()
 
 		std::shared_ptr<BoxCollider> bc = (*it)->GetComponent<BoxCollider>();
 
+		isColliding = false;
+
 		if (bc->IsColliding(np, size))
 		{
+			isColliding = true;
 			if (trigger)
 			{
 				for (const auto &cb : triggerCallbacks)

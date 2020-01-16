@@ -169,6 +169,7 @@ public:
 	std::shared_ptr<Core> GetCore();
 
 	void SetIsActive(bool _value) { isActive = _value; }
+	std::string tag;
 
 private:
 	friend class Core;

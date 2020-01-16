@@ -14,7 +14,6 @@ Sound is a child of Resource so please use the Load functioon from the Resources
 class Sound : public Resource
 {
 public:
-	bool looping;//!This is for music that you wish loop. Set to true for it to play continuously. 
 
 private:
 	friend class SoundSource;

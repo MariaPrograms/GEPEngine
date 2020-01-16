@@ -52,9 +52,9 @@ private:
 	ALCcontext* context;
 };
 
-Core::Core()
+Core::Core(glm::vec2 _screenSize)
 {
-	screen = std::make_shared<Screen>(glm::vec2(800, 600));
+	screen = std::make_shared<Screen>(_screenSize);
 	context = rend::Context::initialize();
 	audioCore = std::make_shared<AudioCore>();
 	world = std::make_shared<World>();
@@ -64,9 +64,9 @@ Core::~Core()
 {
 }
 
-std::shared_ptr<Core> Core::Initialize()
+std::shared_ptr<Core> Core::Initialize(glm::vec2 _screenSize)
 {
-	std::shared_ptr<Core> rtn(new Core());
+	std::shared_ptr<Core> rtn(new Core(_screenSize));
 	rtn->self = rtn;
 	rtn->input = std::make_shared<Input>(rtn);
 	rtn->resources = std::make_shared<Resources>(rtn);
@@ -109,23 +109,23 @@ void Core::Start()
 	
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
-			(*it)->Update();
-			(*it)->Display();
+			if ((*it)->isActive)
+			{
+				(*it)->Update();
+				(*it)->Display();
+			}
 		}
 
 		for (std::list<std::shared_ptr<Object>>::iterator it = objects.begin(); it != objects.end(); it++)
 		{
-			(*it)->GUI();
+			if ((*it)->isActive)
+			{
+				(*it)->GUI();
+			}
 		}
 
 		screen->Display();
 	}
-
-}
-
-void Core::Pause()
-{
-
 }
 
 void Core::Finish()

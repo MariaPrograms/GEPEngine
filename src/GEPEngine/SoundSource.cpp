@@ -7,6 +7,8 @@
 //!The ALSource class. This controlls the API for playing and loading sounds
 struct ALSource
 {
+	bool looping;
+
 	ALSource()
 	{
 		alGenSources(1, &sourceId);
@@ -33,7 +35,10 @@ struct ALSource
 
 		if (state == AL_STOPPED)
 		{
-			//Do thing here
+			if (looping)
+			{
+				Play();
+			}
 		}
 	}
 
@@ -73,6 +78,11 @@ void SoundSource::SetSound(std::shared_ptr<Sound> _sound)
 void SoundSource::Play()
 {
 	source->Play();
+}
+
+void SoundSource::SetLooping(bool _value)
+{
+	source->looping = _value;
 }
 
 void SoundSource::OnUpdate()

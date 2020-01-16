@@ -32,7 +32,7 @@ public:
 		Use this at the start of your code to initalise Core and be able to use it. 
 		It returns a smart pointer for you to store and use.
 	*/
-	static std::shared_ptr<Core> Initialize(); 
+	static std::shared_ptr<Core> Initialize(glm::vec2 _screenSize);
 
 	//! The function to access an Object.
 	/*!
@@ -120,9 +120,6 @@ public:
 	*/
 	void Start(); 
 
-
-	void Pause();
-
 	//! The function is used to Finish the game loop
 	/*!
 	Use this function to finish and close your game.
@@ -130,7 +127,7 @@ public:
 	void Finish();
 
 private:
-	Core();
+	Core(glm::vec2 _screenSize);
 
 	std::shared_ptr<AudioCore> audioCore;
 	std::shared_ptr<Core> self;

@@ -44,6 +44,9 @@ public:
 	//!This function plays the current set Sound
 	void Play();
 
+	//!Pass into function a bool of true if you want your music to loop
+	void SetLooping(bool _value);
+
 private:
 	void OnUpdate();
 	std::shared_ptr<ALSource> source;

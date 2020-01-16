@@ -67,7 +67,8 @@ public:
 	that will be called when the BoxCollider is collided with.
 	*/
 	void RegisterCollisionCallback(const std::function<void()> &_callback);
-	
+	bool isColliding;
+
 private:
 	void OnUpdate();
 	void CollideStaticMesh();
@@ -80,8 +81,8 @@ private:
 	glm::vec3 lastPosition;
 
 	bool isStatic;
-
 	bool trigger;
+	
 	std::list<std::function<void()>> collisionCallbacks;
 	std::list<std::function<void()>> triggerCallbacks;
 };

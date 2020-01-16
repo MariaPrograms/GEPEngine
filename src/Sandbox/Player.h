@@ -4,10 +4,16 @@
 class Player : public Component
 {
 public:
-	std::shared_ptr<Texture> test;
-
 	void OnInit();
+	void ResetPos();
 
+	std::shared_ptr<SoundSource> source;
+
+	int score;
+	int maxScore;
+	bool started;
+	bool finished;
+	
 private:
 	void OnUpdate();
 
@@ -16,7 +22,7 @@ private:
 
 	glm::vec3 front;
 	glm::vec3 up;
-
+	
 	float cameraSpeed;
 	float yaw;
 	float pitch;
