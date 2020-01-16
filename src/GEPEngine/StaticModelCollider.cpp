@@ -215,8 +215,6 @@ glm::vec3 StaticModelCollider::FaceNormal(rend::CollitionFace& face)
 	return glm::normalize(N);
 }
 
-
-
 bool StaticModelCollider::CheckForCollision(glm::vec3 _position, glm::vec3 _size)
 {
 	glm::vec3 solve = _position;

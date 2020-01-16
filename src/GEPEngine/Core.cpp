@@ -6,12 +6,12 @@
 #include "Resources.h"
 #include "Camera.h"
 #include "GUI.h"
-
+#include "Exception.h"
 #include <glm/glm.hpp>
 #include <AL/al.h>
 #include <AL/alc.h>
 
-
+//!  The AudioCore class. This initialises the audio software.
 struct AudioCore
 {
 	AudioCore()
@@ -20,7 +20,7 @@ struct AudioCore
 
 		if (device == NULL)
 		{
-			throw std::exception();
+			throw Exception("unable to open device");
 		}
 
 		context = alcCreateContext(device, NULL); // Create audio context
@@ -28,7 +28,7 @@ struct AudioCore
 		if (context == NULL)
 		{
 			alcCloseDevice(device);
-			throw std::exception();
+			throw Exception("Unable to create context");
 		}
 
 		// Set as current context
@@ -36,7 +36,7 @@ struct AudioCore
 		{
 			alcDestroyContext(context);
 			alcCloseDevice(device);
-			throw std::exception();
+			throw Exception("Unable to make context current");
 		}
 	}
 

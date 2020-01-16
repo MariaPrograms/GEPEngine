@@ -4,6 +4,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
+//!The ALSource class. This controlls the API for playing and loading sounds
 struct ALSource
 {
 	ALSource()
@@ -16,6 +17,7 @@ struct ALSource
 		alDeleteSources(1, &sourceId);
 	}
 
+	//!This function plays the sound
 	void Play()
 	{
 		alSource3f(sourceId, AL_POSITION, 0.0f, 0.0f, 0.0f);
@@ -23,6 +25,7 @@ struct ALSource
 		alSourcePlay(sourceId);
 	}
 
+	//!This function updates the sound
 	void OnUpdate()
 	{
 		ALint state = 0;
@@ -34,6 +37,7 @@ struct ALSource
 		}
 	}
 
+	//!This sets the sound ID
 	void SetID(ALuint _soundBufferId)
 	{
 		soundBufferId = _soundBufferId;
@@ -44,9 +48,15 @@ private:
 	ALuint soundBufferId = 0;
 };
 
-SoundSource::SoundSource()
+void SoundSource::OnInit()
 {
 	source = std::make_shared<ALSource>();
+}
+
+void SoundSource::OnInit(std::shared_ptr<Sound> _sound)
+{
+	source = std::make_shared<ALSource>();
+	source->SetID(_sound->GetSoundID());
 }
 
 SoundSource::~SoundSource()
@@ -60,7 +70,7 @@ void SoundSource::SetSound(std::shared_ptr<Sound> _sound)
 	source->SetID(_sound->GetSoundID());
 }
 
-void SoundSource::OnInit()
+void SoundSource::Play()
 {
 	source->Play();
 }

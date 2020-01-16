@@ -8,15 +8,6 @@
 #define shared std::shared_ptr
 #define weak std::weak_ptr
 
-class Client1 
-{
-public:
-	static void func()
-	{
-		printf("HIT");
-	}
-};
-
 void main ()
 {
 	shared<Core> core = Core::Initialize();
@@ -51,14 +42,15 @@ void main ()
 	shared<Player> thing = entity2->AddComponent<Player>();
 
 	//Light
-	shared<Object> lightObj = core->AddObject();
-	lightObj->SetPoition(glm::vec3(0, 50, -50));
-	lightObj->AddComponent<Light>(glm::vec3(.4f));
+	shared<Light> light = entity2->AddComponent<Light>(glm::vec3(1.f));
+	light->SetOffset(glm::vec3(0, 0, -4));
+
+	shared<SoundSource> source = entity->AddComponent<SoundSource>();
+	shared<Sound> sound = core->GetResources()->Load<Sound>("Sounds/dixie_horn.ogg");
+	source->SetSound(sound);
 	
-	/*shared<SoundSource> source = entity->AddComponent<SoundSource>();
-	shared<Sound> sound = core->GetResources()->Load<Sound>("dixie_horn.ogg");
-	source->SetSound(sound);*/
-	 
+	source->Play();
+
 	core->Start();
 	return;
 }

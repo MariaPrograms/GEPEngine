@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "Exception.h"
 
+#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 void Texture::Load(std::string _path)

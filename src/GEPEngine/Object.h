@@ -168,6 +168,8 @@ public:
 	*/
 	std::shared_ptr<Core> GetCore();
 
+	void SetIsActive(bool _value) { isActive = _value; }
+
 private:
 	friend class Core;
 	void Start();

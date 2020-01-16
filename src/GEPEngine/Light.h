@@ -31,6 +31,13 @@ public:
 	*/
 	void OnInit(glm::vec3 _color);
 
+	//!The function sets the offset
+	/*!
+	This moves the position from the light from the centre of the Object.
+	*/
+	void SetOffset(glm::vec3 _offset);
+
 private:
 	glm::vec3 color;
+	glm::vec3 offset;
 };

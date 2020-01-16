@@ -67,6 +67,8 @@ public:
 	*/
 	std::shared_ptr<Core>  GetCore();
 
+	void SetIsActive(bool _value) { isActive = _value; }
+
 protected:
 	friend class Object;
 

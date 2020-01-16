@@ -3,6 +3,7 @@
 
 #include <vector>
 
+//!The ALSound class. This controlls the API individual sounds
 struct ALSound
 {
 	ALSound()
@@ -15,6 +16,7 @@ struct ALSound
 		alDeleteBuffers(1, &bufferId);
 	}
 
+	//!The function loads the sound interacts with the API
 	void Load(std::string _path)
 	{
 		int channels = 0;
@@ -56,6 +58,7 @@ struct ALSound
 		alBufferData(bufferId, format, &bufferData.at(0), static_cast<ALsizei>(bufferData.size()), freq);
 	}
 	
+	//!The function returns the sound ID for playing the sound
 	ALuint GetId()
 	{
 		return bufferId;

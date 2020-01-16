@@ -22,7 +22,7 @@ void Object::Start()
 		}
 		catch (Exception& e)
 		{
-			std::cout << "Exception: " << e.what() << std::endl;
+			std::cout << "Exception: " << e.What() << std::endl;
 			//(*it)->Kill(); // Eject component
 			//this?kill(); // Perhaps eject the entire object
 		}
@@ -35,15 +35,18 @@ void Object::Update()
 	
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		try
+		if ((*it)->isActive)
 		{
-			(*it)->OnUpdate();
-		}
-		catch (Exception& e)
-		{
-			std::cout << "Exception: " << e.what() << std::endl;
-			//(*it)->Kill(); // Eject component
-			//this?kill(); // Perhaps eject the entire object
+			try
+			{
+				(*it)->OnUpdate();
+			}
+			catch (Exception& e)
+			{
+				std::cout << "Exception: " << e.What() << std::endl;
+				//(*it)->Kill(); // Eject component
+				//this?kill(); // Perhaps eject the entire object
+			}
 		}
 		
 	}
@@ -53,15 +56,18 @@ void Object::Display()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		try
+		if ((*it)->isActive)
 		{
-			(*it)->OnDisplay();
-		}
-		catch (Exception& e)
-		{
-			std::cout << "Exception: " << e.what() << std::endl;
-			//(*it)->Kill(); // Eject component
-			//this?kill(); // Perhaps eject the entire object
+			try
+			{
+				(*it)->OnDisplay();
+			}
+			catch (Exception& e)
+			{
+				std::cout << "Exception: " << e.What() << std::endl;
+				//(*it)->Kill(); // Eject component
+				//this?kill(); // Perhaps eject the entire object
+			}
 		}
 	}
 }
@@ -70,15 +76,18 @@ void Object::GUI()
 {
 	for (std::list<std::shared_ptr<Component>>::iterator it = components.begin(); it != components.end(); it++)
 	{
-		try
+		if ((*it)->isActive)
 		{
-			(*it)->OnGUI();
-		}
-		catch (Exception& e)
-		{
-			std::cout << "Exception: " << e.what() << std::endl;
-			//(*it)->Kill(); // Eject component
-			//this?kill(); // Perhaps eject the entire object
+			try
+			{
+				(*it)->OnGUI();
+			}
+			catch (Exception& e)
+			{
+				std::cout << "Exception: " << e.What() << std::endl;
+				//(*it)->Kill(); // Eject component
+				//this?kill(); // Perhaps eject the entire object
+			}
 		}
 	}
 }

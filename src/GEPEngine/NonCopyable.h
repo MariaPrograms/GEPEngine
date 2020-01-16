@@ -1,5 +1,6 @@
 #pragma once
 
+//!This class is to make sure specific classes cannot be created more than once
 class NonCopyable
 {
 public:

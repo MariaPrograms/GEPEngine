@@ -46,7 +46,6 @@ add_library(GEPEngine
 	src/GEPEngine/Shader.cpp
 	
 	src/GEPEngine/Texture.cpp
-	src/GEPEngine/stb_image.h
 	src/GEPEngine/RenderTexture.cpp
 
 	src/GEPEngine/Sound.cpp

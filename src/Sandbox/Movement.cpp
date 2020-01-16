@@ -1,37 +1,20 @@
 #include "Movement.h"
 
-Movement::Movement()
+void Movement::OnInit()
 {
-}
-
-Movement::~Movement()
-{
-
-
+	maxTime = 10;
+	currentTime = maxTime;
 }
 
 void Movement::OnUpdate()
 {
-	glm::vec3 pos;
+	currentTime -= GetWorld()->GetDeltaTime();
+}
 
-	if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_D))
-	{
-		pos = object.lock()->GetPoition() - glm::vec3(1, 0, 0) * GetWorld()->GetDeltaTime();
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_A))
-	{
-		pos = object.lock()->GetPoition() + glm::vec3(1, 0, 0)  * GetWorld()->GetDeltaTime();
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_S))
-	{
-		pos = object.lock()->GetPoition() - glm::vec3(0, 0, 1) * GetWorld()->GetDeltaTime();
-		object.lock()->SetPoition(pos);
-	}
-	else if (object.lock()->GetCore()->GetInput()->IsKeyDown(SDL_SCANCODE_W))
-	{
-		pos = object.lock()->GetPoition() + glm::vec3(0, 0, 1) * GetWorld()->GetDeltaTime();
-		object.lock()->SetPoition(pos);
-	}
+void Movement::OnGUI()
+{
+	float timeleft = currentTime / maxTime;
+	float barLength = (GetScreen()->GetSize().x / 4 * 3) * timeleft;
+	GetGUI()->DrawGUI(glm::vec4((GetScreen()->GetSize().x / 4), 55, (GetScreen()->GetSize().x / 4 * 3), 10), bar);
+	GetGUI()->DrawGUI(glm::vec4(barLength, 55, (GetScreen()->GetSize().x / 4 * 3), 10), bar);
 }

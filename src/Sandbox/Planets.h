@@ -7,15 +7,20 @@
 #define shared std::shared_ptr
 #define weak std::weak_ptr
 
-class PlanetMovement : public Component
+class PlanetController : public Component
 {
 public:
 	void OnInit();
+	void MinePlanet();
 
 private:
 	void OnUpdate();
+	
+	shared<Object> player;
 	glm::vec3 rotation;
 	float speed;
+	bool mined;
+	shared<Button> mineButton;
 };
 
 
@@ -33,8 +38,7 @@ private:
 	std::vector<std::string> planerObjects;
 	shared<Core> core;
 
-	shared<Object> mineButtonObject;
-	shared<Button> mineButton;
+	
 
 };
 

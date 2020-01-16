@@ -13,7 +13,7 @@ Exception::~Exception() throw()
 {
 }
 
-void Exception::checkForErr()
+void Exception::CheckForError()
 {
 	GLenum err = glGetError();
 
@@ -25,7 +25,7 @@ void Exception::checkForErr()
 	throw Exception("OpenGL emitted an error");
 }
 
-const char* Exception::what() const throw()
+const char* Exception::What() const throw()
 {
 	return message.c_str();
 }

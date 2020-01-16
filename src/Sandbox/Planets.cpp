@@ -1,13 +1,13 @@
 #include "Planets.h"
 
-void PlanetMovement::OnInit()
+void PlanetController::OnInit()
 {
 	rotation = glm::vec3((rand() % 50), (rand() % 50), 0);
 	GetObject()->SetRotation(rotation);
 	speed = rand() % 20 + 3;
 }
 
-void PlanetMovement::OnUpdate()
+void PlanetController::OnUpdate()
 {
 	rotation.x += speed * GetWorld()->GetDeltaTime();
 	rotation.y += speed * GetWorld()->GetDeltaTime();
@@ -20,9 +20,9 @@ Planets::Planets(shared<Core> _core, int _amountOfPlanets)
 	ListOfPlanets();
 	core = _core;
 
-	mineButtonObject = core->AddObject();
-	mineButton = mineButtonObject->AddComponent<Button>(core->GetResources()->Load<Texture>("Textures/UI/MineButton.png"));
-	mineButton->SetPosition(glm::vec2(core->GetScreen()->GetSize().x / 2, 0));
+	//mineButtonObject = core->AddObject();
+	//mineButton = mineButtonObject->AddComponent<Button>(core->GetResources()->Load<Texture>("Textures/UI/MineButton.png"));
+	//mineButton->SetPosition(glm::vec2(core->GetScreen()->GetSize().x / 2, 0));
 
 	for (int i = 0; i < _amountOfPlanets; i++)
 	{
@@ -39,10 +39,10 @@ Planets::Planets(shared<Core> _core, int _amountOfPlanets)
 		rend->SetMesh(core->GetResources()->Load<Mesh>("Objects" + planerObjects.at(planetObj)));
 		rend->SetMaterial(mat);
 
-		tempObj->AddComponent<PlanetMovement>();
+		tempObj->AddComponent<PlanetController>();
 		shared<BoxCollider> box = tempObj->AddComponent<BoxCollider>();
 		box->SetStatic(true);
-
+		box->SetSize(glm::vec3(10));
 
 		planets.push_back(tempObj);
 	}
