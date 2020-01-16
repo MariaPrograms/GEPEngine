@@ -4,7 +4,7 @@
 
 //!  The Texture class. The class where images for meshes and GUI are stored
 /*!
-This class is for any images you need for texturing a Mesh or desplaying GUI.
+This class is for any images helloooooooooo you need for texturing a Mesh or desplaying GUI.
 Texture is a child of Resource so please use the Resources class to load one in.
 */
 
