@@ -1,0 +1,294 @@
+commit dea5391bd7e0c8a3a801ebf4488bd8806ff1eccc
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Jan 16 21:34:39 2020 +0000
+
+    Finished game
+
+commit 991320376abb9aa1b14bee6dc2b48de10485d383
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Jan 16 15:51:52 2020 +0000
+
+    Finished Doxy and UML, finishing game
+
+commit 570cf05ea51685fdeb218bd9ce2d18f01a4a848e
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Jan 16 11:58:29 2020 +0000
+
+    Working on finishing Doxygen and UML diagram
+
+commit fe347f84ca3a7a9b11f0e92f3bf3e1d8ef017153
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Thu Jan 16 09:32:57 2020 +0000
+
+    Forgot to add things to prevouse commit
+
+commit 53bdeb8ba89f4ad66fae4fbc3f217180e7205e5d
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Wed Jan 15 23:16:23 2020 +0000
+
+    Added more comments
+
+commit 9a0c9350083c1e5ecda4ac567a6f86ca4402109a
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Wed Jan 15 18:55:04 2020 +0000
+
+    started game, about halfway
+
+commit 86f5305c65e545e94fdf96b6450b2d065617fc5b
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Wed Jan 15 00:11:51 2020 +0000
+
+    Started Doxygen commenting
+
+commit c9ccc17ba6bd4771c7f236b749fc9e459a2fd5d6
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Tue Jan 14 17:59:10 2020 +0000
+
+    Working on triggers and stuff
+
+commit 02ffbb41903ab3b7319598547dc731d2cde24781
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Tue Jan 14 13:55:53 2020 +0000
+
+    finished collistion triggers
+
+commit 69d210a7c97f0fbff8211c9106de54dc9164651e
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Mon Jan 13 23:39:19 2020 +0000
+
+    Trigers kinda working need to fix things
+
+commit beb00234ff607f94342f91e1f30589e15201a3ef
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Mon Jan 13 16:25:59 2020 +0000
+
+    Fixed GUI issues and finished button, started working on Triggers
+
+commit 4ebe99663a56cc41884e389950e1386b70948a3c
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Mon Jan 13 10:40:47 2020 +0000
+
+    Working on buttons
+
+commit 11339daec81ad679426b93f1b787e774218e2803
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Jan 10 16:39:49 2020 +0000
+
+    Static Modle Working, Now gotta work on the pushback
+
+commit 026947872fe164d5c106945a78f0e8449f9f3d1d
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Jan 10 14:58:45 2020 +0000
+
+    Stoped working on fonts now working on collition
+
+commit 06ee738e01db157025ea13f6cf8b531a3567c58b
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Fri Jan 10 09:02:20 2020 +0000
+
+    added CMakeList
+
+commit 80fa84eef0d771f5298b4fcd2fb8f3444031aaa6
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Fri Jan 10 09:01:50 2020 +0000
+
+    working on fonts
+
+commit 4ce517d809ba3aa3ca41109328397161b1b0063f
+Merge: 9083b2d ac4a267
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Wed Jan 8 00:40:41 2020 +0000
+
+    Merge branch 'master' of https://github.com/MariaPrograms/GEPEngine
+
+commit 9083b2d0acd1b0c7d61a16630e4f5217485ecd74
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Wed Jan 8 00:39:41 2020 +0000
+
+    Started on some scene making to import into game
+
+commit ac4a267eba279bddad4f516c7a6c1b4d4e997cd0
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Tue Jan 7 17:23:27 2020 +0000
+
+    Fixed GUI and Finished Camera movement
+
+commit b127c8e78e4b21814cb4458a8862080f44b0ed87
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Tue Jan 7 10:47:24 2020 +0000
+
+    Working on Collition and GUI
+
+commit 9b0668c0660b967e6f90dbdf99a455593d11f014
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Dec 13 13:20:50 2019 +0000
+
+    Working on collitions and movement
+
+commit 7151971cdd22e4e246ff4ddfa4b36484f167a610
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Dec 6 16:02:08 2019 +0000
+
+    Started collitions
+
+commit d652ae3339c25fdf15588220b3efe0c203aa3c61
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Nov 29 12:32:21 2019 +0000
+
+    Lights stuff partly done
+
+commit 4c2ca32f745e4dd36890657c95b538a8a8674bdb
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Nov 28 17:54:42 2019 +0000
+
+    Started on Lighting
+
+commit f5b696e90058e19bdc7d241f95ab5f0a919e7b24
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Mon Nov 25 18:08:17 2019 +0000
+
+    Keyboard now working
+
+commit 2bf98f034c2aaf2c6895cf97db8bfb071b8ed51c
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Nov 22 12:24:42 2019 +0000
+
+    Fixed Meshed & finied adding texture & audio
+
+commit 340f2b9f7cadd0dec24b2ff2ca6ae5efa0715a5d
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Wed Nov 20 16:33:54 2019 +0000
+
+    Fixed mesh class
+
+commit 3ea2373898875176844b9a4a79ba0103fcf80bb6
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Wed Nov 20 16:28:18 2019 +0000
+
+    Worked on resource loading and other things
+
+commit acd1b7271f2a93477864815350fe2f5df47f8208
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Fri Nov 15 23:36:12 2019 +0000
+
+    Testing resource loading
+
+commit d8059e008c0e4b1213b2ed03088eb94a617073a0
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Nov 15 13:00:30 2019 +0000
+
+    Added Rend getting models done
+
+commit 5a3778b04c28bf2e8231f7bb43440c8103306777
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Nov 14 17:02:30 2019 +0000
+
+    Still woring on rendering
+
+commit 3796022226c07c84a7d19434e9d631249c4b0c02
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Mon Nov 11 15:10:23 2019 +0000
+
+    Started on Textures and Rendering Stuff
+
+commit c31516f0db84edad6c872a03cfcda480cdd995b2
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Nov 1 14:12:00 2019 +0000
+
+    Finished Shader Class
+
+commit b95996613bd9b5d03c207865f82315cfb5d72220
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Nov 1 11:07:19 2019 +0000
+
+    Spitting up Renderer
+
+commit 99fc1d76e5956a7b0f814c6003e3ecd16863b411
+Author: Maria Tozo <girly2shoe@hotmail.com>
+Date:   Fri Oct 25 19:10:21 2019 +0100
+
+    finished VAO and VBO classes and started on shader
+
+commit 414ee46a975bba301e56b0b8d7eef18fede278b9
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 25 15:47:54 2019 +0100
+
+    forgot to add VAO changes
+
+commit fdc4b76fda0b656ade245852f58166f97615e384
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 25 15:45:54 2019 +0100
+
+    working on VBO and VAOs
+
+commit 8dd6c2d9b83a2a5d1afdb53170966114af1587b0
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 25 14:02:04 2019 +0100
+
+    started on VBOs and VAOs
+
+commit 22efba236666664ad6f69c30cca1da96e8b70665
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 25 11:01:09 2019 +0100
+
+    Made triangle render and started seperating it
+
+commit afcd4bbba663937a40a8a2796a62cff4a3fb91ef
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Oct 24 16:04:26 2019 +0100
+
+    Added renderer base to add code later
+
+commit 9dab39ca5a7bc4efcd77bdd93da639afb66e25f9
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Thu Oct 24 13:51:57 2019 +0100
+
+    Added onto Core
+
+commit 8cec5894cf9dc825abc115b90d9f83d8f7c27489
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 18 15:52:52 2019 +0100
+
+    Added more classes
+
+commit 7f87f5f7a26e00d33e288277f637365fbbca9af1
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 18 13:00:07 2019 +0100
+
+    Add screen class
+
+commit 324ad30685de2347b7b5bec65de9caaf1b81b8a9
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 18 11:06:52 2019 +0100
+
+    Added on to Component and Entity 
+
+commit 2ed6aefb8cd03e20ba1fa72fd7eaac7e57a1f29d
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 18 10:13:54 2019 +0100
+
+    Added Update Functions
+
+commit e96d1d78ce7ebc41e1b604e09ecb02e91356d050
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 11 11:25:07 2019 +0100
+
+    Added more code into Core and Compentent and Object, Also Bug Fixes
+
+commit 5f260fe99263a8af3f131b0d6c52eec17b05f853
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Wed Oct 9 14:53:04 2019 +0100
+
+    Started on Core, Component and Entity
+
+commit bcbad9ea2658f574b35bfc73ad6095fe3c1d5c2c
+Author: Maria Tozo (s4915051) <s4915051@bournemouth.ac.uk>
+Date:   Fri Oct 4 10:32:30 2019 +0100
+
+    Initial import.
+
+commit 22f70f4f5e807b7d178ddb6092f74623afcf214a
+Author: MariaPrograms <56153197+MariaPrograms@users.noreply.github.com>
+Date:   Fri Oct 4 09:54:50 2019 +0100
+
+    Initial commit
